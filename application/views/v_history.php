@@ -1,52 +1,118 @@
-
+<script>
+    $(document).ready(function() {
+        $('#myTable').DataTable();
+    });
+</script>
 <div class="section secondary-section " id="portfolio">
     <div class="container">
-                         
-            <div class="row-fluid single-project">
-                <div class="span12" style="padding-left: 2%">
-                    <div class="project-description">
-                        <div class="project-title clearfix">
-                            <h3>Nama Event</h3>
-                        </div>
-                        <div class="project-info">
-                            <div class="row-fluid">
-                                <div class="span2" style="color: #FECE1A">Kode Registrasi</div><div class="span8">Some Client Name</div>                                    
-                            </div>
-                            <div class="row-fluid">
-                                <div class="span2" style="color: #FECE1A">Tanggal Registrasi</div><div class="span8">Some Client Name</div>                                    
-                            </div>
-                            <div class="row-fluid">
-                                <div class="span2" style="color: #FECE1A">Tanggal Event</div><div class="span8">Some Client Name</div>                                    
-                            </div>
-                            <div class="row-fluid">
-                                <div class="span2" style="color: #FECE1A">Status Pembayaran</div><div class="span8">Some Client Name</div>                                    
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="span12 price-column" style="padding: 20px 20px 20px 20px; overflow-x: scroll">
+        <table id="myTable" class="display" cellspacing="0" width="100%" style="color: black;">
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Nama Event</th>
+                    <th>Tanggal Event</th>
+                    <th>Tanggal Registrasi</th>
+                    <th>Status Pembayaran</th>
+                    <th>Aksi</th>
+                </tr>
+            </thead>
+            <tfoot>
+                <tr>
+                    <th>No</th>
+                    <th>Nama Event</th>
+                    <th>Tanggal Event</th>
+                    <th>Tanggal Registrasi</th>
+                    <th>Status Pembayaran</th>
+                    <th>Aksi</th>
+                </tr>
+            </tfoot>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Tiger Nixon</td>
+                    <td>System Architect</td>
+                    <td>Edinburgh</td>
+                    <td>61</td>
+                    <td><button class="button button-sp">Konfirmasi</button></td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>Garrett Winters</td>
+                    <td>Accountant</td>
+                    <td>Tokyo</td>
+                    <td>63</td>
+                    <td><button class="button button-sp">Konfirmasi</button></td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>Ashton Cox</td>
+                    <td>Junior Technical Author</td>
+                    <td>San Francisco</td>
+                    <td>66</td>
+                    <td><button class="button button-sp">Konfirmasi</button></td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>Cedric Kelly</td>
+                    <td>Senior Javascript Developer</td>
+                    <td>Edinburgh</td>
+                    <td>22</td>
+                    <td><button class="button button-sp">Konfirmasi</button></td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>Airi Satou</td>
+                    <td>Accountant</td>
+                    <td>Tokyo</td>
+                    <td>33</td>
+                    <td><button class="button button-sp">Konfirmasi</button></td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>Tiger Nixon</td>
+                    <td>System Architect</td>
+                    <td>Edinburgh</td>
+                    <td>61</td>
+                    <td><button class="button button-sp">Konfirmasi</button></td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>Garrett Winters</td>
+                    <td>Accountant</td>
+                    <td>Tokyo</td>
+                    <td>63</td>
+                    <td><button class="button button-sp">Konfirmasi</button></td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>Ashton Cox</td>
+                    <td>Junior Technical Author</td>
+                    <td>San Francisco</td>
+                    <td>66</td>
+                    <td><button class="button button-sp">Konfirmasi</button></td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>Cedric Kelly</td>
+                    <td>Senior Javascript Developer</td>
+                    <td>Edinburgh</td>
+                    <td>22</td>
+                    <td><button class="button button-sp">Konfirmasi</button></td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>Airi Satou</td>
+                    <td>Accountant</td>
+                    <td>Tokyo</td>
+                    <td>33</td>
+                    <td><button class="button button-sp">Konfirmasi</button></td>
+                </tr>
+            </tbody>
+        </table>
         
-            <div class="row-fluid single-project">
-                <div class="span12" style="padding-left: 2%">
-                    <div class="project-description">
-                        <div class="project-title clearfix">
-                            <h3>Form Pendaftaran</h3>
-                        </div>
-                        <div class="project-info">
-                            <div>
-                                <span>Client</span>Some Client Name</div>
-                            <div>
-                                <span>Date</span>July 2013</div>
-                            <div>
-                                <span>Skills</span>HTML5, CSS3, JavaScript</div>
-                            <div>
-                                <span>Link</span>http://examplecomp.com</div>
-                        </div>
-                        <p>Believe in yourself! Have faith in your abilities! Without a humble but reasonable confidence in your own powers you cannot be successful or happy.</p>
-                    </div>
-                </div>
-            </div>
     </div>
-    
+    </div>
+
 </div>
 
