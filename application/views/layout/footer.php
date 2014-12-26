@@ -12,7 +12,7 @@
         </div>
         <!-- ScrollUp button end -->
         <!-- Include javascript -->
-        <script src="<?php echo base_url(); ?>assets/js/jquery.js"></script>
+        
         <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/jquery.mixitup.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/bootstrap.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/modernizr.custom.js"></script>
@@ -27,5 +27,6 @@
             <script src="js/respond.min.js"></script>
         <![endif]-->
         <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/app.js"></script>
+        
     </body>
 </html>

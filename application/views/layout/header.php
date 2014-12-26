@@ -30,6 +30,8 @@
         <link rel="apple-touch-icon-precomposed" sizes="72x72" href="<?php echo base_url(); ?>assets/images/apple-touch-icon-72.png">
         <link rel="apple-touch-icon-precomposed" href="<?php echo base_url(); ?>assets/images/ico/apple-touch-icon-57.png">
         <link rel="shortcut icon" href="<?php echo base_url(); ?>assets/images/ico/favicon.ico">
+    
+        <script src="<?php echo base_url(); ?>assets/js/jquery.js"></script>
     </head>
     
     <body>
