@@ -9,7 +9,7 @@
         <div class="container">
             <!-- Start first slide -->
             <div class="da-slide">
-                <h2 class="fittext2">Welcome to pluton theme</h2>
+                <h2 class="fittext2">Welcome to ALUMNI IPB 1985</h2>
                 <h4>Clean & responsive</h4>
                 <p>When she reached the first hills of the Italic Mountains, she had a last view back on the skyline of her hometown Bookmarksgrove, the headline of Alphabet Village and the subline of her own road, the Line Lane.</p>
                 <a href="#" class="da-link button">Read more</a>
