@@ -1,7 +1,7 @@
 <!-- Contact section edn -->
         <!-- Footer section start -->
         <div class="footer">
-            <p>&copy; 2013 All Rights Reserved</p>
+            <p>&copy; 2014 All Rights Reserved</p>
         </div>
         <!-- Footer section end -->
         <!-- ScrollUp button start -->
