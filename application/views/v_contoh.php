@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+
 <!--
  * A Design by GraphBerry
  * Author: GraphBerry
@@ -14,22 +14,22 @@
         <!-- Load Roboto font -->
         <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,700&amp;subset=latin,latin-ext' rel='stylesheet' type='text/css'>
         <!-- Load css styles -->
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/bootstrap.css" />
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/bootstrap-responsive.css" />
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/style.css" />
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/pluton.css" />
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/bootstrap.css" />
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/bootstrap-responsive.css" />
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/style.css" />
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/pluton.css" />
         <!--[if IE 7]>
             <link rel="stylesheet" type="text/css" href="css/pluton-ie7.css" />
         <![endif]-->
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/jquery.cslider.css" />
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/jquery.bxslider.css" />
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/animate.css" />
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/jquery.cslider.css" />
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/jquery.bxslider.css" />
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/animate.css" />
         <!-- Fav and touch icons -->
-        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="<?php echo base_url(); ?>assets/images/ico/apple-touch-icon-144.png">
-        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="<?php echo base_url(); ?>assets/images/ico/apple-touch-icon-114.png">
-        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="<?php echo base_url(); ?>assets/images/apple-touch-icon-72.png">
-        <link rel="apple-touch-icon-precomposed" href="<?php echo base_url(); ?>assets/images/ico/apple-touch-icon-57.png">
-        <link rel="shortcut icon" href="<?php echo base_url(); ?>assets/images/ico/favicon.ico">
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="<?php echo base_url();?>assets/images/ico/apple-touch-icon-144.png">
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="<?php echo base_url();?>assets/images/ico/apple-touch-icon-114.png">
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="<?php echo base_url();?>assets/images/apple-touch-icon-72.png">
+        <link rel="apple-touch-icon-precomposed" href="<?php echo base_url();?>assets/images/ico/apple-touch-icon-57.png">
+        <link rel="shortcut icon" href="<?php echo base_url();?>assets/images/ico/favicon.ico">
     </head>
     
     <body>
@@ -37,7 +37,7 @@
             <div class="navbar-inner">
                 <div class="container">
                     <a href="#" class="brand">
-                        <img src="<?php echo base_url(); ?>assets/images/logo.png" width="120" height="40" alt="Logo" />
+                        <img src="<?php echo base_url();?>assets/images/logo.png" width="120" height="40" alt="Logo" />
                         <!-- This is website logo -->
                     </a>
                     <!-- Navigation button, visible on small resolution -->
@@ -76,7 +76,7 @@
                         <p>When she reached the first hills of the Italic Mountains, she had a last view back on the skyline of her hometown Bookmarksgrove, the headline of Alphabet Village and the subline of her own road, the Line Lane.</p>
                         <a href="#" class="da-link button">Read more</a>
                         <div class="da-img">
-                            <img src="<?php echo base_url(); ?>assets/images/Slider01.png" alt="image01" width="320">
+                            <img src="<?php echo base_url();?>assets/images/Slider01.png" alt="image01" width="320">
                         </div>
                     </div>
                     <!-- End first slide -->
@@ -87,7 +87,7 @@
                         <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
                         <a href="#" class="da-link button">Read more</a>
                         <div class="da-img">
-                            <img src="<?php echo base_url(); ?>assets/images/Slider02.png" width="320" alt="image02">
+                            <img src="<?php echo base_url();?>assets/images/Slider02.png" width="320" alt="image02">
                         </div>
                     </div>
                     <!-- End second slide -->
@@ -98,7 +98,7 @@
                         <p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
                         <a href="#" class="da-link button">Read more</a>
                         <div class="da-img">
-                            <img src="<?php echo base_url(); ?>assets/images/Slider03.png" width="320" alt="image03">
+                            <img src="<?php echo base_url();?>assets/images/Slider03.png" width="320" alt="image03">
                         </div>
                     </div>
                     <!-- Start third slide -->
@@ -126,7 +126,7 @@
                     <div class="span4">
                         <div class="centered service">
                             <div class="circle-border zoom-in">
-                                <img class="img-circle" src="<?php echo base_url(); ?>assets/images/Service1.png" alt="service 1">
+                                <img class="img-circle" src="<?php echo base_url();?>assets/images/Service1.png" alt="service 1">
                             </div>
                             <h3>Modern Design</h3>
                             <p>We Create Modern And Clean Theme For Your Business Company.</p>
@@ -135,7 +135,7 @@
                     <div class="span4">
                         <div class="centered service">
                             <div class="circle-border zoom-in">
-                                <img class="img-circle" src="<?php echo base_url(); ?>assets/images/Service2.png" alt="service 2" />
+                                <img class="img-circle" src="<?php echo base_url();?>assets/images/Service2.png" alt="service 2" />
                             </div>
                             <h3>Powerfull Theme</h3>
                             <p>We Create Modern And Powerful Theme With Lots Animation And Features</p>
@@ -144,7 +144,7 @@
                     <div class="span4">
                         <div class="centered service">
                             <div class="circle-border zoom-in">
-                                <img class="img-circle" src="<?php echo base_url(); ?>assets/images/Service3.png" alt="service 3">
+                                <img class="img-circle" src="<?php echo base_url();?>assets/images/Service3.png" alt="service 3">
                             </div>
                             <h3>Clean Code</h3>
                             <p>We Create Modern And Powerful Html5 And CSS3 Code Easy For Read And Customize.</p>
@@ -180,7 +180,7 @@
                 <div id="single-project">
                     <div id="slidingDiv" class="toggleDiv row-fluid single-project">
                         <div class="span6">
-                            <img src="<?php echo base_url(); ?>assets/images/Portfolio01.png" alt="project 1" />
+                            <img src="<?php echo base_url();?>assets/images/Portfolio01.png" alt="project 1" />
                         </div>
                         <div class="span6">
                             <div class="project-description">
@@ -208,7 +208,7 @@
                     <!-- Start details for portfolio project 2 -->
                     <div id="slidingDiv1" class="toggleDiv row-fluid single-project">
                         <div class="span6">
-                            <img src="<?php echo base_url(); ?>assets/images/Portfolio02.png" alt="project 2">
+                            <img src="<?php echo base_url();?>assets/images/Portfolio02.png" alt="project 2">
                         </div>
                         <div class="span6">
                             <div class="project-description">
@@ -236,7 +236,7 @@
                     <!-- Start details for portfolio project 3 -->
                     <div id="slidingDiv2" class="toggleDiv row-fluid single-project">
                         <div class="span6">
-                            <img src="<?php echo base_url(); ?>assets/images/Portfolio03.png" alt="project 3">
+                            <img src="<?php echo base_url();?>assets/images/Portfolio03.png" alt="project 3">
                         </div>
                         <div class="span6">
                             <div class="project-description">
@@ -264,7 +264,7 @@
                     <!-- Start details for portfolio project 4 -->
                     <div id="slidingDiv3" class="toggleDiv row-fluid single-project">
                         <div class="span6">
-                            <img src="<?php echo base_url(); ?>assets/images/Portfolio04.png" alt="project 4">
+                            <img src="<?php echo base_url();?>assets/images/Portfolio04.png" alt="project 4">
                         </div>
                         <div class="span6">
                             <div class="project-description">
@@ -292,7 +292,7 @@
                     <!-- Start details for portfolio project 5 -->
                     <div id="slidingDiv4" class="toggleDiv row-fluid single-project">
                         <div class="span6">
-                            <img src="<?php echo base_url(); ?>assets/images/Portfolio05.png" alt="project 5">
+                            <img src="<?php echo base_url();?>assets/images/Portfolio05.png" alt="project 5">
                         </div>
                         <div class="span6">
                             <div class="project-description">
@@ -320,7 +320,7 @@
                     <!-- Start details for portfolio project 6 -->
                     <div id="slidingDiv5" class="toggleDiv row-fluid single-project">
                         <div class="span6">
-                            <img src="<?php echo base_url(); ?>assets/images/Portfolio06.png" alt="project 6">
+                            <img src="<?php echo base_url();?>assets/images/Portfolio06.png" alt="project 6">
                         </div>
                         <div class="span6">
                             <div class="project-description">
@@ -348,7 +348,7 @@
                     <!-- Start details for portfolio project 7 -->
                     <div id="slidingDiv6" class="toggleDiv row-fluid single-project">
                         <div class="span6">
-                            <img src="<?php echo base_url(); ?>assets/images/Portfolio07.png" alt="project 7">
+                            <img src="<?php echo base_url();?>assets/images/Portfolio07.png" alt="project 7">
                         </div>
                         <div class="span6">
                             <div class="project-description">
@@ -376,7 +376,7 @@
                     <!-- Start details for portfolio project 8 -->
                     <div id="slidingDiv7" class="toggleDiv row-fluid single-project">
                         <div class="span6">
-                            <img src="<?php echo base_url(); ?>assets/images/Portfolio08.png" alt="project 8">
+                            <img src="<?php echo base_url();?>assets/images/Portfolio08.png" alt="project 8">
                         </div>
                         <div class="span6">
                             <div class="project-description">
@@ -404,7 +404,7 @@
                     <!-- Start details for portfolio project 9 -->
                     <div id="slidingDiv8" class="toggleDiv row-fluid single-project">
                         <div class="span6">
-                            <img src="<?php echo base_url(); ?>assets/images/Portfolio09.png" alt="project 9">
+                            <img src="<?php echo base_url();?>assets/images/Portfolio09.png" alt="project 9">
                         </div>
                         <div class="span6">
                             <div class="project-description">
@@ -432,7 +432,7 @@
                     <ul id="portfolio-grid" class="thumbnails row">
                         <li class="span4 mix web">
                             <div class="thumbnail">
-                                <img src="<?php echo base_url(); ?>assets/images/Portfolio01.png" alt="project 1">
+                                <img src="<?php echo base_url();?>assets/images/Portfolio01.png" alt="project 1">
                                 <a href="#single-project" class="more show_hide" rel="#slidingDiv">
                                     <i class="icon-plus"></i>
                                 </a>
@@ -443,7 +443,7 @@
                         </li>
                         <li class="span4 mix photo">
                             <div class="thumbnail">
-                                <img src="<?php echo base_url(); ?>assets/images/Portfolio02.png" alt="project 2">
+                                <img src="<?php echo base_url();?>assets/images/Portfolio02.png" alt="project 2">
                                 <a href="#single-project" class="show_hide more" rel="#slidingDiv1">
                                     <i class="icon-plus"></i>
                                 </a>
@@ -454,7 +454,7 @@
                         </li>
                         <li class="span4 mix identity">
                             <div class="thumbnail">
-                                <img src="<?php echo base_url(); ?>assets/images/Portfolio03.png" alt="project 3">
+                                <img src="<?php echo base_url();?>assets/images/Portfolio03.png" alt="project 3">
                                 <a href="#single-project" class="more show_hide" rel="#slidingDiv2">
                                     <i class="icon-plus"></i>
                                 </a>
@@ -465,7 +465,7 @@
                         </li>
                         <li class="span4 mix web">
                             <div class="thumbnail">
-                                <img src="<?php echo base_url(); ?>assets/images/Portfolio04.png" alt="project 4">
+                                <img src="<?php echo base_url();?>assets/images/Portfolio04.png" alt="project 4">
                                 <a href="#single-project" class="show_hide more" rel="#slidingDiv3">
                                     <i class="icon-plus"></i>
                                 </a>
@@ -476,7 +476,7 @@
                         </li>
                         <li class="span4 mix photo">
                             <div class="thumbnail">
-                                <img src="<?php echo base_url(); ?>assets/images/Portfolio05.png" alt="project 5">
+                                <img src="<?php echo base_url();?>assets/images/Portfolio05.png" alt="project 5">
                                 <a href="#single-project" class="show_hide more" rel="#slidingDiv4">
                                     <i class="icon-plus"></i>
                                 </a>
@@ -487,7 +487,7 @@
                         </li>
                         <li class="span4 mix identity">
                             <div class="thumbnail">
-                                <img src="<?php echo base_url(); ?>assets/images/Portfolio06.png" alt="project 6">
+                                <img src="<?php echo base_url();?>assets/images/Portfolio06.png" alt="project 6">
                                 <a href="#single-project" class="show_hide more" rel="#slidingDiv5">
                                     <i class="icon-plus"></i>
                                 </a>
@@ -498,7 +498,7 @@
                         </li>
                         <li class="span4 mix web">
                             <div class="thumbnail">
-                                <img src="<?php echo base_url(); ?>assets/images/Portfolio07.png" alt="project 7" />
+                                <img src="<?php echo base_url();?>assets/images/Portfolio07.png" alt="project 7" />
                                 <a href="#single-project" class="show_hide more" rel="#slidingDiv6">
                                     <i class="icon-plus"></i>
                                 </a>
@@ -509,7 +509,7 @@
                         </li>
                         <li class="span4 mix photo">
                             <div class="thumbnail">
-                                <img src="<?php echo base_url(); ?>assets/images/Portfolio08.png" alt="project 8">
+                                <img src="<?php echo base_url();?>assets/images/Portfolio08.png" alt="project 8">
                                 <a href="#single-project" class="show_hide more" rel="#slidingDiv7">
                                     <i class="icon-plus"></i>
                                 </a>
@@ -520,7 +520,7 @@
                         </li>
                         <li class="span4 mix identity">
                             <div class="thumbnail">
-                                <img src="<?php echo base_url(); ?>assets/images/Portfolio09.png" alt="project 9">
+                                <img src="<?php echo base_url();?>assets/images/Portfolio09.png" alt="project 9">
                                 <a href="#single-project" class="show_hide more" rel="#slidingDiv8">
                                     <i class="icon-plus"></i>
                                 </a>
@@ -545,7 +545,7 @@
                 <div class="row-fluid team">
                     <div class="span4" id="first-person">
                         <div class="thumbnail">
-                            <img src="<?php echo base_url(); ?>assets/images/Team1.png" alt="team 1">
+                            <img src="<?php echo base_url();?>assets/images/Team1.png" alt="team 1">
                             <h3>John Doe</h3>
                             <ul class="social">
                                 <li>
@@ -572,7 +572,7 @@
                     </div>
                     <div class="span4" id="second-person">
                         <div class="thumbnail">
-                            <img src="<?php echo base_url(); ?>assets/images/Team2.png" alt="team 1">
+                            <img src="<?php echo base_url();?>assets/images/Team2.png" alt="team 1">
                             <h3>John Doe</h3>
                             <ul class="social">
                                 <li>
@@ -599,7 +599,7 @@
                     </div>
                     <div class="span4" id="third-person">
                         <div class="thumbnail">
-                            <img src="<?php echo base_url(); ?>assets/images/Team3.png" alt="team 1">
+                            <img src="<?php echo base_url();?>assets/images/Team3.png" alt="team 1">
                             <h3>John Doe</h3>
                             <ul class="social">
                                 <li>
@@ -685,7 +685,7 @@
                                 <p>"I've worked too hard and too long to let anything stand in the way of my goals. I will not let my teammates down and I will not let myself down."</p>
                                 <div class="whopic">
                                     <div class="arrow"></div>
-                                    <img src="<?php echo base_url(); ?>assets/images/Client1.png" class="centered" alt="client 1">
+                                    <img src="<?php echo base_url();?>assets/images/Client1.png" class="centered" alt="client 1">
                                     <strong>John Doe
                                         <small>Client</small>
                                     </strong>
@@ -697,7 +697,7 @@
                                 <p>"In motivating people, you've got to engage their minds and their hearts. I motivate people, I hope, by example - and perhaps by excitement, by having productive ideas to make others feel involved."</p>
                                 <div class="whopic">
                                     <div class="arrow"></div>
-                                    <img src="<?php echo base_url(); ?>assets/images/Client2.png" class="centered" alt="client 2">
+                                    <img src="<?php echo base_url();?>assets/images/Client2.png" class="centered" alt="client 2">
                                     <strong>John Doe
                                         <small>Client</small>
                                     </strong>
@@ -709,7 +709,7 @@
                                 <p>"Determine never to be idle. No person will have occasion to complain of the want of time who never loses any. It is wonderful how much may be done if we are always doing."</p>
                                 <div class="whopic">
                                     <div class="arrow"></div>
-                                    <img src="<?php echo base_url(); ?>assets/images/Client3.png" class="centered" alt="client 3">
+                                    <img src="<?php echo base_url();?>assets/images/Client3.png" class="centered" alt="client 3">
                                     <strong>John Doe
                                         <small>Client</small>
                                     </strong>
@@ -738,37 +738,37 @@
                     <ul class="row client-slider" id="clint-slider">
                         <li>
                             <a href="">
-                                <img src="<?php echo base_url(); ?>assets/images/clients/ClientLogo01.png" alt="client logo 1">
+                                <img src="<?php echo base_url();?>assets/images/clients/ClientLogo01.png" alt="client logo 1">
                             </a>
                         </li>
                         <li>
                             <a href="">
-                                <img src="<?php echo base_url(); ?>assets/images/clients/ClientLogo02.png" alt="client logo 2">
+                                <img src="<?php echo base_url();?>assets/images/clients/ClientLogo02.png" alt="client logo 2">
                             </a>
                         </li>
                         <li>
                             <a href="">
-                                <img src="<?php echo base_url(); ?>assets/images/clients/ClientLogo03.png" alt="client logo 3">
+                                <img src="<?php echo base_url();?>assets/images/clients/ClientLogo03.png" alt="client logo 3">
                             </a>
                         </li>
                         <li>
                             <a href="">
-                                <img src="<?php echo base_url(); ?>assets/images/clients/ClientLogo04.png" alt="client logo 4">
+                                <img src="<?php echo base_url();?>assets/images/clients/ClientLogo04.png" alt="client logo 4">
                             </a>
                         </li>
                         <li>
                             <a href="">
-                                <img src="<?php echo base_url(); ?>assets/images/clients/ClientLogo05.png" alt="client logo 5">
+                                <img src="<?php echo base_url();?>assets/images/clients/ClientLogo05.png" alt="client logo 5">
                             </a>
                         </li>
                         <li>
                             <a href="">
-                                <img src="<?php echo base_url(); ?>assets/images/clients/ClientLogo02.png" alt="client logo 6">
+                                <img src="<?php echo base_url();?>assets/images/clients/ClientLogo02.png" alt="client logo 6">
                             </a>
                         </li>
                         <li>
                             <a href="">
-                                <img src="<?php echo base_url(); ?>assets/images/clients/ClientLogo04.png" alt="client logo 7">
+                                <img src="<?php echo base_url();?>assets/images/clients/ClientLogo04.png" alt="client logo 7">
                             </a>
                         </li>
                     </ul>
@@ -866,7 +866,7 @@
                                 <div id="successSend" class="alert alert-success invisible">
                                     <strong>Well done!</strong>Your message has been sent.</div>
                                 <div id="errorSend" class="alert alert-error invisible">There was an error.</div>
-                                <form id="contact-form" action="<?php echo base_url(); ?>assets/php/mail.php">
+                                <form id="contact-form" action="php/mail.php">
                                     <div class="control-group">
                                         <div class="controls">
                                             <input class="span12" type="text" id="name" name="name" placeholder="* Your name..." />
@@ -956,20 +956,20 @@
         </div>
         <!-- ScrollUp button end -->
         <!-- Include javascript -->
-        <script src="<?php echo base_url(); ?>assets/js/jquery.js"></script>
-        <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/jquery.mixitup.js"></script>
-        <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/bootstrap.js"></script>
-        <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/modernizr.custom.js"></script>
-        <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/jquery.bxslider.js"></script>
-        <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/jquery.cslider.js"></script>
-        <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/jquery.placeholder.js"></script>
-        <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/jquery.inview.js"></script>
+        <script src="<?php echo base_url();?>assets/js/jquery.js"></script>
+        <script type="text/javascript" src="<?php echo base_url();?>assets/js/jquery.mixitup.js"></script>
+        <script type="text/javascript" src="<?php echo base_url();?>assets/js/bootstrap.js"></script>
+        <script type="text/javascript" src="<?php echo base_url();?>assets/js/modernizr.custom.js"></script>
+        <script type="text/javascript" src="<?php echo base_url();?>assets/js/jquery.bxslider.js"></script>
+        <script type="text/javascript" src="<?php echo base_url();?>assets/js/jquery.cslider.js"></script>
+        <script type="text/javascript" src="<?php echo base_url();?>assets/js/jquery.placeholder.js"></script>
+        <script type="text/javascript" src="<?php echo base_url();?>assets/js/jquery.inview.js"></script>
         <!-- Load google maps api and call initializeMap function defined in app.js -->
         <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false&amp;callback=initializeMap"></script>
         <!-- css3-mediaqueries.js for IE8 or older -->
         <!--[if lt IE 9]>
             <script src="js/respond.min.js"></script>
         <![endif]-->
-        <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/app.js"></script>
+        <script type="text/javascript" src="<?php echo base_url();?>assets/js/app.js"></script>
     </body>
 </html>

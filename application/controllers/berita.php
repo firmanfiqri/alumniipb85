@@ -6,7 +6,7 @@ class Berita extends CI_Controller {
 	{
             $this->load->view('layout/header');
             $this->load->view('layout/navbar');            
-            $this->load->view('v_about');            
+            $this->load->view('v_history');            
             $this->load->view('layout/footer');
 	}
 }
