@@ -24,10 +24,10 @@
                     </div>
                     <!-- ENDS slider -->
 
-                    <div class="home-slider-clearfix "></div>
+                    <div class="home-slider-clearfix"></div>
 
                     <!-- Headline -->
-                    <div id="headline">
+                    <div id="headline" style="height:425px;">
                         <h1 style="margin-top:-20px;">Mendaftar</h1>
                         <!-- form -->
 						<form id="contactForm" action="#" method="post">
