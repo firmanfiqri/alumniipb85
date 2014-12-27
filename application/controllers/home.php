@@ -6,7 +6,10 @@ if (!defined('BASEPATH'))
 class Home extends CI_Controller {
 
     public function index() {
-        
+        $this->load->view('layout/header');
+        $this->load->view('layout/navbar_login');
+        $this->load->view('layout/body');
+        $this->load->view('layout/footer');
     }
 
 }
