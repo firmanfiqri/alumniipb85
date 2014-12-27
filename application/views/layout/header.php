@@ -59,7 +59,11 @@
         <!-- SKIN -->
         <link rel="stylesheet" media="all" href="<?php echo base_url(); ?>assets/css/skin.css"/>
 
-
+        
+        <!-- Data Table -->
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/jquery.dataTables.min.css" />
+        <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/jquery.dataTables.min.js"></script>
+        
     </head>
 
     <body lang="en">
