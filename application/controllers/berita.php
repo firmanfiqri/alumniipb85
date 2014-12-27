@@ -5,8 +5,8 @@ class Berita extends CI_Controller {
 	public function index()
 	{
             $this->load->view('layout/header');
-            $this->load->view('layout/navbar');            
-            $this->load->view('v_history');            
+            $this->load->view('layout/navbar_login');            
+            $this->load->view('v_list_event');            
             $this->load->view('layout/footer');
 	}
 }
