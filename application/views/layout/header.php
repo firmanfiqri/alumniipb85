@@ -13,10 +13,13 @@
         <!-- Adding "maximum-scale=1" fixes the Mobile Safari auto-zoom bug: http://filamentgroup.com/examples/iosScaleBug/ -->
 
 
+        
         <!-- JS -->
-        <script src="<?php echo base_url(); ?>assets/js/jquery-1.6.4.min.js"></script>
-        <script src="<?php echo base_url(); ?>assets/js/css3-mediaqueries.js"></script>
-        <script src="<?php echo base_url(); ?>assets/js/custom.js"></script>
+        
+        <script src="<?php echo base_url(); ?>assets/js/jquery-1.11.1.min.js"></script>
+        
+        <script src="<?php echo base_url(); ?>assets/js/css3-mediaqueries.js"></script>       
+        
         <script src="<?php echo base_url(); ?>assets/js/tabs.js"></script>
 
         <!-- Tweet -->
@@ -58,7 +61,8 @@
 
         <!-- SKIN -->
         <link rel="stylesheet" media="all" href="<?php echo base_url(); ?>assets/css/skin.css"/>
-
+        
+        
         
         <!-- Data Table -->
         <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/jquery.dataTables.min.css" />

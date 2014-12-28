@@ -11,7 +11,7 @@
         <h2 class="page-heading"><span>TENTANG KAMI</span></h2>	
 
         <!-- project content -->
-        <div id="project-content" class="clearfix" style="overflow-x: scroll;">
+        <div id="project-content" class="clearfix" style="overflow-x:scroll;overflow-y: hidden; height: 500px">
             <table id="myTable" class="display" cellspacing="0" width="100%">
                 <thead>
                     <tr>
