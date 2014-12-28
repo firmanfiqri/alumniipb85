@@ -40,9 +40,9 @@
 						<td><?php echo $row->nama_jurusan;?></td>
 						<td><?php echo $row->nama_prodi;?></td>
 						<td>
-							<a href=""><button style="height:30px; width:56px;">Detail</button></a>
+							<a href="<?php echo base_url();?>admin/detail_profile/<?php echo $row->id_alumni;?>"><button style="height:30px; width:56px;">Detail</button></a>
 							<a href=""><button style="height:30px; width:56px;">Hapus</button></a>
-							<a href=""><button style="height:30px; width:51px;">Reset</button></a>
+							<a href="<?php echo base_url();?>admin/detail_profile/<?php echo $row->id_alumni;?>"><button style="height:30px; width:51px;">Reset</button></a>
 						</td>
 					</tr>
 					<?php 

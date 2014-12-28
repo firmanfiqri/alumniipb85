@@ -37,11 +37,11 @@ class Alumni extends CI_Controller {
     public function profile() {
         $data['edit'] = false;
         $data['sukses_edit'] = false;
-
+	
         if ($this->input->post('edit')) {
             $data['edit'] = true;
 
-            $id_alumni = $session->userdata('id_alumni');
+            $id_alumni = $this->session->userdata('id_alumni');
             $nama_lengkap = $this->input->post('nama_lengkap');
             $nama_panggilan = $this->input->post('nama_panggilan');
             $jenis_kelamin = $this->input->post('jenis_kelamin');
@@ -62,7 +62,6 @@ class Alumni extends CI_Controller {
                 $this->m_alumni->updateDataAlumni($id_alumni,$nama_lengkap, $nama_panggilan, $jenis_kelamin, $nrp, $kelompok, $prodi, $hp, $email, $profesi, $alamat_rumah, $alamat_kantor, $bidang_keahlian);
                 //Ubah Foto
                 if ($_FILES['foto']['name']!="") {
-                    var_dump($_FILES['foto']);
                     $foto = $_FILES['foto'];
 
                     $dir = './assets/foto/profile/';
@@ -89,7 +88,7 @@ class Alumni extends CI_Controller {
                 //insert
             }
         }
-        $id_alumni = 1; // session
+        $id_alumni = $this->session->userdata('id_alumni'); // session
         $data['data_profile'] = $this->m_alumni->getProfileAlumni($id_alumni);
         $data['fakultas'] = $this->m_alumni->getFakultas();
         $data['jurusan'] = $this->m_alumni->getJurusan();

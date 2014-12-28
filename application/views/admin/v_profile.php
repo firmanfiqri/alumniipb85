@@ -1,92 +1,91 @@
 <!-- MAIN -->
 <div id="main">	
+
     <div class="wrapper clearfix">
+        <h2 class="page-heading"><span>PROFIL</span></h2>	
+            <!-- project content -->
+            <div id="project-content" class="clearfix" style="width:1000px;">
 
-        <h2 class="page-heading"><span>DETAIL PROFIL</span></h2>	
+                <div class="home-block" style="margin-left:50px;">
+				
+                    <div class="one-fourth-thumbs">
+						<figure>
+						<?php if($data_profile->foto==null){?>
+							<img src="<?php echo base_url(); ?>assets/img/dummy_profile.jpg" alt="Alt text"/>
+						<?php }else{ ?>
+							<img src="<?php echo base_url().$data_profile->foto; ?>" alt="Alt text"/>
+						<?php } ?>
+						</figure>
+                    </div>
 
-        <!-- project content -->
-        <div id="project-content" class="clearfix">
+                    <div class="project-info" style="margin-left:70px;">
+                        <p>
+                            <strong class="hilang">Nama Lengkap</strong><br/>
+                            <span class="data_alumni"><?php echo $data_profile->nama_alumni; ?></span>
+                        </p>
+                        <p>
+                            <strong class="hilang">Nama Panggilan</strong><br/>
+                            <span class="data_alumni"><?php echo $data_profile->nama_panggilan; ?></span>
+                        </p>
+                        <p>
+                            <strong class="hilang">Jenis Kelamin</strong><br/>
+                            <span class="data_alumni"><?php echo $data_profile->jenis_kelamin; ?></span>
+						</p>
+                        <p>
+                            <strong class="hilang">NRP</strong><br/>
+                            <span class="data_alumni"><?php echo $data_profile->nrp; ?></span>
+                        </p>
+                        <p>
+                            <strong class="hilang">Kelompok</strong><br/>
+                            <span class="data_alumni"><?php echo $data_profile->kelompok; ?></span>
+                        </p>
+                        <p>
+                            <strong class="hilang">Fakultas</strong><br/>
+                            <span class="data_alumni"><?php echo $data_profile->nama_fakultas; ?></span>
+                        </p>
+						<p>
+                            <strong class="hilang">Jurusan</strong><br/>
+                            <span class="data_alumni"><?php echo $data_profile->nama_jurusan; ?></span>
+                        </p>
+                        <p>
+                            <strong class="hilang">Program Studi</strong><br/>
+                            <span class="data_alumni"><?php echo $data_profile->nama_prodi; ?></span>
+                        </p>
+                    </div>
 
-            <div class="home-block">
-                <div class="one-fourth-thumbs">
-                    <figure>
-                        <img src="<?php echo base_url(); ?>assets/img/dummies/featured-7.jpg" alt="Alt text" />
-                    </figure>
+                    <div class="project-info" style="margin-left:100px;">
+                        <p>
+                            <strong class="hilang">Alamat Rumah</strong><br/>
+                            <span class="data_alumni"><?php echo $data_profile->alamat_rumah; ?></span>
+                        </p>
+						<p>
+                            <strong class="hilang">Alamat Kantor</strong><br/>
+                            <span class="data_alumni"><?php echo $data_profile->alamat_kantor; ?></span>
+                        </p>
+                        <p>
+                            <strong class="hilang">Nomor HP</strong><br/>
+                            <span class="data_alumni"><?php echo $data_profile->no_hp; ?></span>
+                        </p>
+                        <p>
+                            <strong class="hilang">Email</strong><br/>
+                            <span class="data_alumni"><?php echo $data_profile->email; ?></span>
+                        </p>
+                        <p>
+                            <strong class="hilang">Profesi</strong><br/>
+                            <span class="data_alumni"><?php echo $data_profile->profesi; ?></span>
+                        </p>
+                        <p>
+                            <strong class="hilang">Bidang Keahlian</strong><br/>
+                            <span class="data_alumni"><?php echo $data_profile->bidang_keahlian; ?></span>
+                        </p>
+						
+                    </div>
                 </div>
 
-                <div class="project-info">
-                    <p>
-                        <strong>Nama Lengkap</strong><br/>
-                        Firman Fiqri Firdaus
-                    </p>
-                    <p>
-                        <strong>Nama Panggilan</strong><br/>
-                        Firman
-                    </p>
-                    <p>
-                        <strong>Jenis Kelamin</strong><br/>
-                        Laki-laki
-                    </p>
-                    <p>
-                        <strong>NRP</strong><br/>
-                        IPB987654321
-                    </p>
-                    <p>
-                        <strong>Kelompok</strong><br/>
-                        Sektor 5
-                    </p>
-                    <p>
-                        <strong>Fakultas</strong><br/>
-                        FPMIPA
-                    </p>
-                </div>
+                <div class="clearfix"></div>
 
-                <div class="project-info">
-                    <p>
-                        <strong>Jurusan</strong><br/>
-                        Matematika
-                    </p>
-                    <p>
-                        <strong>Program Studi</strong><br/>
-                        Pendidikan Matematika
-                    </p>                    
-                    <p>
-                        <strong>No. HP</strong><br/>
-                        March 12, 2011
-                    </p>
-                    <p>
-                        <strong>Email</strong><br/>
-                        Photoshop, Illustrator
-                    </p>
-                    <p>
-                        <strong>Profesi</strong><br/>
-                        March 12, 2011
-                    </p>
-                    <p>
-                        <strong>Alamat Rumah</strong><br/>
-                        March 12, 2011
-                    </p>
-                </div>
-                <div class="project-info">
-
-                    <p>
-                        <strong>Alamat Kantor</strong><br/>
-                        Photoshop, Illustrator
-                    </p>
-                    <p>
-                        <strong>Bidang Keahlian</strong><br/>
-                        Photoshop, Illustrator
-                    </p>
-
-                </div>
-            </div>
-
-
-            <div class="clearfix"></div>
-
-
-        </div>	        	
-        <!--  ENDS project content-->
+            </div>	        	
+            <!--  ENDS project content-->
     </div>
 </div>
 <!-- ENDS MAIN -->

@@ -8,7 +8,7 @@ class m_admin extends CI_Model {
 	
 	//SELECT
 	public function getAllAlumni() {
-        $query = $this->db->query("select * from alumni a, fakukltas f, jurusan j, prodi p where a.id_prodi=p.id_prodi and p.id_jurusan=j.id_jurusan and j.id_fakultas=f.id_fakultas;");
+        $query = $this->db->query("select * from alumni a, fakultas f, jurusan j, prodi p where a.id_prodi=p.id_prodi and p.id_jurusan=j.id_jurusan and j.id_fakultas=f.id_fakultas;");
         return $query;
     }
 	
