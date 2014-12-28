@@ -26,48 +26,28 @@
                     </tr>
                 </thead>               
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>1002303</td>
-                        <td>Fadhilah Ilmi Rahmanda</td>
-                        <td>1</td>
-                        <td>FPMIPA</td>
-                        <td>Matematika</td>
-                        <td>Pendidikan Matematika</td>
-                        <td>
-						<a href=""><button style="height:30px; width:56px;">Detail</button></a>
-						<a href=""><button style="height:30px; width:56px;">Hapus</button></a>
-						<a href=""><button style="height:30px; width:51px;">Reset</button></a>
+				
+					<?php 
+					$no = 1;
+					foreach($queryalumni as $row){
+					?>
+					<tr>
+						<td><?php echo $no,'.';?></td>
+						<td><?php echo $row->nrp;?></td>
+						<td><?php echo $row->nama_alumni;?></td>
+						<td><?php echo $row->kelompok;?></td>
+						<td><?php echo $row->nama_fakultas;?></td>
+						<td><?php echo $row->nama_jurusan;?></td>
+						<td><?php echo $row->nama_prodi;?></td>
+						<td>
+							<a href=""><button style="height:30px; width:56px;">Detail</button></a>
+							<a href=""><button style="height:30px; width:56px;">Hapus</button></a>
+							<a href=""><button style="height:30px; width:51px;">Reset</button></a>
 						</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>1002303</td>
-                        <td>Fadhilah Ilmi Rahmanda</td>
-                        <td>1</td>
-                        <td>FPMIPA</td>
-                        <td>Matematika</td>
-                        <td>Pendidikan Matematika</td>
-                        <td>
-						<a href=""><button style="height:30px; width:56px;">Detail</button></a>
-						<a href=""><button style="height:30px; width:56px;">Hapus</button></a>
-						<a href=""><button style="height:30px; width:51px;">Reset</button></a>
-						</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>1002303</td>
-                        <td>Fadhilah Ilmi Rahmanda</td>
-                        <td>1</td>
-                        <td>FPMIPA</td>
-                        <td>Matematika</td>
-                        <td>Pendidikan Matematika</td>
-                        <td>
-						<a href=""><button style="height:30px; width:56px;">Detail</button></a>
-						<a href=""><button style="height:30px; width:56px;">Hapus</button></a>
-						<a href=""><button style="height:30px; width:51px;">Reset</button></a>
-						</td>
-                    </tr>
+					</tr>
+					<?php 
+					$no++;
+					} ?>
                 </tbody>
             </table>
             <!-- ends fullwidth content -->

@@ -5,10 +5,19 @@ if (!defined('BASEPATH'))
 
 class Admin extends CI_Controller {
 
-    public function index() {
-        $this->load->view('layout/header');
+    public function __construct(){
+		parent::__construct();
+		$this->load->model('m_admin');
+		
+    }
+	
+	public function index() {
+        
+		$data['queryalumni'] = $this->m_admin->getAllAlumni()->result();
+		
+		$this->load->view('layout/header');
         $this->load->view('layout/navbar_admin');
-        $this->load->view('admin/v_kelola_alumni');
+        $this->load->view('admin/v_kelola_alumni',$data);
         $this->load->view('layout/footer');
     }
 	

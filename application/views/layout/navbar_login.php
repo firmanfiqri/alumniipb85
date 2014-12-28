@@ -8,7 +8,7 @@
                     <ul  class="widget-cols clearfix">
                         <li class="first-col" style="float:right; margin-top:-20px; margin-right:45px;">
 							<!-- form -->
-							<form id="contactForm" action="#" method="post">
+							<form id="contactForm" action="<?php echo base_url(); ?>login/validasi/" method="post">
 								<fieldset>
 									<div>
 										<input name="email"  id="email" type="email" class="form-poshytip" title="Masukan email" placeholder="Email" style="height:8px;" required />	

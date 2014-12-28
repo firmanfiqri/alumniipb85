@@ -7,14 +7,11 @@ class Alumni extends CI_Controller {
 
     function __construct() {
         parent::__construct();
-        /*
-          if(!$this->session->userdata('isLoggedIn')){
-          redirect('login');
-          }else if ($this->session->userdata('id_role')<=2){
-          redirect();
-          } */
-
-        $this->load->model("m_alumni");
+		$this->load->model("m_alumni");
+        
+		if(!$this->session->userdata('is_logged_in')){
+			redirect(base_url());
+		}
     }
 
     public function index() {

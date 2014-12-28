@@ -5,6 +5,7 @@
 
     $(document).ready(function() {
         $('.form_alumni').hide();
+        $('.form_sandi').hide();
 
         var data;
 <?php foreach ($fakultas as $a) { ?>
@@ -28,7 +29,7 @@
             prodi.push(data);
 <?php } ?>
 
-        $("#isian").submit(function(e) {
+        $(".isian").submit(function(e) {
             var pass = "12345";
             var pass_ketik = $("#pwd_lama").val();
             var pass_baru = $("#pwd_baru").val();
@@ -70,6 +71,13 @@
         $('.data_alumni').hide();
         $('.form_alumni').show();
     }
+	
+	function edit_sandi() {
+        $('.data_alumni').hide();
+        $('.hilang').hide();
+        $('.form_sandi').show();
+    }
+	
     function fakultas_change() {
         var id = $("#fakultas").val();
 
@@ -122,66 +130,80 @@
 <div id="main">	
 
     <div class="wrapper clearfix">
-        <form id="isian" action="<?php echo base_url(); ?>alumni/profile" method="post" enctype="multipart/form-data">
             <h2 class="page-heading"><span>PROFIL</span></h2>	
+        <form id="contactForm" class="isian" action="<?php echo base_url(); ?>alumni/profile" method="post" enctype="multipart/form-data">
 
             <!-- project content -->
-            <div id="project-content" class="clearfix">
+            <div id="project-content" class="clearfix" style="width:1000px;">
 
-                <div class="home-block">
+                <div class="home-block" style="margin-left:50px;">
+				
                     <div class="one-fourth-thumbs">
-                        <figure>
-                            <?php if($data_profile->foto==null){?>
-                                <img src="<?php echo base_url(); ?>assets/img/dummy_profile.jpg" alt="Alt text" />
-                            <?php }else{ ?>
-                                <img src="<?php echo base_url().$data_profile->foto; ?>" alt="Alt text" />                            
-                            <?php } ?>
-                            <input type="file" id="foto" onchange="foto_change()" name="foto" accept="image/*" class="form_alumni">
-                            <span class="form_alumni">batas maks 100 KB</span>
-                        </figure>
+						<figure>
+						<?php if($data_profile->foto==null){?>
+							<img src="<?php echo base_url(); ?>assets/img/dummy_profile.jpg" alt="Alt text"/>
+						<?php }else{ ?>
+							<img src="<?php echo base_url().$data_profile->foto; ?>" alt="Alt text"/>
+						<?php } ?>
+						<input type="file" id="foto" onchange="foto_change()" name="foto" accept="image/*" class="form_alumni">
+						<span class="form_alumni">batas maks 100 KB</span>
+						</figure>
                     </div>
 
-                    <div class="project-info">
-                        <p>
-                            <strong>Nama Lengkap</strong><br/>
+                    <div class="project-info" style="margin-left:70px;">
+                        <p class="form_sandi">
+                            <strong>Password Lama</strong><br/>
+                            <input type="password" id="pwd_lama" name="pwd_lama" value="" style="width:200px; height:15px;">
+
+                        </p>
+                        <p class="form_sandi">
+                            <strong>Password Baru</strong><br/>
+                            <input type="password" id="pwd_baru" name="pwd_baru" value="" style="width:200px; height:15px;">
+                        </p>
+                        <p class="form_sandi">
+                            <strong>Konfimasi Password Baru</strong><br/>
+                            <input type="password" id="konfirm_pwd" name="konfirm_pwd" value="" style="width:200px; height:15px;">
+                        </p>
+						
+						<p>
+                            <strong class="hilang">Nama Lengkap</strong><br/>
                             <span class="data_alumni"><?php echo $data_profile->nama_alumni; ?></span>
-                            <input type="text" class="form_alumni" name="nama_lengkap" value="<?php echo $data_profile->nama_alumni; ?>" required>
+                            <input type="text" class="form_alumni" name="nama_lengkap" value="<?php echo $data_profile->nama_alumni; ?>" style="width:225px; height:15px;" required>
                         </p>
                         <p>
-                            <strong>Nama Panggilan</strong><br/>
+                            <strong class="hilang">Nama Panggilan</strong><br/>
                             <span class="data_alumni"><?php echo $data_profile->nama_panggilan; ?></span>
-                            <input type="text" class="form_alumni" name="nama_panggilan" value = "<?php echo $data_profile->nama_panggilan; ?>" required>
+                            <input type="text" class="form_alumni" name="nama_panggilan" value = "<?php echo $data_profile->nama_panggilan; ?>" style="width:225px; height:15px;" required>
                         </p>
                         <p>
-                            <strong>Jenis Kelamin</strong><br/>
-                            <span class="data_alumni">Laki-laki</span>
-                            <select name="jenis_kelamin" class="form_alumni">
-                                <option value="Laki-laki" <?php
+                            <strong class="hilang">Jenis Kelamin</strong><br/>
+                            <span class="data_alumni"><?php echo $data_profile->jenis_kelamin; ?></span>
+							<input type="radio" name="jenis_kelamin" class="form_alumni" value="Laki-laki"
+								<?php
                                 if ($data_profile->jenis_kelamin == "Laki-laki") {
-                                    echo "selected";
+                                    echo "checked";
                                 }
-                                ?>>Laki-laki</option>
-                                <option value="Perempuan" <?php
+                                ?>/> <font class="form_alumni">Laki-laki &nbsp; &nbsp;</font>
+							<input type="radio" name="jenis_kelamin" class="form_alumni" value="Perempuan" <?php
                                 if ($data_profile->jenis_kelamin == "Perempuan") {
-                                    echo "selected";
+                                    echo "checked";
                                 }
-                                ?>>Perempuan</option>
-                            </select>
+                                ?>/> <font class="form_alumni">Perempuan &nbsp; &nbsp;</font>
                         </p>
                         <p>
-                            <strong>NRP</strong><br/>
+                            <strong class="hilang">NRP</strong><br/>
                             <span class="data_alumni"><?php echo $data_profile->nrp; ?></span>
-                            <input type="text" class="form_alumni" name="nrp" value="<?php echo $data_profile->nrp; ?>" srequired>
+                            <input type="text" class="form_alumni" name="nrp" value="<?php echo $data_profile->nrp; ?>" style="width:225px; height:15px;" required>
                         </p>
                         <p>
-                            <strong>Kelompok</strong><br/>
+                            <strong class="hilang">Kelompok</strong><br/>
                             <span class="data_alumni"><?php echo $data_profile->kelompok; ?></span>
-                            <input type="text" class="form_alumni" name="kelompok" value="<?php echo $data_profile->kelompok; ?>" required>
+                            <input type="text" class="form_alumni" name="kelompok" value="<?php echo $data_profile->kelompok; ?>" style="width:50px; height:15px;" required>
                         </p>
                         <p>
-                            <strong>Fakultas</strong><br/>
+                            <strong class="hilang">Fakultas</strong><br/>
                             <span class="data_alumni"><?php echo $data_profile->nama_fakultas; ?></span>
-                            <select name="fakultas" id="fakultas" onchange="fakultas_change()" class="form_alumni">
+                            <select name="fakultas" id="fakultas" onchange="fakultas_change()" class="form_alumni" style="width:225px; height:35px;">
                                 <?php foreach ($fakultas as $row) { ?>
                                     <option value="<?php echo $row->id_fakultas; ?>" <?php
                                     if ($data_profile->nama_fakultas == $row->nama_fakultas) {
@@ -192,13 +214,10 @@
 
                             </select>
                         </p>
-                    </div>
-
-                    <div class="project-info">
-                        <p>
-                            <strong>Jurusan</strong><br/>
+						<p>
+                            <strong class="hilang">Jurusan</strong><br/>
                             <span class="data_alumni"><?php echo $data_profile->nama_jurusan; ?></span>
-                            <select name="jurusan" id="jurusan" onchange="jurusan_change()" class="form_alumni">
+                            <select name="jurusan" id="jurusan" onchange="jurusan_change()" class="form_alumni" style="width:225px; height:35px;">
                                 <?php foreach ($jurusan as $row) { ?>
                                     <option value="<?php echo $row->id_jurusan; ?>" <?php
                                     if ($data_profile->nama_jurusan == $row->nama_jurusan) {
@@ -211,9 +230,9 @@
 
                         </p>
                         <p>
-                            <strong>Program Studi</strong><br/>
+                            <strong class="hilang">Program Studi</strong><br/>
                             <span class="data_alumni"><?php echo $data_profile->nama_prodi; ?></span>
-                            <select name="prodi" id="prodi" onchange="prodi_change()" class="form_alumni">
+                            <select name="prodi" id="prodi" onchange="prodi_change()" class="form_alumni" style="width:225px; height:35px;">
                                 <?php foreach ($prodi as $row) { ?>
                                     <option value="<?php echo $row->id_prodi; ?>" <?php
                                     if ($data_profile->nama_prodi == $row->nama_prodi) {
@@ -223,74 +242,61 @@
                                         <?php } ?>                             
 
                             </select>
-                        </p>                    
-                        <p>
-                            <strong>No. HP</strong><br/>
-                            <span class="data_alumni"><?php echo $data_profile->no_hp; ?></span>
-                            <input type="text" class="form_alumni" name="hp" value="<?php echo $data_profile->no_hp; ?>" required>
-
-                        </p>
-                        <p>
-                            <strong>Email</strong><br/>
-                            <span class="data_alumni"><?php echo $data_profile->email; ?></span>
-                            <input type="email" class="form_alumni" name="email" value="<?php echo $data_profile->email; ?>" required>
-                        </p>
-                        <p>
-                            <strong>Profesi</strong><br/>
-                            <span class="data_alumni"><?php echo $data_profile->profesi; ?></span>
-                            <input type="text" class="form_alumni" name="profesi" value="<?php echo $data_profile->profesi; ?>" required>
-                        </p>
-                        <p>
-                            <strong>Alamat Rumah</strong><br/>
-                            <span class="data_alumni"><?php echo $data_profile->alamat_rumah; ?></span>
-                            <textarea name="alamat_rumah" class="form_alumni" cols="22" rows="5" required><?php echo $data_profile->alamat_rumah; ?></textarea>
                         </p>
                     </div>
-                    <div class="project-info">
 
+                    <div class="project-info" style="margin-left:100px;">
                         <p>
-                            <strong>Alamat Kantor</strong><br/>
+                            <strong class="hilang">Alamat Rumah</strong><br/>
+                            <span class="data_alumni"><?php echo $data_profile->alamat_rumah; ?></span>
+                            <textarea name="alamat_rumah" class="form_alumni" style="width:200px; height:100px;" required><?php echo $data_profile->alamat_rumah; ?></textarea>
+                        </p>
+						<p>
+                            <strong class="hilang">Alamat Kantor</strong><br/>
                             <span class="data_alumni"><?php echo $data_profile->alamat_kantor; ?></span>
-                            <textarea name="alamat_kantor" class="form_alumni" cols="22" rows="5" required><?php echo $data_profile->alamat_kantor; ?></textarea>
+                            <textarea name="alamat_kantor" class="form_alumni" style="width:200px; height:100px;" required><?php echo $data_profile->alamat_kantor; ?></textarea>
                         </p>
                         <p>
-                            <strong>Bidang Keahlian</strong><br/>
-                            <span class="data_alumni"><?php echo $data_profile->bidang_keahlian; ?></span>
-                            <textarea name="bidang_keahlian" class="form_alumni" cols="22" rows="5" required><?php echo $data_profile->bidang_keahlian; ?></textarea>
-                        </p>
-                        <p class="form_alumni">
-                            <strong>Password Lama (Jika ganti password)</strong><br/>
-                            <input type="password" id="pwd_lama" name="pwd_lama" value="">
+                            <strong class="hilang">Nomor HP</strong><br/>
+                            <span class="data_alumni"><?php echo $data_profile->no_hp; ?></span>
+                            <input type="text" class="form_alumni" name="hp" value="<?php echo $data_profile->no_hp; ?>" style="width:200px; height:15px;" required>
 
                         </p>
-                        <p class="form_alumni">
-                            <strong>Password Baru (Jika ganti password</strong><br/>
-                            <input type="password" id="pwd_baru" name="pwd_baru" value="">
+                        <p>
+                            <strong class="hilang">Email</strong><br/>
+                            <span class="data_alumni"><?php echo $data_profile->email; ?></span>
+                            <input type="email" class="form_alumni" name="email" value="<?php echo $data_profile->email; ?>" style="width:200px; height:15px;" required>
                         </p>
-                        <p class="form_alumni">
-                            <strong>Konfimasi Password Baru (Jika ganti password</strong><br/>
-                            <input type="password" id="konfirm_pwd" name="konfirm_pwd" value="">
+                        <p>
+                            <strong class="hilang">Profesi</strong><br/>
+                            <span class="data_alumni"><?php echo $data_profile->profesi; ?></span>
+                            <input type="text" class="form_alumni" name="profesi" value="<?php echo $data_profile->profesi; ?>" style="width:200px; height:15px;" required>
                         </p>
+                        <p>
+                            <strong class="hilang">Bidang Keahlian</strong><br/>
+                            <span class="data_alumni"><?php echo $data_profile->bidang_keahlian; ?></span>
+                            <textarea name="bidang_keahlian" class="form_alumni" style="width:200px; height:100px;" required><?php echo $data_profile->bidang_keahlian; ?></textarea>
+                        </p>
+						
                     </div>
                 </div>
 
+            <div class="page-navigation clearfix">
 
+                    <input class="form_alumni" type="submit" name="edit" value="Simpan">
+                    <input class="form_sandi" type="submit" name="edit" value="Simpan">
+                    <a class="data_alumni" onclick="edit_data()" style="width:95px; margin-left:200px;">Ubah Data Profil</a> 
+					<br />
+                    <a class="data_alumni" onclick="edit_sandi()" style="width:100px; margin-left:200px;">Ubah Kata Sandi</a> 
+                <!--ENDS page-navigation -->
+
+            </div>
                 <div class="clearfix"></div>
-
 
             </div>	        	
             <!--  ENDS project content-->
 
 
-            <div class="page-navigation clearfix">
-
-                <div class="nav-previous">
-                    <input class="form_alumni" type="submit" name="edit" value="Simpan">
-                    <a class="data_alumni" onclick="edit_data()">Ubah Data</a> 
-                </div>
-                <!--ENDS page-navigation -->
-
-            </div>
         </form>
     </div>
 
