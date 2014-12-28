@@ -36,11 +36,25 @@ class Admin extends CI_Controller {
     }
 	
 	public function reset_password($id_alumni) {
-        $data['data_profile'] = $this->m_alumni->getProfileAlumni($id_alumni);
+	
+		$ambilquery = $this->m_admin->getEmailById($id_alumni)->row();
+		$email = $ambilquery->email;
 		
-		$this->header(1);
-        $this->load->view('admin/v_profile',$data);
-        $this->load->view('layout/footer');
+        $this->m_admin->updatePassword($id_alumni, $email);
+		
+		echo "<script type='text/javascript'>alert('Password telah direset!');
+		window.location.href='".base_url()."admin';
+		</script>";
+    }
+	
+	public function hapus_alumni($id_alumni) {
+	
+        echo "hfghgfhbdcfgb";
+		$this->m_admin->deleteAlumni($id_alumni);
+		
+		echo "<script type='text/javascript'>alert('Data alumni telah dihapus!');
+		window.location.href='".base_url()."admin';
+		</script>";
     }
 	
 	public function event() {

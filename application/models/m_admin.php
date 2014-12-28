@@ -12,5 +12,20 @@ class m_admin extends CI_Model {
         return $query;
     }
 	
+	public function getEmailById($id_alumni) {
+        $query = $this->db->query("select email from alumni where id_alumni='$id_alumni';");
+        return $query;
+    }
+	
+	//INSERT & UPDATE	
+	public function updatePassword($id_alumni, $email) {
+        $query = $this->db->query("update alumni set password='$email'where id_alumni='$id_alumni';");
+        return $query;
+    }
+	
+	public function deleteAlumni($id_alumni) {
+        $query = $this->db->query("delete from alumni where id_alumni='$id_alumni';");
+        return $query;
+    }
 	
 }
