@@ -7,18 +7,6 @@
         <!-- project content -->
         <div id="project-content" class="clearfix">
 
-            <!-- slider -->
-            <div class="project-slider">
-                <div class="flexslider">
-                    <ul class="slides">
-                        <li>
-                            <img src="<?php echo base_url(); ?>assets/img/slides/01.jpg" alt="alt text" />
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <!-- ENDS slider -->
-
             <!-- heading -->
             <div class="project-heading">
                 <h2>Alumni IPB 1985</h2>
@@ -26,6 +14,14 @@
             </div>
             <!-- ENDS heading -->
 
+            <div id="posts-list" class="single-post">	
+
+                <div class="feature-image">
+                    <img src="<?php echo base_url(); ?>assets/img/slides/01.jpg" alt="Alt text" />
+                </div>
+
+            </div>
+            <div class="clearfix"></div>
             <!-- fullwidth content -->
             <div class="fullwidth-content">
 
