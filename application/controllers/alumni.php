@@ -30,7 +30,7 @@ class Alumni extends CI_Controller {
         $this->load->view('layout/footer');
     }
     
-    public function detil_event(){
+    public function detail_event(){
         $this->load->view('layout/header');
         $this->load->view('layout/navbar_login');
         $this->load->view('alumni/v_detil_event');

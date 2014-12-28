@@ -2,7 +2,7 @@
 <div id="main">	
     <div class="wrapper clearfix">
 
-        <h2 class="page-heading"><span>PROFILE</span></h2>	
+        <h2 class="page-heading"><span>PROFIL</span></h2>	
 
         <!-- project content -->
         <div id="project-content" class="clearfix">
