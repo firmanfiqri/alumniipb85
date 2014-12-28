@@ -5,6 +5,18 @@ if (!defined('BASEPATH'))
 
 class Alumni extends CI_Controller {
 
+    function __construct() {
+        parent::__construct();
+        /*
+	if(!$this->session->userdata('isLoggedIn')){
+            redirect('login');
+        }else if ($this->session->userdata('id_role')<=2){
+            redirect();
+        }*/		
+			
+	$this->load->model("m_alumni");
+    }
+    
     public function index() {
         $this->about();
     }
@@ -25,8 +37,17 @@ class Alumni extends CI_Controller {
     }
     
     public function profile(){
+        if ($this->input->post('edit')) {
+            
+        }
+        $id_alumni = 1; // session
+        $data['data_profile'] = $this->m_alumni->getProfileAlumni($id_alumni);
+        $data['fakultas'] = $this->m_alumni->getFakultas();
+        $data['jurusan'] = $this->m_alumni->getJurusan();
+        $data['prodi'] = $this->m_alumni->getProdi();
+        
         $this->header(2);
-        $this->load->view('alumni/v_profile');
+        $this->load->view('alumni/v_profile',$data);
         $this->footer();
     }
     
