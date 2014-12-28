@@ -23,12 +23,14 @@ class Login extends CI_Controller {
 			
 			$data['id_alumni'] = $ambilquery->id_alumni;
 			$data['nama_alumni'] = $ambilquery->nama_alumni;
-			$data['password'] = $ambilquery->nama_alumni;
+			$data['password'] = $ambilquery->password;
+			$data['status'] = $ambilquery->status;
 			$data['is_logged_in'] = true;
 			
 			$this->session->set_userdata('id_alumni',$ambilquery->id_alumni);
 			$this->session->set_userdata('nama_alumni',$ambilquery->nama_alumni);
 			$this->session->set_userdata('password',$ambilquery->password);
+			$this->session->set_userdata('status',$ambilquery->status);
 			$this->session->set_userdata('is_logged_in',true);
 			
 			echo "<script type='text/javascript'>alert('Selamat datang ".$ambilquery->nama_alumni."!');
