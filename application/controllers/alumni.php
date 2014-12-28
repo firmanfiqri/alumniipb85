@@ -36,14 +36,8 @@ class Alumni extends CI_Controller {
         $this->footer();
     }
     
-<<<<<<< HEAD
     public function detail_event(){
-        $this->load->view('layout/header');
-        $this->load->view('layout/navbar_login');
-=======
-    public function detil_event(){
         $this->header(3);
->>>>>>> bdf5f482231e0b3ca64d8bc14ab1220f18bfb428
         $this->load->view('alumni/v_detil_event');
         $this->footer();
     }
