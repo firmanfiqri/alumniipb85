@@ -53,6 +53,21 @@ class m_alumni extends CI_Model {
     public function updatePassword($id, $pass) {
         $query = $this->db->query("update alumni a set a.password = '$pass' where a.id_alumni = '$id'");
     }
+    
+    public function getAllEvent() {
+        $query = $this->db->query("select * from event order by tanggal_event desc");
+        return $query->result();
+    }
+    
+    public function getListEvent() {
+        $query = $this->db->query("select * from event where tanggal_event > NOW() order by tanggal_event desc");
+        return $query->result();
+    }
+    
+    public function getEvent($id) {
+        $query = $this->db->query("select * from event where id_event = '$id'");
+        return $query->row();
+    }
 
 }
 

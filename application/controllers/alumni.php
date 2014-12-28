@@ -64,7 +64,8 @@ class Alumni extends CI_Controller {
             } else {
                 $this->m_alumni->updateDataAlumni($id_alumni,$nama_lengkap, $nama_panggilan, $jenis_kelamin, $nrp, $kelompok, $prodi, $hp, $email, $profesi, $alamat_rumah, $alamat_kantor, $bidang_keahlian);
                 //Ubah Foto
-                if ($_FILES['foto']) {
+                if ($_FILES['foto']['name']!="") {
+                    var_dump($_FILES['foto']);
                     $foto = $_FILES['foto'];
 
                     $dir = './assets/foto/profile/';
@@ -103,14 +104,19 @@ class Alumni extends CI_Controller {
     }
 
     public function event() {
+        $data['event'] = $this->m_alumni->getListEvent();        
+        
         $this->header(3);
-        $this->load->view('alumni/v_list_event');
+        $this->load->view('alumni/v_list_event',$data);
         $this->footer();
     }
 
-    public function detail_event() {
+    public function detail_event($id) {
+        $data['semua_event'] = $this->m_alumni->getAllEvent(); 
+        $data['event'] = $this->m_alumni->getEvent($id);
+        
         $this->header(3);
-        $this->load->view('alumni/v_detil_event');
+        $this->load->view('alumni/v_detil_event',$data);
         $this->footer();
     }
 
