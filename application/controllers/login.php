@@ -31,7 +31,7 @@ class Login extends CI_Controller {
 			$this->session->set_userdata('password',$ambilquery->password);
 			$this->session->set_userdata('is_logged_in',true);
 			
-			echo "<script type='text/javascript'>alert('Selamat datang ".$ambilquery->nama_alumni.".!');
+			echo "<script type='text/javascript'>alert('Selamat datang ".$ambilquery->nama_alumni."!');
 			window.location.href='".base_url()."';
 			</script>";
 			
