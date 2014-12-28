@@ -28,8 +28,42 @@
             prodi.push(data);
 <?php } ?>
 
-        fakultas_change();
+        $("#isian").submit(function(e) {
+            var pass = "12345";
+            var pass_ketik = $("#pwd_lama").val();
+            var pass_baru = $("#pwd_baru").val();
+            var konfirm_pass_baru = $("#konfirm_pwd").val();
+            if (pass_ketik != "" || pass_baru != "" || konfirm_pass_baru != "") {
+                if (pass == pass_ketik) {
+                    if (pass_baru == konfirm_pass_baru) {
 
+                    } else {
+                        alert("Konfirmasi password baru tidak sesuai");
+                        $("#pwd_lama").val("");
+                        $("#pwd_baru").val("");
+                        $("#konfirm_pwd").val("");
+                        e.preventDefault();
+                    }
+                } else {
+                    alert("Password lama tidak sesuai");
+                    $("#pwd_lama").val("");
+                    $("#pwd_baru").val("");
+                    $("#konfirm_pwd").val("");
+                    e.preventDefault();
+                }
+            }
+
+        });
+
+
+        fakultas_change();
+<?php if ($edit == true) { ?>
+    <?php if ($sukses_edit == true) { ?>
+                alert("Berhasil ubah data!");
+    <?php } else { ?>
+                alert("Gagal ubah data!");
+    <?php } ?>
+<?php } ?>
     });
 
     function edit_data() {
@@ -70,13 +104,13 @@
 
             if (fsize > 100000) //do something if file size more than 1 mb (1048576)
             {
-                alert($("#foto").val());
+                //alert($("#foto").val());
                 $("#foto").val("");
                 alert(fsize + " bytes\nToo big!");
             } else {
-                alert($("#foto").val());
-                $("#foto").val("");
-                alert(fsize + " bytes\nYou are good to go!");
+                //alert($("#foto").val());
+                //$("#foto").val("");
+                //alert(fsize + " bytes\nYou are good to go!");
             }
         } else {
             alert("Please upgrade your browser, because your current browser lacks some new features we need!");
@@ -88,7 +122,7 @@
 <div id="main">	
 
     <div class="wrapper clearfix">
-        <form class="isian" action="<?php echo base_url(); ?>alumni/profile" method="post">
+        <form id="isian" action="<?php echo base_url(); ?>alumni/profile" method="post" enctype="multipart/form-data">
             <h2 class="page-heading"><span>PROFIL</span></h2>	
 
             <!-- project content -->
@@ -97,8 +131,13 @@
                 <div class="home-block">
                     <div class="one-fourth-thumbs">
                         <figure>
-                            <img src="<?php echo base_url(); ?>assets/img/dummies/featured-7.jpg" alt="Alt text" />
-                            <input type="file" id="foto" onchange="foto_change()" name="foto" accept="image/*" class="form_alumni" required>
+                            <?php if($data_profile->foto==null){?>
+                                <img src="<?php echo base_url(); ?>assets/img/dummy_profile.jpg" alt="Alt text" />
+                            <?php }else{ ?>
+                                <img src="<?php echo base_url().$data_profile->foto; ?>" alt="Alt text" />                            
+                            <?php } ?>
+                            <input type="file" id="foto" onchange="foto_change()" name="foto" accept="image/*" class="form_alumni">
+                            <span class="form_alumni">batas maks 100 KB</span>
                         </figure>
                     </div>
 
@@ -188,7 +227,7 @@
                         <p>
                             <strong>No. HP</strong><br/>
                             <span class="data_alumni"><?php echo $data_profile->no_hp; ?></span>
-                            <input type="number" class="form_alumni" name="hp" value="<?php echo $data_profile->no_hp; ?>" required>
+                            <input type="text" class="form_alumni" name="hp" value="<?php echo $data_profile->no_hp; ?>" required>
 
                         </p>
                         <p>
@@ -217,9 +256,21 @@
                         <p>
                             <strong>Bidang Keahlian</strong><br/>
                             <span class="data_alumni"><?php echo $data_profile->bidang_keahlian; ?></span>
-                            <textarea name="bidang keahlian" class="form_alumni" cols="22" rows="5" required><?php echo $data_profile->bidang_keahlian; ?></textarea>
+                            <textarea name="bidang_keahlian" class="form_alumni" cols="22" rows="5" required><?php echo $data_profile->bidang_keahlian; ?></textarea>
                         </p>
+                        <p class="form_alumni">
+                            <strong>Password Lama (Jika ganti password)</strong><br/>
+                            <input type="password" id="pwd_lama" name="pwd_lama" value="">
 
+                        </p>
+                        <p class="form_alumni">
+                            <strong>Password Baru (Jika ganti password</strong><br/>
+                            <input type="password" id="pwd_baru" name="pwd_baru" value="">
+                        </p>
+                        <p class="form_alumni">
+                            <strong>Konfimasi Password Baru (Jika ganti password</strong><br/>
+                            <input type="password" id="konfirm_pwd" name="konfirm_pwd" value="">
+                        </p>
                     </div>
                 </div>
 
