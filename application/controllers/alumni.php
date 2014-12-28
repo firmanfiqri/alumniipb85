@@ -41,7 +41,7 @@ class Alumni extends CI_Controller {
         if ($this->input->post('edit')) {
             $data['edit'] = true;
 
-            $id_alumni = 1;
+            $id_alumni = $session->userdata('id_alumni');
             $nama_lengkap = $this->input->post('nama_lengkap');
             $nama_panggilan = $this->input->post('nama_panggilan');
             $jenis_kelamin = $this->input->post('jenis_kelamin');

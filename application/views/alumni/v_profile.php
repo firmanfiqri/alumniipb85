@@ -30,7 +30,7 @@
 <?php } ?>
 
         $(".isian").submit(function(e) {
-            var pass = "12345";
+            var pass = "<?php echo$data_profile->password;?>";
             var pass_ketik = $("#pwd_lama").val();
             var pass_baru = $("#pwd_baru").val();
             var konfirm_pass_baru = $("#konfirm_pwd").val();
