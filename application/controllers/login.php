@@ -24,17 +24,23 @@ class Login extends CI_Controller {
             $data['nama_alumni'] = $ambilquery->nama_alumni;
             $data['password'] = $ambilquery->password;
             $data['status'] = $ambilquery->status;
-            $data['is_logged_in'] = true;
-
-            $this->session->set_userdata('id_alumni', $ambilquery->id_alumni);
-            $this->session->set_userdata('nama_alumni', $ambilquery->nama_alumni);
-            $this->session->set_userdata('password', $ambilquery->password);
-            $this->session->set_userdata('status', $ambilquery->status);
-            $this->session->set_userdata('is_logged_in', true);
-
-            echo "<script type='text/javascript'>alert('Selamat datang " . $ambilquery->nama_alumni . "!');
+            if ($ambilquery->status > 1) {
+                echo "<script type='text/javascript'>alert('Mohon maaf email yang anda masukkan belum melakukan aktivasi.');
 			window.location.href='" . base_url() . "';
 			</script>";
+            } else {
+                $data['is_logged_in'] = true;
+
+                $this->session->set_userdata('id_alumni', $ambilquery->id_alumni);
+                $this->session->set_userdata('nama_alumni', $ambilquery->nama_alumni);
+                $this->session->set_userdata('password', $ambilquery->password);
+                $this->session->set_userdata('status', $ambilquery->status);
+                $this->session->set_userdata('is_logged_in', true);
+
+                echo "<script type='text/javascript'>alert('Selamat datang " . $ambilquery->nama_alumni . "!');
+			window.location.href='" . base_url() . "';
+			</script>";
+            }
         } else {
             echo "<script type='text/javascript'>
 			alert('Email dan Password tidak cocok.');
