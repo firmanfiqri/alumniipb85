@@ -42,7 +42,7 @@
 					$no = 1;
 					foreach($queryalumni as $row){
 					?>
-					<input type="text" id="id_alumni" value="<?php echo $row->id_alumni;?>">
+					<input type="hidden" id="id_alumni" value="<?php echo $row->id_alumni;?>">
 					<tr>
 						<td><?php echo $no,'.';?></td>
 						<td><?php echo $row->nrp;?></td>

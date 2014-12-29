@@ -16,6 +16,37 @@
 			$("#tambah").slideUp();
 		});
 		
+		$("#hapus").click(function(){
+			var id_event = $("#id_event").val();
+			var txt;
+			var r = confirm("Anda yakin untuk menghapus?");
+			if (r == true) {
+				window.location.href='".base_url()."admin/hapus_event/1';
+			}
+		});
+		
+		function foto_change() {
+			//check whether browser fully supports all File API
+			if (window.File && window.FileReader && window.FileList && window.Blob)
+			{
+				//get the file size and file type from file input field
+				var fsize = $('#foto')[0].files[0].size;
+
+				if (fsize > 100000) //do something if file size more than 1 mb (1048576)
+				{
+					//alert($("#foto").val());
+					$("#foto").val("");
+					alert(fsize + " bytes\nUkuran file terlalu besar!");
+				} else {
+					//alert($("#foto").val());
+					//$("#foto").val("");
+					//alert(fsize + " bytes\nYou are good to go!");
+				}
+			} else {
+				alert("Please upgrade your browser, because your current browser lacks some new features we need!");
+			}
+		}
+		
         $('#myTable').DataTable();
 		
     });
@@ -40,39 +71,26 @@
                     </tr>
                 </thead>               
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Reuni 30th</td>
-                        <td>10 Oktober 2015</td>
-                        <td>Kampus IPB Bogor</td>
-                        <td>
-						<a href=""><button style="height:30px; width:56px;">Detail</button></a>
-						<a href=""><button style="height:30px; width:42px;">Edit</button></a>
-						<a href=""><button style="height:30px; width:56px;">Hapus</button></a>
-						</td>
-                    </tr>
+                    <?php 
+					$no = 1;
+					foreach($queryevent as $row){
+					?>
+					<input type="hidden" id="id_event" value="<?php echo $row->id_event;?>">
 					<tr>
-                        <td>2</td>
-                        <td>Reuni 30th</td>
-                        <td>10 Oktober 2015</td>
-                        <td>Kampus IPB Bogor</td>
-                        <td>
-						<a href=""><button style="height:30px; width:56px;">Detail</button></a>
-						<a href=""><button style="height:30px; width:42px;">Edit</button></a>
-						<a href=""><button style="height:30px; width:56px;">Hapus</button></a>
+						<td><?php echo $no,'.';?></td>
+						<td><?php echo $row->nama_event;?></td>
+						<td><?php echo $row->tanggal_event;?></td>
+						<td><?php echo $row->tempat_event;?></td>
+						<td>
+							<a href="<?php echo base_url();?>admin/detail_event/<?php echo $row->id_event;?>"><button style="height:30px; width:56px;">Detail</button></a>
+							<a href=""><button style="height:30px; width:42px;">Edit</button></a>
+							<a href=""><button id="hapus" style="height:30px; width:56px;">Hapus</button></a>
 						</td>
-                    </tr>
-					<tr>
-                        <td>3</td>
-                        <td>Reuni 30th</td>
-                        <td>10 Oktober 2015</td>
-                        <td>Kampus IPB Bogor</td>
-                        <td>
-						<a href=""><button style="height:30px; width:56px;">Detail</button></a>
-						<a href=""><button style="height:30px; width:42px;">Edit</button></a>
-						<a href=""><button style="height:30px; width:56px;">Hapus</button></a>
-						</td>
-                    </tr>
+					</tr>
+					<?php 
+					$no++;
+					} ?>
+					
                 </tbody>
             </table>
             <!-- ends fullwidth content -->
@@ -87,7 +105,7 @@
 		</div>
 		<div id="tambah">
 			<!-- form -->
-			<form id="contactForm" action="#" method="post">
+			<form id="contactForm" action="<?php echo base_url(); ?>admin/add_event" method="post" enctype="multipart/form-data">
 				<h2 class="heading">Tambah Event</h2>
 				<fieldset>
 					<div>
@@ -96,7 +114,7 @@
 					</div>
 					<div>
 						<label class="clearfix">Deskripsi</label>
-						<textarea name="deskripsi_event" id="comments" class="form-poshytip" title="Masukan deskripsi event" style="resize: vertical" required></textarea>
+						<textarea name="deskripsi" id="comments" class="form-poshytip" title="Masukan deskripsi event" style="resize: vertical" required></textarea>
 					</div>
 					<div style="margin-top:10px;">
 						<label class="clearfix">Tanggal</label>
@@ -107,14 +125,14 @@
 						<input name="tempat_event"  id="name" type="text" class="form-poshytip" title="Masukan tempat event" style="width:250px;" required />
 					</div>
 					<div style="margin-top:-10px;">
-						<label class="clearfix">Logo</label>
-						<input type="file" name="userfile" style="width:205px;" />
+						<label class="clearfix">Foto Event</label>
+						<input type="file" name="foto" onchange="foto_change()" style="width:205px;" />
 					</div>
 					<div style="margin-top:5px;">
 						<label class="clearfix">Keterangan</label>
 						<input name="keterangan_event"  id="name" type="text" class="form-poshytip" title="Masukan keterangan event" style="width:250px;" required />
 					</div>
-					<input type="button" value="Simpan" name="submit" id="submit" style="margn-top:-20px; width:62px; height:40px;" />
+					<input type="submit" value="Simpan" name="submit" id="submit" style="margin-top:0px; width:62px; height:40px;" />
 				</fieldset>
 				
 			</form>

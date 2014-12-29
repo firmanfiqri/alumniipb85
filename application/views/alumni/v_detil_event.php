@@ -14,9 +14,7 @@
                     $tahun = date("Y", strtotime($event->tanggal_event));
                 ?>
                 <div class="entry-date"><div class="number"><?php echo $tanggal; ?></div> <div class="year"><?php echo substr($nama_bulan[$bulan], 0, 3); ?>, <?php echo $tahun; ?></div></div>
-                <div class="feature-image">
-                    <a href="<?php echo base_url().$event->foto_event;?>" data-rel="prettyPhoto"><img src="<?php echo base_url().$event->foto_event;?>" alt="Alt text" /></a>
-                </div>
+                <a href="<?php echo base_url().$event->foto_event;?>" data-rel="prettyPhoto"><img src="<?php echo base_url().$event->foto_event;?>" alt="Alt text" style="width:90%; height:60%;" /></a>
                 <h2  class="post-heading"><?php echo $event->nama_event; ?></h2>
                 <div class="post-content"><?php echo $event->deskripsi; ?>
                 </div>

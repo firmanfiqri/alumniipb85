@@ -1,24 +1,28 @@
 <div id="main">	
     <div class="wrapper clearfix">
 
-	<!-- posts list -->
+        <!-- posts list -->
         <div id="posts-list" class="single-post">
 
             <h2 class="page-heading"><span>DETAIL EVENT</span></h2>	
 
             <article class="format-standard">
-                <div class="entry-date"><div class="number">23</div> <div class="year">Sep, 2011</div></div>
-                <div class="feature-image">
-                    <a href="<?php echo base_url(); ?>assets/img/slides/01.jpg" data-rel="prettyPhoto"><img src="<?php echo base_url(); ?>assets/img/slides/01.jpg" alt="Alt text" /></a>
+                <?php 
+                    $nama_bulan = array("", "Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember");
+                    $tanggal = date("d", strtotime($event->tanggal_event));
+                    $bulan = date("m", strtotime($event->tanggal_event));                        
+                    $tahun = date("Y", strtotime($event->tanggal_event));
+                ?>
+                <div class="entry-date"><div class="number"><?php echo $tanggal; ?></div> <div class="year"><?php echo substr($nama_bulan[$bulan], 0, 3); ?>, <?php echo $tahun; ?></div></div>
+                <a href="<?php echo base_url().$event->foto_event;?>" data-rel="prettyPhoto"><img src="<?php echo base_url().$event->foto_event;?>" alt="Alt text" style="width:90%; height:60%;" /></a>
+                <h2  class="post-heading"><?php echo $event->nama_event; ?></h2>
+                <div class="post-content"><?php echo $event->deskripsi; ?></div>
+                <div class="meta">
                 </div>
-                <h2  class="post-heading"><a href="single.html">Lorem ipsum dolor ametLorem ipsum dolor ametLorem ipsum dolor ametLorem ipsum dolor amet</a></h2>
-                <div class="post-content">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed.Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed.Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed.Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed.
-                </div>
-                <div class="meta"></div>
+
             </article>
-			
+
         </div>
         <!-- ENDS posts list -->
-
     </div>
 </div>

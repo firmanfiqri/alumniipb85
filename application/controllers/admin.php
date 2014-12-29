@@ -49,8 +49,7 @@ class Admin extends CI_Controller {
 	
 	public function hapus_alumni($id_alumni) {
 	
-        echo "hfghgfhbdcfgb";
-		$this->m_admin->deleteAlumni($id_alumni);
+        $this->m_admin->deleteAlumni($id_alumni);
 		
 		echo "<script type='text/javascript'>alert('Data alumni telah dihapus!');
 		window.location.href='".base_url()."admin';
@@ -58,9 +57,43 @@ class Admin extends CI_Controller {
     }
 	
 	public function event() {
-        $this->header(2);
-		$this->load->view('admin/v_kelola_event');
+        $data['queryevent'] = $this->m_admin->getAllEvent()->result();
+		
+		$this->header(2);
+		$this->load->view('admin/v_kelola_event',$data);
         $this->load->view('layout/footer');
+    }
+	
+	public function add_event() {
+        $nama_event =  $this->input->post('nama_event');
+        $deskripsi =  $this->input->post('deskripsi');
+        $tanggal_event =  $this->input->post('tanggal_event');
+        $tempat_event =  $this->input->post('tempat_event');
+        $keterangan =  $this->input->post('keterangan');
+		
+		//Ubah Foto
+		if ($_FILES['foto']['name']!="") {
+			$foto = $_FILES['foto'];
+
+			$dir = './assets/foto/event/';
+			if (!file_exists($dir)) {
+				mkdir($dir);
+			}
+			
+			$start = strpos($_FILES['foto']['type'], "/");
+			$type = substr($_FILES['foto']['type'], ($start + 1));
+			$file_target = $dir . time() . "." . $type;
+			
+			move_uploaded_file($_FILES['foto']['tmp_name'], $file_target);
+			
+			$file_target = substr($file_target, 1);
+		}
+		
+		$this->m_admin->insertEvent($nama_event, $deskripsi, $tanggal_event, $tempat_event, $file_target, $keterangan);
+		
+		echo "<script type='text/javascript'>alert('Selamat anda berhasil menambahkan event!');
+		window.location.href='".base_url()."/event';
+		</script>";
     }
 	
 	public function edit_event() {
@@ -69,9 +102,11 @@ class Admin extends CI_Controller {
         $this->load->view('layout/footer');
     }
 	
-	public function detail_event() {
+	public function detail_event($id_event) {
+		$data['event'] = $this->m_admin->getEvent($id_event)->row();
+		
         $this->header(2);
-		$this->load->view('admin/v_detil_event');
+		$this->load->view('admin/v_detil_event',$data);
         $this->load->view('layout/footer');
 	}
 	

@@ -17,6 +17,16 @@ class m_admin extends CI_Model {
         return $query;
     }
 	
+	public function getAllEvent() {
+        $query = $this->db->query("select * from event;");
+        return $query;
+    }
+	
+	public function getEvent($id_event) {
+        $query = $this->db->query("select * from event where id_event='$id_event';");
+        return $query;
+    }
+	
 	//INSERT & UPDATE	
 	public function updatePassword($id_alumni, $email) {
         $query = $this->db->query("update alumni set password='$email'where id_alumni='$id_alumni';");
@@ -25,6 +35,21 @@ class m_admin extends CI_Model {
 	
 	public function deleteAlumni($id_alumni) {
         $query = $this->db->query("delete from alumni where id_alumni='$id_alumni';");
+        return $query;
+    }
+	
+	public function hapusFoto($id) {
+        $query = $this->db->query("select foto_event from event where id_event = '$id'");
+        $hasil = $query->row();
+        if ($hasil->foto_event != "") {
+            $foto_sebelum = "." . $hasil->foto_event;
+            unlink($foto_sebelum);
+            $query = $this->db->query("update event e set e.foto_event = NULL where e.id_event = '$id'");
+        }
+    }
+	
+	public function insertEvent($nama_event, $deskripsi, $tanggal_event, $tempat_event, $file_target, $keterangan) {
+        $query = $this->db->query("insert into event (nama_event,deskripsi,tanggal_event,tempat_event,foto_event,keterangan) values ('$nama_event', '$deskripsi', '$tanggal_event', '$tempat_event', '$file_target', '$keterangan');");
         return $query;
     }
 	
