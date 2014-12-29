@@ -75,7 +75,7 @@ class Home extends CI_Controller {
         $this->load->library('email', $config);
         $this->email->set_newline("\r\n");
         $this->email->from('fadhilah.ilmi@yahoo.com', 'Fadhilah');
-        $this->email->to('firman.fiqri@gmail.com');
+        $this->email->to($email);
 
         $this->email->subject('Aktivasi Akun Alumni IPB 85');
         $this->email->message("Hi $nama_lengkap,<br><br>Terima Kasih telah mendaftarkan diri sebagai alumni IPB 1985. Segera lakukan aktivasi akun dengan mengakses tautan dibawah ini.<br><br><a href='" . base_url() . "aktivasi/akun/".$id."/".$kode_verifikasi."'>Aktivasi</a><br><br>Jika anda merasa tidak mendaftarkan diri menjadi alumni mohon abaikan pesan ini.<br><br>Apabila ada pertanyaan silahkan hubungi admin@admin.com");
