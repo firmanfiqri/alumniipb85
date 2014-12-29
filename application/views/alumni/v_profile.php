@@ -114,7 +114,7 @@
             {
                 //alert($("#foto").val());
                 $("#foto").val("");
-                alert(fsize + " bytes\nToo big!");
+                alert(fsize + " bytes\nUkuran file terlalu besar!");
             } else {
                 //alert($("#foto").val());
                 //$("#foto").val("");

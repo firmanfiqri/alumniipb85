@@ -48,8 +48,22 @@ class m_admin extends CI_Model {
         }
     }
 	
+	public function updateFoto($id, $foto) {
+        $query = $this->db->query("update event e set e.foto_event = '$foto' where e.id_event = '$id'");
+    }
+	
 	public function insertEvent($nama_event, $deskripsi, $tanggal_event, $tempat_event, $file_target, $keterangan) {
         $query = $this->db->query("insert into event (nama_event,deskripsi,tanggal_event,tempat_event,foto_event,keterangan) values ('$nama_event', '$deskripsi', '$tanggal_event', '$tempat_event', '$file_target', '$keterangan');");
+        return $query;
+    }
+	
+	public function updateEvent($id_event, $nama_event, $deskripsi, $tanggal_event, $tempat_event, $keterangan) {
+        $query = $this->db->query("update event set nama_event='$nama_event', deskripsi='$deskripsi', tanggal_event='$tanggal_event', tempat_event='$tempat_event' where id_event='$id_event';");
+        return $query;
+    }
+	
+	public function deleteEvent($id_event) {
+        $query = $this->db->query("delete from event where id_event='$id_event';");
         return $query;
     }
 	
