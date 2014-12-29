@@ -1,5 +1,16 @@
 <script>
     $(document).ready(function() {
+		
+		$("#hapus").click(function(){
+			var id_event = $("#id_event").val();
+			var txt;
+			var r = confirm("Anda yakin untuk menghapus?");
+			if (r == true) {
+				alert($("#id_event").val());
+				//window.location.href='hapus_event/'+ $("#id_event").val();
+			}
+		});
+		
 		$("#buka").show();
 		$("#tutup").hide();
 		$("#tambah").hide();
@@ -14,15 +25,6 @@
 			$("#buka").show();
 			$("#tutup").hide();
 			$("#tambah").slideUp();
-		});
-		
-		$("#hapus").click(function(){
-			var id_event = $("#id_event").val();
-			var txt;
-			var r = confirm("Anda yakin untuk menghapus?");
-			if (r == true) {
-				window.location.href='".base_url()."admin/hapus_event/1';
-			}
 		});
 		
 		function foto_change() {
@@ -83,8 +85,8 @@
 						<td><?php echo $row->tempat_event;?></td>
 						<td>
 							<a href="<?php echo base_url();?>admin/detail_event/<?php echo $row->id_event;?>"><button style="height:30px; width:56px;">Detail</button></a>
-							<a href=""><button style="height:30px; width:42px;">Edit</button></a>
-							<a href=""><button id="hapus" style="height:30px; width:56px;">Hapus</button></a>
+							<a href="<?php echo base_url();?>admin/lihat_edit_event/<?php echo $row->id_event;?>"><button style="height:30px; width:42px;">Edit</button></a>
+							<a href="#"><button id="hapus" style="height:30px; width:56px;">Hapus</button></a>
 						</td>
 					</tr>
 					<?php 

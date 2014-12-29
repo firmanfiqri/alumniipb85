@@ -6,7 +6,8 @@
 			var txt;
 			var r = confirm("Anda yakin untuk menghapus?");
 			if (r == true) {
-				window.location.href='".base_url()."admin/hapus_alumni/1';
+				alert($("#id_alumni").val());
+				//window.location.href='admin/hapus_alumni/'+id_alumni;
 			}
 		});
 		
@@ -53,7 +54,7 @@
 						<td><?php echo $row->nama_prodi;?></td>
 						<td>
 							<a href="<?php echo base_url();?>admin/detail_profile/<?php echo $row->id_alumni;?>"><button style="height:30px; width:56px;">Detail</button></a>
-							<a href=""><button id="hapus" style="height:30px; width:56px;">Hapus</button></a>
+							<a href="#"><button id="hapus" style="height:30px; width:56px;">Hapus</button></a>
 							<a href="<?php echo base_url();?>admin/reset_password/<?php echo $row->id_alumni;?>"><button style="height:30px; width:51px;">Reset</button></a>
 						</td>
 					</tr>
