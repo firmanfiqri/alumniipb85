@@ -39,12 +39,13 @@ CREATE TABLE IF NOT EXISTS `alumni` (
   UNIQUE KEY `Index 4` (`email`),
   KEY `FK_alumni_prodi` (`id_prodi`),
   CONSTRAINT `FK_alumni_prodi` FOREIGN KEY (`id_prodi`) REFERENCES `prodi` (`id_prodi`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
--- Dumping data for table alumniipb85.alumni: ~1 rows (approximately)
+-- Dumping data for table alumniipb85.alumni: ~2 rows (approximately)
 /*!40000 ALTER TABLE `alumni` DISABLE KEYS */;
 INSERT INTO `alumni` (`id_alumni`, `nama_alumni`, `nama_panggilan`, `jenis_kelamin`, `nrp`, `kelompok`, `id_prodi`, `alamat_rumah`, `alamat_kantor`, `no_hp`, `email`, `password`, `profesi`, `bidang_keahlian`, `foto`, `tanggal_daftar`, `status`) VALUES
-	(1, 'Firman Fiqri Firdaus', 'Aku', 'Perempuan', '12345', '5', 5, 'jlasjbaa adflkakdf;a af;adjf a;fad fa;jfa djf', 'asdasd ads ad asd asd ads asd ad asd asd as d', '23456', 'firman.fiqri@gmail.com', 'asdf', 'salto', 'salto', '/assets/foto/profile/12345.png', '2014-12-28 17:29:24', 0);
+	(1, 'Firman Fiqri Firdaus', 'Aku', 'Laki-laki', '12345', '5', 5, 'jlasjbaa adflkakdf;a af;adjf a;fad fa;jfa djf', 'asdasd ads ad asd asd ads asd ad asd asd as d', '23456', 'firman.fiqri@gmil.com', '12345', 'salto', 'salto', '/assets/foto/profile/12345.png', '2014-12-28 17:29:24', 0),
+	(7, 'Firman Fiqri Firdaus', NULL, 'Laki-laki', '12345ww', NULL, 1, NULL, NULL, NULL, 'firman.fiqri@gmail.com', '123', NULL, NULL, NULL, '2014-12-30 00:33:50', 0);
 /*!40000 ALTER TABLE `alumni` ENABLE KEYS */;
 
 
@@ -57,11 +58,15 @@ CREATE TABLE IF NOT EXISTS `event` (
   `tempat_event` varchar(200) NOT NULL,
   `foto_event` varchar(200) NOT NULL,
   `keterangan` varchar(200) NOT NULL,
+  `biaya` int(11) NOT NULL,
   PRIMARY KEY (`id_event`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
--- Dumping data for table alumniipb85.event: ~0 rows (approximately)
+-- Dumping data for table alumniipb85.event: ~2 rows (approximately)
 /*!40000 ALTER TABLE `event` DISABLE KEYS */;
+INSERT INTO `event` (`id_event`, `nama_event`, `deskripsi`, `tanggal_event`, `tempat_event`, `foto_event`, `keterangan`, `biaya`) VALUES
+	(1, 'Reuni Akbar', 'Acara ini ditujukan untuk memadukan kasih sayang bersama antara alumni IPB angkatan 1985', '2015-12-29', 'Balai Sarbini', 'assets/foto/event/1.jpg', 'Ini keterangan', 0),
+	(2, 'Reuni Kecil', 'Ini acara kecil', '2015-01-01', 'Taman Mini Indonesia Indah', 'assets/foto/event/2.jpg', 'Keterangan', 0);
 /*!40000 ALTER TABLE `event` ENABLE KEYS */;
 
 
@@ -105,24 +110,28 @@ CREATE TABLE IF NOT EXISTS `peserta_event` (
   `id_peserta_event` int(11) NOT NULL AUTO_INCREMENT,
   `id_alumni` int(11) NOT NULL,
   `id_event` int(11) NOT NULL,
-  `status_event` int(11) NOT NULL,
+  `status_pembayaran` int(11) NOT NULL,
   `no_registrasi` varchar(50) NOT NULL,
   `bank_kami` varchar(100) NOT NULL,
-  `bank_anda` varchar(100) NOT NULL,
-  `metode_transfer` varchar(100) NOT NULL,
   `jumlah_transfer` int(11) NOT NULL,
   `atas_nama` varchar(100) NOT NULL,
   `tanggal_transfer` date NOT NULL,
   `bukti_foto` varchar(100) NOT NULL,
+  `tanggal_daftar` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `jumlah_dewasa` int(11) NOT NULL,
+  `jumlah_anak` int(11) NOT NULL,
+  `tanggal_tiba` date NOT NULL,
   PRIMARY KEY (`id_peserta_event`),
   KEY `FK_peserta_event_alumni` (`id_alumni`),
   KEY `FK_peserta_event_event` (`id_event`),
   CONSTRAINT `FK_peserta_event_alumni` FOREIGN KEY (`id_alumni`) REFERENCES `alumni` (`id_alumni`),
   CONSTRAINT `FK_peserta_event_event` FOREIGN KEY (`id_event`) REFERENCES `event` (`id_event`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
--- Dumping data for table alumniipb85.peserta_event: ~0 rows (approximately)
+-- Dumping data for table alumniipb85.peserta_event: ~1 rows (approximately)
 /*!40000 ALTER TABLE `peserta_event` DISABLE KEYS */;
+INSERT INTO `peserta_event` (`id_peserta_event`, `id_alumni`, `id_event`, `status_pembayaran`, `no_registrasi`, `bank_kami`, `jumlah_transfer`, `atas_nama`, `tanggal_transfer`, `bukti_foto`, `tanggal_daftar`, `jumlah_dewasa`, `jumlah_anak`, `tanggal_tiba`) VALUES
+	(4, 7, 1, 0, 'RA10001', '', 0, '', '0000-00-00', '', '2014-12-31 17:07:42', 1, 1, '2014-12-02');
 /*!40000 ALTER TABLE `peserta_event` ENABLE KEYS */;
 
 

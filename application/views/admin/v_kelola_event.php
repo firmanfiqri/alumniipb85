@@ -1,5 +1,9 @@
 <script>
-    $(document).ready(function() {
+    function buka_hapus(id_event_hapus){
+		document.getElementById("id_event_hapus").value = id_event_hapus;
+	}
+	
+	$(document).ready(function() {
 		
 		$("#hapus").click(function(){
 			var id_event = $("#id_event").val();
@@ -86,7 +90,7 @@
 						<td>
 							<a href="<?php echo base_url();?>admin/detail_event/<?php echo $row->id_event;?>"><button style="height:30px; width:56px;">Detail</button></a>
 							<a href="<?php echo base_url();?>admin/lihat_edit_event/<?php echo $row->id_event;?>"><button style="height:30px; width:42px;">Edit</button></a>
-							<a href="#"><button id="hapus" style="height:30px; width:56px;">Hapus</button></a>
+							<a href="#modal"><button onclick="buka_hapus('<?php echo $row->id_event;?>')" style="height:30px; width:56px;">Hapus</button></a>
 						</td>
 					</tr>
 					<?php 
@@ -116,7 +120,7 @@
 					</div>
 					<div>
 						<label class="clearfix">Deskripsi</label>
-						<textarea name="deskripsi" id="comments" class="form-poshytip" title="Masukan deskripsi event" style="resize: vertical" required></textarea>
+						<textarea name="deskripsi" class="form-poshytip" title="Masukan deskripsi event" style="resize: vertical" required></textarea>
 					</div>
 					<div style="margin-top:10px;">
 						<label class="clearfix">Tanggal</label>
@@ -129,6 +133,10 @@
 					<div style="margin-top:-10px;">
 						<label class="clearfix">Foto Event</label>
 						<input type="file" name="foto" onchange="foto_change()" style="width:205px;" />
+					</div>
+					<div style="margin-top:5px;">
+						<label class="clearfix">Biaya</label>
+						Rp. <input name="biaya"  id="name" type="text" class="form-poshytip" title="Masukan biaya event" style="width:150px;" required /> ,-
 					</div>
 					<div style="margin-top:5px;">
 						<label class="clearfix">Keterangan</label>
@@ -144,3 +152,29 @@
     </div>
 </div>
 <!-- ENDS MAIN -->
+
+<aside id="modal" style="width:25%; height:32%; margin-left:-180px;">
+	<header>
+		<h2 class="page-heading"><span>PESAN PERSETUJUAN</span></h2>	
+	</header>
+	
+	<section style="margin-top:15px; margin-left:65px;">
+		<div class="project-info">
+			<p>
+				<strong style="font-size:14px;">Apakah anda yakin untuk menghapus event ini?</strong><br/>
+			</p>
+		</div>
+		<div class="clearfix"></div>
+		<div style="margin-top:-100px; float:center;">
+			<form id="contactForm" action="<?php echo base_url(); ?>admin/hapus_event" method="post" enctype="multipart/form-data">
+				<fieldset>
+					<input name="id_event_hapus" id="id_event_hapus" type="hidden" class="form-poshytip" />
+					&nbsp;&nbsp;&nbsp;&nbsp;
+					<input type="submit" value="Ya" name="submit" id="submit" style="margin-top:0px; width:60px; height:40px;" />
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<a href="#"><input type="button" value="Tidak" name="submit" id="submit" style="width:60px; height:40px;" /></a>
+				</fieldset>
+			</form>
+		</div>
+	</section>
+</aside>

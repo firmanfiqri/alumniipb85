@@ -1,4 +1,11 @@
 <script>
+		
+	function buka_hapus(id_alumni_hapus){
+		document.getElementById("id_alumni_hapus").value = id_alumni_hapus;
+	}
+	function buka_reset(id_alumni_reset){
+		document.getElementById("id_alumni_reset").value = id_alumni_reset;
+	}
 	
     $(document).ready(function() {
         $("#hapus").click(function(){
@@ -64,8 +71,8 @@
 						<td><?php echo $row->nama_prodi;?></td>
 						<td>
 							<a href="<?php echo base_url();?>admin/detail_profile/<?php echo $row->id_alumni;?>"><button style="height:30px; width:56px;">Detail</button></a>
-							<a href="#"><button id="hapus" style="height:30px; width:56px;">Hapus</button></a>
-							<a href="#"><button id="reset" style="height:30px; width:51px;">Reset</button></a>
+							<a href="#modal1"><button onclick="buka_hapus('<?php echo $row->id_alumni;?>')" style="height:30px; width:56px;">Hapus</button></a>
+							<a href="#modal2"><button onclick="buka_reset('<?php echo $row->id_alumni;?>')" style="height:30px; width:51px;">Reset</button></a>
 						</td>
 					</tr>
 					<?php 
@@ -81,3 +88,54 @@
     </div>
 </div>
 <!-- ENDS MAIN -->
+
+<aside id="modal1" style="width:25%; height:32%; margin-left:-180px;">
+	<header>
+		<h2 class="page-heading"><span>PESAN PERSETUJUAN</span></h2>	
+	</header>
+	
+	<section style="margin-top:15px; margin-left:65px;">
+		<div class="project-info">
+			<p>
+				<strong style="font-size:14px;">Apakah anda yakin untuk menghapus alumni ini?</strong><br/>
+			</p>
+		</div>
+		<div class="clearfix"></div>
+		<div style="margin-top:-100px; float:center;">
+			<form id="contactForm" action="<?php echo base_url(); ?>admin/hapus_alumni" method="post" enctype="multipart/form-data">
+				<fieldset>
+					<input name="id_alumni_hapus" id="id_alumni_hapus" type="hidden" class="form-poshytip" />
+					&nbsp;&nbsp;&nbsp;&nbsp;
+					<input type="submit" value="Ya" name="submit" id="submit" style="margin-top:0px; width:60px; height:40px;" />
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<a href="#"><input type="button" value="Tidak" name="submit" id="submit" style="width:60px; height:40px;" /></a>
+				</fieldset>
+			</form>
+		</div>
+	</section>
+</aside>
+<aside id="modal2" style="width:25%; height:32%; margin-left:-180px;">
+	<header>
+		<h2 class="page-heading"><span>PESAN PERSETUJUAN</span></h2>	
+	</header>
+	
+	<section style="margin-top:15px; margin-left:65px;">
+		<div class="project-info">
+			<p>
+				<strong style="font-size:14px;">Apakah anda yakin untuk mereset password alumni ini?</strong><br/>
+			</p>
+		</div>
+		<div class="clearfix"></div>
+		<div style="margin-top:-100px; float:center;">
+			<form id="contactForm" action="<?php echo base_url(); ?>admin/reset_password" method="post" enctype="multipart/form-data">
+				<fieldset>
+					<input name="id_alumni_reset" id="id_alumni_reset" type="hidden" class="form-poshytip" />
+					&nbsp;&nbsp;&nbsp;&nbsp;
+					<input type="submit" value="Ya" name="submit" id="submit" style="margin-top:0px; width:60px; height:40px;" />
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<a href="#"><input type="button" value="Tidak" name="submit" id="submit" style="width:60px; height:40px;" /></a>
+				</fieldset>
+			</form>
+		</div>
+	</section>
+</aside>

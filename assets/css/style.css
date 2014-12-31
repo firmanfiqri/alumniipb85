@@ -984,4 +984,153 @@ footer .wrapper,
 	float: right;
 }
 
+/* CSS MODAL */
+#modal {
+	background:#fff;
+	left:50%;
+	margin:-150px 0 0 -40%;
+	padding-bottom:20px;
+	position:absolute;
+	top:-50%;
+	width:80%;
+	height:65%;
+	border-radius:3px;
+	box-shadow:0 3px 7px rgba(0,0,0,.25);
+	-moz-box-shadow:0 3px 7px rgba(0,0,0,.25);
+	-webkit-box-shadow:0 3px 7px rgba(0,0,0,.25);
+	box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+}
+	/* Make the modal appear when targeted */
+	#modal:target {
+		top:50%;
+		transition: all 0.4s ease-in-out;
+		-moz-transition: all 0.4s ease-in-out;
+		-webkit-transition: all 0.4s ease-in-out;
+	}
+#modal header,#modal footer {
+	background:#ebebe8;
+	border-bottom: 1px solid #e7e7e7;
+	border-radius: 5px 5px 0 0;
+	-moz-border-radius: 5px 5px 0 0;
+	-webkit-border-radius: 5px 5px 0 0;
+}
+	#modal footer {
+		border:none;
+		border-top: 1px solid #e7e7e7;
+		border-radius: 0 0 5px 5px;
+		-moz-border-radius: 0 0 5px 5px;
+		-webkit-border-radius: 0 0 5px 5px;
+	}
+#modal section,#modal header, #modal footer {
+	padding:15px;
+	z-index:200;
+}
+#modal h2 {
+	margin:0;
+}
+#modal .btn {
+	float:right;
+}
+
+/* CSS MODAL 1*/
+#modal1 {
+	background:#fff;
+	left:50%;
+	margin:-150px 0 0 -40%;
+	padding-bottom:20px;
+	position:absolute;
+	top:-50%;
+	width:80%;
+	height:65%;
+	border-radius:3px;
+	box-shadow:0 3px 7px rgba(0,0,0,.25);
+	-moz-box-shadow:0 3px 7px rgba(0,0,0,.25);
+	-webkit-box-shadow:0 3px 7px rgba(0,0,0,.25);
+	box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+}
+	/* Make the modal appear when targeted */
+	#modal1:target {
+		top:50%;
+		transition: all 0.4s ease-in-out;
+		-moz-transition: all 0.4s ease-in-out;
+		-webkit-transition: all 0.4s ease-in-out;
+	}
+#modal1 header,#modal1 footer {
+	background:#ebebe8;
+	border-bottom: 1px solid #e7e7e7;
+	border-radius: 5px 5px 0 0;
+	-moz-border-radius: 5px 5px 0 0;
+	-webkit-border-radius: 5px 5px 0 0;
+}
+	#modal1 footer {
+		border:none;
+		border-top: 1px solid #e7e7e7;
+		border-radius: 0 0 5px 5px;
+		-moz-border-radius: 0 0 5px 5px;
+		-webkit-border-radius: 0 0 5px 5px;
+	}
+#modal1 section,#modal1 header, #modal1 footer {
+	padding:15px;
+	z-index:200;
+}
+#modal1 h2 {
+	margin:0;
+}
+#modal1 .btn {
+	float:right;
+}
+
+/* CSS MODAL 2 */
+#modal2 {
+	background:#fff;
+	left:50%;
+	margin:-150px 0 0 -40%;
+	padding-bottom:20px;
+	position:absolute;
+	top:-50%;
+	width:80%;
+	height:65%;
+	border-radius:3px;
+	box-shadow:0 3px 7px rgba(0,0,0,.25);
+	-moz-box-shadow:0 3px 7px rgba(0,0,0,.25);
+	-webkit-box-shadow:0 3px 7px rgba(0,0,0,.25);
+	box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+}
+	/* Make the modal appear when targeted */
+	#modal2:target {
+		top:50%;
+		transition: all 0.4s ease-in-out;
+		-moz-transition: all 0.4s ease-in-out;
+		-webkit-transition: all 0.4s ease-in-out;
+	}
+#modal2 header,#modal2 footer {
+	background:#ebebe8;
+	border-bottom: 1px solid #e7e7e7;
+	border-radius: 5px 5px 0 0;
+	-moz-border-radius: 5px 5px 0 0;
+	-webkit-border-radius: 5px 5px 0 0;
+}
+	#modal2 footer {
+		border:none;
+		border-top: 1px solid #e7e7e7;
+		border-radius: 0 0 5px 5px;
+		-moz-border-radius: 0 0 5px 5px;
+		-webkit-border-radius: 0 0 5px 5px;
+	}
+#modal2 section,#modal2 header, #modal2 footer {
+	padding:15px;
+	z-index:200;
+}
+#modal2 h2 {
+	margin:0;
+}
+#modal2 .btn {
+	float:right;
+}
 

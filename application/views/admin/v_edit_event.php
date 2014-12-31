@@ -64,6 +64,11 @@
 						<input type="file" name="foto" onchange="foto_change()" style="width:205px;" />
 					</div>
 					<div style="margin-top:5px;">
+						<label class="clearfix">Biaya</label>
+						Rp. <input name="biaya"  id="name" type="text" class="form-poshytip" title="Masukan biaya event" value = "<?php echo $editevent->biaya; ?>" style="width:150px;" required /> ,-
+					</div>
+					
+					<div style="margin-top:5px;">
 						<label class="clearfix">Keterangan</label>
 						<input name="keterangan_event"  id="name" type="text" class="form-poshytip" title="Masukan keterangan event" value = "<?php echo $editevent->keterangan; ?>" style="width:250px;" required />
 					</div>

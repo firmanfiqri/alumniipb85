@@ -42,8 +42,10 @@ class Admin extends CI_Controller {
         $this->load->view('layout/footer');
     }
 	
-	public function reset_password($id_alumni) {
+	public function reset_password() {
 	
+		$id_alumni =  $this->input->post('id_alumni_reset');
+		
 		$ambilquery = $this->m_admin->getEmailById($id_alumni)->row();
 		$email = $ambilquery->email;
 		
@@ -54,9 +56,12 @@ class Admin extends CI_Controller {
 		</script>";
     }
 	
-	public function hapus_alumni($id_alumni) {
+	public function hapus_alumni() {
 	
-        $this->m_admin->deleteAlumni($id_alumni);
+		$id_alumni =  $this->input->post('id_alumni_hapus');
+		
+		$this->m_admin->deleteAlumniLink($id_alumni);
+		$this->m_admin->deleteAlumni($id_alumni);
 		
 		echo "<script type='text/javascript'>alert('Data alumni telah dihapus!');
 		window.location.href='".base_url()."admin';
@@ -76,7 +81,8 @@ class Admin extends CI_Controller {
         $deskripsi =  $this->input->post('deskripsi');
         $tanggal_event =  $this->input->post('tanggal_event');
         $tempat_event =  $this->input->post('tempat_event');
-        $keterangan =  $this->input->post('keterangan');
+        $biaya =  $this->input->post('biaya');
+        $keterangan =  $this->input->post('keterangan_event');
 		
 		//Ubah Foto
 		if ($_FILES['foto']['name']!="") {
@@ -96,7 +102,7 @@ class Admin extends CI_Controller {
 			$file_target = substr($file_target, 1);
 		}
 		
-		$this->m_admin->insertEvent($nama_event, $deskripsi, $tanggal_event, $tempat_event, $file_target, $keterangan);
+		$this->m_admin->insertEvent($nama_event, $deskripsi, $tanggal_event, $tempat_event, $file_target, $biaya, $keterangan);
 		
 		echo "<script type='text/javascript'>alert('Anda berhasil menambahkan event!');
 		window.location.href='".base_url()."admin/event';
@@ -117,7 +123,8 @@ class Admin extends CI_Controller {
         $deskripsi =  $this->input->post('deskripsi');
         $tanggal_event =  $this->input->post('tanggal_event');
         $tempat_event =  $this->input->post('tempat_event');
-        $keterangan =  $this->input->post('keterangan');
+        $biaya =  $this->input->post('biaya');
+        $keterangan =  $this->input->post('keterangan_event');
 		
 		//Ubah Foto
 		if ($_FILES['foto']['name']!="") {
@@ -139,7 +146,7 @@ class Admin extends CI_Controller {
 			$this->m_admin->updateFoto($id_event, $file_target);
 		}
 		
-		$this->m_admin->updateEvent($id_event, $nama_event, $deskripsi, $tanggal_event, $tempat_event, $keterangan);
+		$this->m_admin->updateEvent($id_event, $nama_event, $deskripsi, $tanggal_event, $tempat_event, $biaya, $keterangan);
 		
 		echo "<script type='text/javascript'>alert('Anda berhasil mengubah event!');
 		window.location.href='".base_url()."admin/event';
@@ -154,8 +161,12 @@ class Admin extends CI_Controller {
         $this->load->view('layout/footer');
 	}
 	
-	public function hapus_event($id_event) {
-	
+	public function hapus_event() {
+		
+		$id_event =  $this->input->post('id_event_hapus');
+		
+		$this->m_admin->deleteEventLink($id_event);
+		
         $this->m_admin->deleteEvent($id_event);
 		
 		echo "<script type='text/javascript'>alert('Data event telah dihapus!');
@@ -164,9 +175,33 @@ class Admin extends CI_Controller {
     }
 	
 	public function konfirmasi_pembayaran() {
-        $this->header(3);
-		$this->load->view('admin/v_kelola_pembayaran');
+		
+		if(!$this->input->post('id_event')){
+			$id_event = 1;
+		}else{
+			$id_event = $this->input->post('id_event');
+		}
+		
+		$ambilquery = $this->m_admin->getEvent($id_event)->row();
+        $data['nama_event'] = $ambilquery->nama_event;
+        $data['id_event'] = $ambilquery->id_event;
+        
+		$data['queryevent'] = $this->m_admin->getAllEvent()->result();
+		$data['querypembayaran'] = $this->m_admin->getAllPembayaran($id_event)->result();
+        
+		$this->header(3);
+		$this->load->view('admin/v_kelola_pembayaran',$data);
         $this->load->view('layout/footer');
+	}
+	
+	public function konfirmasi_status() {
+		$id_peserta_event =  $this->input->post('id_peserta_event');
+        
+		$this->m_admin->updateStatusBayar($id_peserta_event);
+		
+		echo "<script type='text/javascript'>alert('Pembayaran telah dikonfirmasi!');
+		window.location.href='".base_url()."admin/konfirmasi_pembayaran';
+		</script>";
 	}
 	
 	public function detail_pembayaran() {

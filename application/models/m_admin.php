@@ -27,6 +27,11 @@ class m_admin extends CI_Model {
         return $query;
     }
 	
+	public function getAllPembayaran($id_event) {
+        $query = $this->db->query("select * from peserta_event where id_event='$id_event';");
+        return $query;
+    }
+	
 	//INSERT & UPDATE	
 	public function updatePassword($id_alumni, $email) {
         $query = $this->db->query("update alumni set password='$email'where id_alumni='$id_alumni';");
@@ -35,6 +40,11 @@ class m_admin extends CI_Model {
 	
 	public function deleteAlumni($id_alumni) {
         $query = $this->db->query("delete from alumni where id_alumni='$id_alumni';");
+        return $query;
+    }
+	
+	public function deleteAlumniLink($id_alumni) {
+        $query = $this->db->query("delete from peserta_event where id_alumni='$id_alumni';");
         return $query;
     }
 	
@@ -52,18 +62,28 @@ class m_admin extends CI_Model {
         $query = $this->db->query("update event e set e.foto_event = '$foto' where e.id_event = '$id'");
     }
 	
-	public function insertEvent($nama_event, $deskripsi, $tanggal_event, $tempat_event, $file_target, $keterangan) {
-        $query = $this->db->query("insert into event (nama_event,deskripsi,tanggal_event,tempat_event,foto_event,keterangan) values ('$nama_event', '$deskripsi', '$tanggal_event', '$tempat_event', '$file_target', '$keterangan');");
+	public function insertEvent($nama_event, $deskripsi, $tanggal_event, $tempat_event, $file_target, $biaya, $keterangan) {
+        $query = $this->db->query("insert into event (nama_event,deskripsi,tanggal_event,tempat_event,foto_event,biaya,keterangan) values ('$nama_event', '$deskripsi', '$tanggal_event', '$tempat_event', '$file_target', '$biaya', '$keterangan');");
         return $query;
     }
 	
-	public function updateEvent($id_event, $nama_event, $deskripsi, $tanggal_event, $tempat_event, $keterangan) {
-        $query = $this->db->query("update event set nama_event='$nama_event', deskripsi='$deskripsi', tanggal_event='$tanggal_event', tempat_event='$tempat_event' where id_event='$id_event';");
+	public function updateEvent($id_event, $nama_event, $deskripsi, $tanggal_event, $tempat_event, $biaya, $keterangan) {
+        $query = $this->db->query("update event set nama_event='$nama_event', deskripsi='$deskripsi', tanggal_event='$tanggal_event', tempat_event='$tempat_event', biaya='$biaya', keterangan='$keterangan' where id_event='$id_event';");
         return $query;
     }
 	
 	public function deleteEvent($id_event) {
         $query = $this->db->query("delete from event where id_event='$id_event';");
+        return $query;
+    }
+	
+	public function deleteEventLink($id_event) {
+        $query = $this->db->query("delete from peserta_event where id_event='$id_event';");
+        return $query;
+    }
+	
+	public function updateStatusBayar($id_peserta_event) {
+        $query = $this->db->query("update peserta_event set status_pembayaran=2 where id_peserta_event='$id_peserta_event';");
         return $query;
     }
 	

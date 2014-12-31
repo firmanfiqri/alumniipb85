@@ -10,8 +10,12 @@
                 <?php 
                     $nama_bulan = array("", "Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember");
                     $tanggal = date("d", strtotime($event->tanggal_event));
-                    $bulan = date("m", strtotime($event->tanggal_event));                        
-                    $tahun = date("Y", strtotime($event->tanggal_event));
+                    if(date("m", strtotime($event->tanggal_event)) < 10){
+						$bulan = substr(date("m", strtotime($event->tanggal_event)), 1, 1);
+					}else{
+						$bulan = date("m", strtotime($event->tanggal_event));
+					}
+					$tahun = date("Y", strtotime($event->tanggal_event));
                 ?>
                 <div class="entry-date"><div class="number"><?php echo $tanggal; ?></div> <div class="year"><?php echo substr($nama_bulan[$bulan], 0, 3); ?>, <?php echo $tahun; ?></div></div>
                 <a href="<?php echo base_url().$event->foto_event;?>" data-rel="prettyPhoto"><img src="<?php echo base_url().$event->foto_event;?>" alt="Alt text" style="width:90%; height:60%;" /></a>
