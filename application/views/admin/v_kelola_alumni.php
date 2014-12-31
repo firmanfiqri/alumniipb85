@@ -11,6 +11,16 @@
 			}
 		});
 		
+		$("#reset").click(function(){
+			var id_alumni = $("#id_alumni").val();
+			var txt;
+			var r = confirm("Anda yakin untuk mereset?");
+			if (r == true) {
+				alert($("#id_alumni").val());
+				//window.location.href='admin/reset_password/'+id_alumni;
+			}
+		});
+		
 		$('#myTable').DataTable();
     });
 	
@@ -55,7 +65,7 @@
 						<td>
 							<a href="<?php echo base_url();?>admin/detail_profile/<?php echo $row->id_alumni;?>"><button style="height:30px; width:56px;">Detail</button></a>
 							<a href="#"><button id="hapus" style="height:30px; width:56px;">Hapus</button></a>
-							<a href="<?php echo base_url();?>admin/reset_password/<?php echo $row->id_alumni;?>"><button style="height:30px; width:51px;">Reset</button></a>
+							<a href="#"><button id="reset" style="height:30px; width:51px;">Reset</button></a>
 						</td>
 					</tr>
 					<?php 

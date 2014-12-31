@@ -11,7 +11,11 @@ class Alumni extends CI_Controller {
         
 		if(!$this->session->userdata('is_logged_in')){
 			redirect(base_url());
-		}
+		}else if ($this->session->userdata('is_logged_in')) {
+            if ($this->session->userdata('status') == -1) {
+                redirect(base_url() . "admin");
+            }
+        }
     }
 
     public function index() {

@@ -10,7 +10,7 @@ class Home extends CI_Controller {
         $this->load->model('m_daftar');
 
         if ($this->session->userdata('is_logged_in')) {
-            if ($this->session->userdata('status') == 1) {
+            if ($this->session->userdata('status') == -1) {
                 redirect(base_url() . "admin");
             } else {
                 redirect(base_url() . "alumni");

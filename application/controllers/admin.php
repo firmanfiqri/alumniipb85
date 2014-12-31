@@ -10,6 +10,13 @@ class Admin extends CI_Controller {
 		$this->load->model('m_admin');
 		$this->load->model('m_alumni');
 		
+		if(!$this->session->userdata('is_logged_in')){
+			redirect(base_url());
+		}else if ($this->session->userdata('is_logged_in')) {
+            if ($this->session->userdata('status') != -1) {
+                redirect(base_url() . "alumni");
+            }
+        }
     }
 	
 	public function header($lv) {
