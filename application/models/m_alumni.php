@@ -25,7 +25,7 @@ class m_alumni extends CI_Model {
         $query = $this->db->query("select * from alumni a, prodi p, jurusan j, fakultas f where a.id_alumni = $id and a.id_prodi = p.id_prodi and p.id_jurusan = j.id_jurusan and j.id_fakultas = f.id_fakultas ");
         return $query->row();
     }
-
+    
     public function cetNRPAlumni($nrp, $id) {
         $query = $this->db->query("select * from alumni where nrp = '$nrp' and id_alumni <> '$id'");
         return $query->num_rows();
@@ -68,6 +68,21 @@ class m_alumni extends CI_Model {
         $query = $this->db->query("select * from event where id_event = '$id'");
         return $query->row();
     }
+    
+    public function getJumlahPesertaEvent($id) {
+        $query = $this->db->query("select * from peserta_event where id_event = $id");
+        return $query->num_rows();
+    }
+    
+    public function tambahPesertaEvent($id_alumni,$id_event,$noreg,$dewasa,$anak,$tgl_tiba) {
+        $query = $this->db->query("insert into peserta_event(id_alumni,id_event,no_registrasi,jumlah_dewasa,jumlah_anak,tanggal_tiba)values('$id_alumni','$id_event','$noreg','$dewasa','$anak','$tgl_tiba')");
+    }
+    
+    public function getHistoryEvent($id_alumni){
+        $query = $this->db->query("select * from peserta_event where id_alumni = $id_alumni");
+        return $query->result();
+    }
+    
 
 }
 

@@ -131,7 +131,7 @@
 
     <div class="wrapper clearfix">
             <h2 class="page-heading"><span>PROFIL</span></h2>	
-        <form id="contactForm" class="isian" action="<?php echo base_url(); ?>alumni/profile" method="post" enctype="multipart/form-data">
+            <form id="contactForm" class="isian" action="<?php echo base_url(); ?>alumni/profile" method="post" enctype="multipart/form-data">
 
             <!-- project content -->
             <div id="project-content" class="clearfix" style="width:1000px;">

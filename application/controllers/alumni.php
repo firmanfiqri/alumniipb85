@@ -7,11 +7,11 @@ class Alumni extends CI_Controller {
 
     function __construct() {
         parent::__construct();
-		$this->load->model("m_alumni");
-        
-		if(!$this->session->userdata('is_logged_in')){
-			redirect(base_url());
-		}else if ($this->session->userdata('is_logged_in')) {
+        $this->load->model("m_alumni");
+
+        if (!$this->session->userdata('is_logged_in')) {
+            redirect(base_url());
+        } else if ($this->session->userdata('is_logged_in')) {
             if ($this->session->userdata('status') == -1) {
                 redirect(base_url() . "admin");
             }
@@ -22,13 +22,13 @@ class Alumni extends CI_Controller {
         $this->about();
     }
 
-    public function header($lv) {
+    private function header($lv) {
         $data['lv'] = $lv;
         $this->load->view('layout/header');
         $this->load->view('layout/navbar_alumni', $data);
     }
 
-    public function footer() {
+    private function footer() {
         $this->load->view('layout/footer');
     }
 
@@ -41,7 +41,7 @@ class Alumni extends CI_Controller {
     public function profile() {
         $data['edit'] = false;
         $data['sukses_edit'] = false;
-	
+
         if ($this->input->post('edit')) {
             $data['edit'] = true;
 
@@ -60,12 +60,12 @@ class Alumni extends CI_Controller {
             $bidang_keahlian = $this->input->post('bidang_keahlian');
             $password_baru = $this->input->post('pwd_baru');
 
-            if ($this->m_alumni->cetNRPAlumni($nrp,$id_alumni) == 1) {
+            if ($this->m_alumni->cetNRPAlumni($nrp, $id_alumni) == 1) {
                 $data['sukses_edit'] = false;
             } else {
-                $this->m_alumni->updateDataAlumni($id_alumni,$nama_lengkap, $nama_panggilan, $jenis_kelamin, $nrp, $kelompok, $prodi, $hp, $email, $profesi, $alamat_rumah, $alamat_kantor, $bidang_keahlian);
+                $this->m_alumni->updateDataAlumni($id_alumni, $nama_lengkap, $nama_panggilan, $jenis_kelamin, $nrp, $kelompok, $prodi, $hp, $email, $profesi, $alamat_rumah, $alamat_kantor, $bidang_keahlian);
                 //Ubah Foto
-                if ($_FILES['foto']['name']!="") {
+                if ($_FILES['foto']['name'] != "") {
                     $foto = $_FILES['foto'];
 
                     $dir = './assets/foto/profile/';
@@ -76,16 +76,16 @@ class Alumni extends CI_Controller {
                     $start = strpos($_FILES['foto']['type'], "/");
                     $type = substr($_FILES['foto']['type'], ($start + 1));
                     $file_target = $dir . $nrp . "." . $type;
-                    
+
                     $this->m_alumni->hapusFoto($id_alumni);
-                    move_uploaded_file($_FILES['foto']['tmp_name'], $file_target);                   
-                    
-                    $this->m_alumni->updateFoto($id_alumni,$file_target);
+                    move_uploaded_file($_FILES['foto']['tmp_name'], $file_target);
+
+                    $this->m_alumni->updateFoto($id_alumni, $file_target);
                 }
 
                 // Ubah password
                 if ($this->input->post('pwd_baru')) {
-                    $this->m_alumni->updatePassword($id_alumni,$password_baru);
+                    $this->m_alumni->updatePassword($id_alumni, $password_baru);
                 }
 
                 $data['sukses_edit'] = true;
@@ -104,25 +104,109 @@ class Alumni extends CI_Controller {
     }
 
     public function event() {
-        $data['event'] = $this->m_alumni->getListEvent();        
-        
+        $data['event'] = $this->m_alumni->getListEvent();
+
         $this->header(3);
-        $this->load->view('alumni/v_list_event',$data);
+        $this->load->view('alumni/v_list_event', $data);
         $this->footer();
     }
 
     public function detail_event($id) {
-        $data['semua_event'] = $this->m_alumni->getAllEvent(); 
-        $data['event'] = $this->m_alumni->getEvent($id);
-        
-        $this->header(3);
-        $this->load->view('alumni/v_detil_event',$data);
-        $this->footer();
+        if ($id != "") {
+            $data['semua_event'] = $this->m_alumni->getAllEvent();
+            $data['event'] = $this->m_alumni->getEvent($id);
+            if (strtotime($data['event']->tanggal_event) > strtotime(date("y-m-d"))) {
+                $this->header(3);
+                $this->load->view('alumni/v_detil_event', $data);
+                $this->footer();
+            } else {
+                redirect(base_url());
+            }
+        } else {
+            redirect(base_url());
+        }
     }
 
+    public function daftar_event($id) {
+        if ($id != "") {
+            $data['semua_event'] = $this->m_alumni->getAllEvent();
+            $data['event'] = $this->m_alumni->getEvent($id);
+
+            $this->header(3);
+            $this->load->view('alumni/v_daftar_event', $data);
+            $this->footer();
+        } else {
+            redirect(base_url());
+        }
+    }
+
+    public function daftar() {
+        if ($this->input->post('daftar')) {
+            $id_alumni = $this->session->userdata('id_alumni');
+            $email = $this->session->userdata('email');
+            $id_event = $this->input->post('id_event');
+            $dewasa = $this->input->post('dewasa_ikut');
+            $anak = $this->input->post('anak_ikut');
+            $tgl_tiba = $this->input->post('tgl_tiba');
+            $noreg="";            
+            
+            $event = $this->m_alumni->getEvent($id_event);
+            $pieces = explode(" ", $event->nama_event);            
+            $max = sizeof($pieces);
+            for ($i = 0; $i < $max; $i++) {
+                $noreg = $noreg . $pieces[$i][0];
+            }
+            
+            $jumlah_peserta = $this->m_alumni->getJumlahPesertaEvent($id_event);
+            $jumlah_peserta++;
+            $jumlah_peserta+=10000;
+            
+            $noreg = $noreg.$jumlah_peserta;
+            $noreg = strtoupper($noreg);
+            
+            $nama_lengkap = $this->session->userdata('nama_alumni');
+            $this->sendMail($email, $nama_lengkap);
+            $this->m_alumni->tambahPesertaEvent($id_alumni,$id_event,$noreg,$dewasa,$anak,$tgl_tiba);
+            
+            echo "<script type='text/javascript'>alert('Selamat anda berhasil mendaftar! Cek email untuk informasi lebih lanjut.');
+		window.location.href='" . base_url() . "alumni/history';
+		</script>";
+        } else {
+            redirect(base_url() . "alumni/event");
+        }
+    }
+
+    private function sendMail($email,$nama_lengkap) {
+
+        $config = Array(
+            'protocol' => 'smtp',
+            'smtp_host' => 'ssl://smtp.mail.yahoo.com',
+            'smtp_port' => 465,
+            'smtp_user' => 'fadhilah.ilmi@yahoo.com',
+            'smtp_pass' => 'Rahmanda10',
+            'mailtype' => 'html',
+            'charset' => 'iso-8859-1'
+        );
+        $this->load->library('email', $config);
+        $this->email->set_newline("\r\n");
+        $this->email->from('fadhilah.ilmi@yahoo.com', 'Fadhilah');
+        $this->email->to($email);
+
+        $this->email->subject('Pendaftaran Event');
+        $this->email->message("Hi $nama_lengkap,<br><br>Terima Kasih telah mendaftarkan diri pada event alumni IPB 1985. Apabila event berbayar, segera lakukan pembayaran melalui ...... kemudian konfirmasi pembayaran melalui tautan dibawah ini<br><br><a href='" . base_url() . "alumni/history/'>Konfirmasi</a><br><br>Apabila ada pertanyaan silahkan hubungi admin@admin.com");
+
+        $this->email->send();
+
+        //echo $this->email->print_debugger();
+    }
+    
     public function history() {
+        $id_alumni = $this->session->userdata('id_alumni');
+        $data['history'] = $this->m_alumni->getHistoryEvent($id_event);;
+        
+        
         $this->header(4);
-        $this->load->view('alumni/v_history');
+        $this->load->view('alumni/v_history', $data);
         $this->footer();
     }
 

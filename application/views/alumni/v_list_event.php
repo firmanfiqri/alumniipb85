@@ -7,19 +7,19 @@
             <?php foreach ($event as $row) { ?>
                 <figure>
                     <figcaption>
-                        <strong><?php echo $row->nama_event;?></strong>
-                        <span><?php echo substr($row->deskripsi, 0, 100) ."...";?></span>
-                        <?php 
-                        $nama_bulan = array("", "Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember");
+                        <strong><?php echo $row->nama_event; ?></strong>
+                        <span><?php echo substr($row->deskripsi, 0, 100) . "..."; ?></span>
+                        <?php
+                        $nama_bulan = array("00" => "", "01" => "Januari", "02" => "Februari", "03" => "Maret", "04" => "April", "05" => "Mei", "06" => "Juni", "07" => "Juli", "08" => "Agustus", "09" => "September", "10" => "Oktober", "11" => "November", "12" => "Desember");
                         $tanggal = date("d", strtotime($row->tanggal_event));
-                        $bulan = date("m", strtotime($row->tanggal_event));                        
+                        $bulan = date("m", strtotime($row->tanggal_event));
                         $tahun = date("Y", strtotime($row->tanggal_event));
                         ?>
-                        <em><?php echo $tanggal . " " . $nama_bulan[$bulan]." ". $tahun;?></em>
-                        <a href="<?php echo base_url(); ?>alumni/detail_event/<?php echo $row->id_event;?>" class="opener"></a>
+                        <em><?php echo $tanggal . " " . $nama_bulan[$bulan] . " " . $tahun; ?></em>
+                        <a href="<?php echo base_url(); ?>alumni/detail_event/<?php echo $row->id_event; ?>" class="opener"></a>
                     </figcaption>
 
-                    <a href="<?php echo base_url(); ?>alumni/detail_event/<?php echo $row->id_event;?>"  class="thumb"><img src="<?php echo base_url().$row->foto_event;?>" alt="Alt text" /></a>
+                    <a href="<?php echo base_url(); ?>alumni/detail_event/<?php echo $row->id_event; ?>"  class="thumb"><img src="<?php echo base_url() . $row->foto_event; ?>" alt="Alt text" /></a>
                 </figure>
             <?php } ?>
         </div>
