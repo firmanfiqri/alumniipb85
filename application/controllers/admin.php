@@ -183,8 +183,13 @@ class Admin extends CI_Controller {
 		}
 		
 		$ambilquery = $this->m_admin->getEvent($id_event)->row();
-        $data['nama_event'] = $ambilquery->nama_event;
-        $data['id_event'] = $ambilquery->id_event;
+        if(!$ambilquery){
+			$data['nama_event'] = "";
+			$data['id_event'] = 0;
+		}else{
+			$data['nama_event'] = $ambilquery->nama_event;
+			$data['id_event'] = $ambilquery->id_event;
+		}
         
 		$data['queryevent'] = $this->m_admin->getAllEvent()->result();
 		$data['querypembayaran'] = $this->m_admin->getAllPembayaran($id_event)->result();
