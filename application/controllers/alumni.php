@@ -253,23 +253,28 @@ class Alumni extends CI_Controller {
                 $atas_nama = $this->input->post('atas_nama');
                 $jumlah_transfer = $this->input->post('jumlah_transfer');
                 $tgl_transfer = $this->input->post('tgl_transfer');
-                $foto = $_FILES['foto'];
 
-                //pindah foto
-                $dir = './assets/foto/bukti_pembayaran/';
-                if (!file_exists($dir)) {
-                    mkdir($dir);
+                $this->m_alumni->setKonfirmasiPembayaran($id_peserta_event, $bank_kami, $atas_nama, $jumlah_transfer, $tgl_transfer);
+                
+                if ($_FILES['foto']['name'] != "") {
+                    $foto = $_FILES['foto'];
+
+                    //pindah foto
+                    $dir = './assets/foto/bukti_pembayaran/';
+                    if (!file_exists($dir)) {
+                        mkdir($dir);
+                    }
+
+                    $start = strpos($_FILES['foto']['type'], "/");
+                    $type = substr($_FILES['foto']['type'], ($start + 1));
+                    $file_target = $dir . $noreg . "." . $type;
+
+                    move_uploaded_file($_FILES['foto']['tmp_name'], $file_target);
+
+                    $file_target = substr($file_target, 1);
+
+                    $this->m_alumni->setBuktiPembayaran($id_peserta_event, $file_target);
                 }
-
-                $start = strpos($_FILES['foto']['type'], "/");
-                $type = substr($_FILES['foto']['type'], ($start + 1));
-                $file_target = $dir . $noreg . "." . $type;
-
-                move_uploaded_file($_FILES['foto']['tmp_name'], $file_target);
-
-                $file_target = substr($file_target, 1);
-
-                $this->m_alumni->setKonfirmasiPembayaran($id_peserta_event, $bank_kami, $atas_nama, $jumlah_transfer, $tgl_transfer, $file_target);
 
                 echo "<script type='text/javascript'>alert('Terima kasih telah melakukan konfirmasi pembayaran.');
 		window.location.href='" . base_url() . "alumni/history';

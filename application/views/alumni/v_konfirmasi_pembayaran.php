@@ -64,7 +64,7 @@
                         
                         <tr>
                             <td>Bukti Pembayaran</td>
-                            <td><input type="file" id="foto" onchange="foto_change()" name="foto" accept="image/*" required=""><br>Maks 100KB</td>
+                            <td><input type="file" id="foto" onchange="foto_change()" name="foto" accept="image/*" ><br>Maks 100KB</td>
                         </tr>
                         <tr>
                             <td></td>                            
