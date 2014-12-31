@@ -12,11 +12,13 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/alumniipb85/application/views/v_profile.php</file>
-            <file>file:/C:/xampp/htdocs/alumniipb85/application/views/v_contoh.php</file>
-            <file>file:/C:/xampp/htdocs/alumniipb85/application/views/layout/header.php</file>
-            <file>file:/C:/xampp/htdocs/alumniipb85/application/views/layout/footer.php</file>
-            <file>file:/C:/xampp/htdocs/alumniipb85/application/views/v_history.php</file>
+            <file>file:/C:/xampp/htdocs/alumniipb85/application/models/m_login.php</file>
+            <file>file:/C:/xampp/htdocs/alumniipb85/application/models/m_daftar.php</file>
+            <file>file:/C:/xampp/htdocs/alumniipb85/application/controllers/admin.php</file>
+            <file>file:/C:/xampp/htdocs/alumniipb85/application/controllers/aktivasi.php</file>
+            <file>file:/C:/xampp/htdocs/alumniipb85/application/controllers/home.php</file>
+            <file>file:/C:/xampp/htdocs/alumniipb85/application/controllers/login.php</file>
+            <file>file:/C:/xampp/htdocs/alumniipb85/application/config/config.php</file>
         </group>
     </open-files>
 </project-private>

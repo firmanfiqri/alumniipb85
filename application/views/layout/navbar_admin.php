@@ -1,7 +1,7 @@
 <header class="clearfix">
 
     <div class="wrapper clearfix">
-		<a href="index.html" id="logo"><img  src="<?php echo base_url();?>assets/img/logo.png" alt="Zeni"></a>
+		<a href="<?php echo base_url(); ?>" id="logo"><img  src="<?php echo base_url();?>assets/img/logo.png" alt="Zeni"></a>
 		
 		<nav>
 			<ul id="nav" class="sf-menu">
