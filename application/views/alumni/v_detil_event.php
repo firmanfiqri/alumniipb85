@@ -25,6 +25,12 @@
                     <div class="post-content"><strong>Biaya : </strong><?php echo $event->biaya; ?></div>
                 <?php } ?>                
                 <div class="post-content"><strong>Keterangan : </strong><?php echo $event->keterangan; ?></div>
+                <div class="post-content">
+                    <h4>Prosedur Pendaftaran</h4>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                
+                </div>
+                
                 <div class="page-navigation clearfix">
                     <div class="nav-previous">
                         <a href="<?php echo base_url(); ?>alumni/daftar_event/<?php echo $event->id_event;?>">Daftar</a> 

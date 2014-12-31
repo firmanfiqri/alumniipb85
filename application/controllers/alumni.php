@@ -208,7 +208,7 @@ class Alumni extends CI_Controller {
         $this->email->to($email);
 
         $this->email->subject('Pendaftaran Event');
-        $this->email->message("Hi $nama_lengkap,<br><br>Terima Kasih telah mendaftarkan diri pada event alumni IPB 1985. Apabila event berbayar, segera lakukan pembayaran melalui ...... kemudian konfirmasi pembayaran melalui tautan dibawah ini<br><br><a href='" . base_url() . "alumni/history/'>Konfirmasi</a><br><br>Apabila ada pertanyaan silahkan hubungi admin@admin.com");
+        $this->email->message("Hi $nama_lengkap,<br><br>Terima Kasih telah mendaftarkan diri pada event alumni IPB 1985. <br>Apabila event berbayar, segera lakukan pembayaran melalui ...... kemudian konfirmasi pembayaran melalui tautan dibawah ini<br><br><a href='" . base_url() . "alumni/history/'>Konfirmasi</a><br><br>Apabila ada pertanyaan silahkan hubungi admin@admin.com");
 
         $this->email->send();
 
