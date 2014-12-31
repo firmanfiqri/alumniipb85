@@ -131,12 +131,15 @@ class Alumni extends CI_Controller {
         if ($id != "") {
             $data['semua_event'] = $this->m_alumni->getAllEvent();
             $data['event'] = $this->m_alumni->getEvent($id);
-
-            $this->header(3);
-            $this->load->view('alumni/v_daftar_event', $data);
-            $this->footer();
+            if (strtotime($data['event']->tanggal_event) > strtotime(date("y-m-d"))) {
+                $this->header(3);
+                $this->load->view('alumni/v_daftar_event', $data);
+                $this->footer();
+            } else {
+                redirect(base_url() . "alumni/event");
+            }
         } else {
-            redirect(base_url());
+            redirect(base_url() . "alumni/event");
         }
     }
 
@@ -148,26 +151,26 @@ class Alumni extends CI_Controller {
             $dewasa = $this->input->post('dewasa_ikut');
             $anak = $this->input->post('anak_ikut');
             $tgl_tiba = $this->input->post('tgl_tiba');
-            $noreg="";            
-            
+            $noreg = "";
+
             $event = $this->m_alumni->getEvent($id_event);
-            $pieces = explode(" ", $event->nama_event);            
+            $pieces = explode(" ", $event->nama_event);
             $max = sizeof($pieces);
             for ($i = 0; $i < $max; $i++) {
                 $noreg = $noreg . $pieces[$i][0];
             }
-            
+
             $jumlah_peserta = $this->m_alumni->getJumlahPesertaEvent($id_event);
             $jumlah_peserta++;
             $jumlah_peserta+=10000;
-            
-            $noreg = $noreg.$jumlah_peserta;
+
+            $noreg = $noreg . $jumlah_peserta;
             $noreg = strtoupper($noreg);
-            
+
             $nama_lengkap = $this->session->userdata('nama_alumni');
             $this->sendMail($email, $nama_lengkap);
-            $this->m_alumni->tambahPesertaEvent($id_alumni,$id_event,$noreg,$dewasa,$anak,$tgl_tiba);
-            
+            $this->m_alumni->tambahPesertaEvent($id_alumni, $id_event, $noreg, $dewasa, $anak, $tgl_tiba);
+
             echo "<script type='text/javascript'>alert('Selamat anda berhasil mendaftar! Cek email untuk informasi lebih lanjut.');
 		window.location.href='" . base_url() . "alumni/history';
 		</script>";
@@ -176,7 +179,7 @@ class Alumni extends CI_Controller {
         }
     }
 
-    private function sendMail($email,$nama_lengkap) {
+    private function sendMail($email, $nama_lengkap) {
 
         $config = Array(
             'protocol' => 'smtp',
@@ -199,15 +202,65 @@ class Alumni extends CI_Controller {
 
         //echo $this->email->print_debugger();
     }
-    
+
     public function history() {
         $id_alumni = $this->session->userdata('id_alumni');
-        $data['history'] = $this->m_alumni->getHistoryEvent($id_event);;
-        
-        
+        $data['history'] = $this->m_alumni->getHistoryEvent($id_alumni);
+        ;
+
         $this->header(4);
         $this->load->view('alumni/v_history', $data);
         $this->footer();
+    }
+
+    public function konfirmasi($noreg) {
+        if ($noreg != "") {
+            if ($this->m_alumni->cekNoreg($noreg) == 1) {
+                $this->header(4);
+                $data['peserta'] = $this->m_alumni->getDetailPeserta($noreg);
+                $data['semua_event'] = $this->m_alumni->getAllEvent();
+                $this->load->view('alumni/v_konfirmasi_pembayaran', $data);
+                $this->footer();
+            } else {
+                redirect(base_url() . "alumni/history");
+            }
+        } else {
+            redirect(base_url() . "alumni/history");
+        }
+    }
+
+    public function submit_konfirmasi() {
+        if ($this->input->post('konfirmasi')) {
+            $id_peserta_event = $this->input->post('id_peserta_event');
+            $noreg = $this->input->post('noreg');
+            $bank_kami = $this->input->post('bank_kami');
+            $atas_nama = $this->input->post('atas_nama');
+            $jumlah_transfer = $this->input->post('jumlah_transfer');
+            $tgl_transfer = $this->input->post('tgl_transfer');
+            $foto = $_FILES['foto'];
+
+            //pindah foto
+            $dir = './assets/foto/bukti_pembayaran/';
+            if (!file_exists($dir)) {
+                mkdir($dir);
+            }
+
+            $start = strpos($_FILES['foto']['type'], "/");
+            $type = substr($_FILES['foto']['type'], ($start + 1));
+            $file_target = $dir . $noreg . "." . $type;
+            
+            move_uploaded_file($_FILES['foto']['tmp_name'], $file_target);
+            
+            $file_target = substr($file_target, 1);
+            
+            $this->m_alumni->setKonfirmasiPembayaran($id_peserta_event,$bank_kami,$atas_nama,$jumlah_transfer,$tgl_transfer,$file_target);
+            
+            echo "<script type='text/javascript'>alert('Terima kasih telah melakukan konfirmasi pembayaran.');
+		window.location.href='" . base_url() . "alumni/history';
+		</script>";
+        } else {
+            redirect(base_url() . "alumni/history");
+        }
     }
 
 }

@@ -7,7 +7,7 @@
 <!-- MAIN -->
 <div id="main">	
     <div class="wrapper clearfix">
-
+        
         <h2 class="page-heading"><span>TENTANG KAMI</span></h2>	
 
         <!-- project content -->
@@ -17,133 +17,38 @@
                     <tr>
                         <th>No</th>
                         <th>Nama Event</th>
-                        <th>Tanggal Event</th>
                         <th>Tanggal Registrasi</th>
+                        <th>Keluarga Ikut</th>                        
                         <th>Status Pembayaran</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>               
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Tiger Nixon</td>
-                        <td>System Architect</td>
-                        <td>Edinburgh</td>
-                        <td>61</td>
-                        <td><button class="button button-sp">Konfirmasi</button></td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Tiger Nixon</td>
-                        <td>System Architect</td>
-                        <td>Edinburgh</td>
-                        <td>61</td>
-                        <td><button class="button button-sp">Konfirmasi</button></td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Tiger Nixon</td>
-                        <td>System Architect</td>
-                        <td>Edinburgh</td>
-                        <td>61</td>
-                        <td><button class="button button-sp">Konfirmasi</button></td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Tiger Nixon</td>
-                        <td>System Architect</td>
-                        <td>Edinburgh</td>
-                        <td>61</td>
-                        <td><button class="button button-sp">Konfirmasi</button></td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Tiger Nixon</td>
-                        <td>System Architect</td>
-                        <td>Edinburgh</td>
-                        <td>61</td>
-                        <td><button class="button button-sp">Konfirmasi</button></td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Tiger Nixon</td>
-                        <td>System Architect</td>
-                        <td>Edinburgh</td>
-                        <td>61</td>
-                        <td><button class="button button-sp">Konfirmasi</button></td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Garrett Winters</td>
-                        <td>Accountant</td>
-                        <td>Tokyo</td>
-                        <td>63</td>
-                        <td><button class="button button-sp">Konfirmasi</button></td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Ashton Cox</td>
-                        <td>Junior Technical Author</td>
-                        <td>San Francisco</td>
-                        <td>66</td>
-                        <td><button class="button button-sp">Konfirmasi</button></td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Cedric Kelly</td>
-                        <td>Senior Javascript Developer</td>
-                        <td>Edinburgh</td>
-                        <td>22</td>
-                        <td><button class="button button-sp">Konfirmasi</button></td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Airi Satou</td>
-                        <td>Accountant</td>
-                        <td>Tokyo</td>
-                        <td>33</td>
-                        <td><button class="button button-sp">Konfirmasi</button></td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Tiger Nixon</td>
-                        <td>System Architect</td>
-                        <td>Edinburgh</td>
-                        <td>61</td>
-                        <td><button class="button button-sp">Konfirmasi</button></td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Garrett Winters</td>
-                        <td>Accountant</td>
-                        <td>Tokyo</td>
-                        <td>63</td>
-                        <td><button class="button button-sp">Konfirmasi</button></td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Ashton Cox</td>
-                        <td>Junior Technical Author</td>
-                        <td>San Francisco</td>
-                        <td>66</td>
-                        <td><button class="button button-sp">Konfirmasi</button></td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Cedric Kelly</td>
-                        <td>Senior Javascript Developer</td>
-                        <td>Edinburgh</td>
-                        <td>22</td>
-                        <td><button class="button button-sp">Konfirmasi</button></td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Airi Satou</td>
-                        <td>Accountant</td>
-                        <td>Tokyo</td>
-                        <td>33</td>
-                        <td><button class="button button-sp">Konfirmasi</button></td>
-                    </tr>
+                    <?php $no = 1;?>
+                    <?php foreach($history as $row){ ?>
+                        <tr>
+                            <td><?php echo $no;?></td>
+                            <td><?php echo $row->nama_event;?></td>
+                            <td><?php echo $row->tanggal_daftar;?></td>
+                            <td><?php echo $row->jumlah_dewasa;?> dewasa/<?php echo $row->jumlah_anak;?> anak</td>
+                            <?php if($row->status_pembayaran == 0){?>
+                                <td>Belum Konfimasi</td>
+                            <?php }else if($row->status_pembayaran == 1){ ?>
+                                <td>Menunggu Verifikasi Admin</td>
+                            <?php }else if($row->status_pembayaran == 2){ ?>
+                                <td>OK</td>
+                            <?php } ?>
+                            
+                            <?php if($row->status_pembayaran == 0){?>
+                                <td><a href="<?php echo base_url();?>alumni/konfirmasi/<?php echo $row->no_registrasi;?>"><button class="button button-sp">Konfirmasi</button></a></td>
+                            <?php }else{ ?>
+                                <td></td>
+                            <?php } ?>
+                            
+                            <?php $no++; ?>
+                        </tr>
+                    <?php } ?>
+                    
                 </tbody>
             </table>
             <!-- ends fullwidth content -->

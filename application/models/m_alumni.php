@@ -32,7 +32,7 @@ class m_alumni extends CI_Model {
     }
 
     public function updateDataAlumni($id, $nl, $np, $jk, $nrp, $kel, $prodi, $hp, $email, $profesi, $rumah, $kantor, $bidang) {
-        $query = $this->db->query("update alumni a set a.nama_alumni = '$nl', a.nama_panggilan = '$np', a.jenis_kelamin='$jk', a.nrp='$nrp', a.kelompok='$kel', a.id_prodi='$prodi', a.alamat_rumah='$rumah', a.alamat_kantor = '$kantor', a.no_hp='$hp', a.email='$email', a.profesi = '$profesi', a.bidang_keahlian = '$bidang' where a.id_alumni = '$id'");
+        $query = $this->db->query("update alumni a set a.nama_alumni = '$nl', a.nama_panggilan = '$np', a.jenis_kelamin='$jk', a.nrp='$nrp', a.kelompok='$kel', a.id_prodi='$prodi', a.alamat_rumah='$rumah', a.alamat_kantor = '$kantor', a.no_hp='$hp', a.email='$email', a.profesi = '$profesi', a.bidang_keahlian = '$bidang', a.status = 1 where a.id_alumni = '$id'");
     }
 
     public function hapusFoto($id) {
@@ -79,8 +79,22 @@ class m_alumni extends CI_Model {
     }
     
     public function getHistoryEvent($id_alumni){
-        $query = $this->db->query("select * from peserta_event where id_alumni = $id_alumni");
+        $query = $this->db->query("select * from peserta_event p, event e where p.id_event=e.id_event and p.id_alumni = $id_alumni");
         return $query->result();
+    }
+    
+    public function cekNoreg($noreg){
+        $query = $this->db->query("select * from peserta_event p where p.no_registrasi = '$noreg'");
+        return $query->num_rows();
+    }
+    
+    public function getDetailPeserta($noreg){
+        $query = $this->db->query("select * from peserta_event p, event e where p.id_event=e.id_event and p.no_registrasi = '$noreg'");
+        return $query->row();
+    }
+    
+    public function setKonfirmasiPembayaran($id_peserta_event,$bank_kami,$atas_nama,$jumlah_transfer,$tgl_transfer,$file_target){
+        $query = $this->db->query("update peserta_event p set p.bank_kami = '$bank_kami', p.jumlah_transfer='$jumlah_transfer', p.atas_nama='$atas_nama',p.tanggal_transfer='$tgl_transfer',p.bukti_foto='$file_target',p.status_pembayaran='1' where p.id_peserta_event='$id_peserta_event'");
     }
     
 
