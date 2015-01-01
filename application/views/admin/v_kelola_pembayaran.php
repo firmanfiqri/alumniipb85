@@ -5,7 +5,7 @@
 		document.getElementById("no_registrasi").innerHTML = no_registrasi;
 		document.getElementById("bank_kami").innerHTML = bank_kami;
 		document.getElementById("atas_nama").innerHTML = atas_nama;
-		document.getElementById("jumlah_transfer").innerHTML = jumlah_transfer;
+		document.getElementById("jumlah_transfer").innerHTML = "Rp. "+jumlah_transfer;
 		document.getElementById("tanggal_transfer").innerHTML = tanggal_transfer;
 		if(bukti_foto == ""){
 			document.getElementById("bukti_foto").src = "<?php echo base_url(); ?>assets/img/dummy_event.png";
@@ -30,6 +30,25 @@
     });
 	
 </script>
+
+<?php
+	function nominalisasi($biaya) {
+		$harga = $biaya;
+		
+		$jml = strlen($harga);
+		$rupiah = "";
+		
+		while($jml > 3){
+			$rupiah = "." . substr($harga,-3) . $rupiah;
+			$l = strlen($harga) - 3;
+			$harga = substr($harga,0,$l);
+			$jml = strlen($harga);
+		}
+		$rupiah = $harga . $rupiah . ",-";
+		
+		return $rupiah;
+	}
+?>
 
 <!-- MAIN -->
 <div id="main">	
@@ -84,7 +103,10 @@
 					<tr>
                         <td><?php echo $no,'.';?></td>
 						<td><?php echo $row->no_registrasi;?></td>
-						<td><?php echo $row->jumlah_transfer;?></td>
+						<td><?php
+						$biaya = nominalisasi($row->jumlah_transfer);
+						echo "Rp. ".$biaya;
+						?></td>
 						<td><?php
 						if($row->status_pembayaran == 2){
 							echo "Sudah konfirmasi";
@@ -93,7 +115,7 @@
 						}
 						?></td>
 			            <td>
-						<a href="#modal"><button onclick="buka_konfirmasi('<?php echo $row->id_peserta_event;?>','<?php echo $row->no_registrasi;?>','<?php echo $row->bank_kami;?>','<?php echo $row->atas_nama;?>','<?php echo $row->jumlah_transfer;?>','<?php echo $row->tanggal_transfer;?>','<?php echo $row->bukti_foto;?>','<?php echo $row->tanggal_daftar;?>','<?php echo $row->jumlah_dewasa;?>','<?php echo $row->jumlah_anak;?>','<?php echo $row->tanggal_tiba;?>','<?php echo $row->status_pembayaran;?>')" style="height:30px; width:56px;">Detail</button></a>
+						<a href="#modal"><button onclick="buka_konfirmasi('<?php echo $row->id_peserta_event;?>','<?php echo $row->no_registrasi;?>','<?php echo $row->bank_kami;?>','<?php echo $row->atas_nama;?>','<?php echo $biaya;?>','<?php echo $row->tanggal_transfer;?>','<?php echo $row->bukti_foto;?>','<?php echo $row->tanggal_daftar;?>','<?php echo $row->jumlah_dewasa;?>','<?php echo $row->jumlah_anak;?>','<?php echo $row->tanggal_tiba;?>','<?php echo $row->status_pembayaran;?>')" style="height:30px; width:56px;">Detail</button></a>
 						</td>
                     </tr>
                     <?php 

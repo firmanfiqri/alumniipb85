@@ -1,3 +1,22 @@
+<?php
+	function nominalisasi($biaya) {
+		$harga = $biaya;
+		
+		$jml = strlen($harga);
+		$rupiah = "";
+		
+		while($jml > 3){
+			$rupiah = "." . substr($harga,-3) . $rupiah;
+			$l = strlen($harga) - 3;
+			$harga = substr($harga,0,$l);
+			$jml = strlen($harga);
+		}
+		$rupiah = $harga . $rupiah . ",-";
+		
+		return $rupiah;
+	}
+?>
+
 <div id="main">	
     <div class="wrapper clearfix">
 
@@ -22,7 +41,10 @@
                 <?php if ($event->biaya == 0) { ?>
                     <div class="post-content"><strong>Biaya : GRATIS!</strong></div>
                 <?php } else { ?>
-                    <div class="post-content"><strong>Biaya : </strong><?php echo $event->biaya; ?></div>
+                    <div class="post-content"><strong>Biaya : </strong><?php
+						$biaya = nominalisasi($event->biaya);
+						echo "Rp. ".$biaya;
+						?></div>
                 <?php } ?>                
                 <div class="post-content"><strong>Keterangan : </strong><?php echo $event->keterangan; ?></div>
                 <div class="post-content">

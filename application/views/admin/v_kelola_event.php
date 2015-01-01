@@ -57,6 +57,24 @@
 		
     });
 </script>
+<?php
+	function nominalisasi($biaya) {
+		$harga = $biaya;
+		
+		$jml = strlen($harga);
+		$rupiah = "";
+		
+		while($jml > 3){
+			$rupiah = "." . substr($harga,-3) . $rupiah;
+			$l = strlen($harga) - 3;
+			$harga = substr($harga,0,$l);
+			$jml = strlen($harga);
+		}
+		$rupiah = $harga . $rupiah . ",-";
+		
+		return $rupiah;
+	}
+?>
 
 <!-- MAIN -->
 <div id="main">	
@@ -88,7 +106,10 @@
 						<td><?php echo $row->nama_event;?></td>
 						<td><?php echo $row->tanggal_event;?></td>
 						<td><?php echo $row->tempat_event;?></td>
-						<td><?php echo $row->biaya;?></td>
+						<td><?php
+						$biaya = nominalisasi($row->biaya);
+						echo "Rp. ".$biaya;
+						?></td>
 						<td>
 							<a href="<?php echo base_url();?>admin/detail_event/<?php echo $row->id_event;?>"><button style="height:30px; width:56px;">Detail</button></a>
 							<a href="<?php echo base_url();?>admin/lihat_edit_event/<?php echo $row->id_event;?>"><button style="height:30px; width:42px;">Edit</button></a>
