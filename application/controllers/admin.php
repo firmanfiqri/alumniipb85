@@ -47,7 +47,7 @@ class Admin extends CI_Controller {
         $id_alumni = $this->input->post('id_alumni_reset');
 
         $ambilquery = $this->m_admin->getEmailById($id_alumni)->row();
-        $email = $ambilquery->email;
+        $email = md5($ambilquery->email);
 
         $this->m_admin->updatePassword($id_alumni, $email);
 
