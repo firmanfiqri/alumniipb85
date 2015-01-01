@@ -177,7 +177,7 @@ class Alumni extends CI_Controller {
                 $noreg = strtoupper($noreg);
 
                 $nama_lengkap = $this->session->userdata('nama_alumni');
-                $this->sendMail($email, $nama_lengkap);
+                $this->sendMail($email, $nama_lengkap, $event->nama_event);
                 $this->m_alumni->tambahPesertaEvent($id_alumni, $id_event, $noreg, $dewasa, $anak, $tgl_tiba);
 
                 echo "<script type='text/javascript'>alert('Selamat anda berhasil mendaftar! Cek email untuk informasi lebih lanjut.');
@@ -191,7 +191,7 @@ class Alumni extends CI_Controller {
         }
     }
 
-    private function sendMail($email, $nama_lengkap) {
+    private function sendMail($email, $nama_lengkap, $nama_event) {
 
         $config = Array(
             'protocol' => 'smtp',
@@ -208,7 +208,7 @@ class Alumni extends CI_Controller {
         $this->email->to($email);
 
         $this->email->subject('Pendaftaran Event');
-        $this->email->message("Hi $nama_lengkap,<br><br>Terima Kasih telah mendaftarkan diri pada event alumni IPB 1985. <br>Apabila event berbayar, segera lakukan pembayaran melalui ...... kemudian konfirmasi pembayaran melalui tautan dibawah ini<br><br><a href='" . base_url() . "alumni/history/'>Konfirmasi</a><br><br>Apabila ada pertanyaan silahkan hubungi admin@admin.com");
+        $this->email->message("Hi $nama_lengkap,<br><br>Terima Kasih telah mendaftarkan diri pada event $nama_event. <br>Segera lakukan pembayaran ke rekening BCA 0987654321 a/n Fadhilah kemudian konfirmasi pembayaran melalui tautan dibawah ini<br><br><a href='" . base_url() . "alumni/history/'>Konfirmasi</a><br><br>Apabila ada pertanyaan silahkan hubungi admin@admin.com");
 
         $this->email->send();
 
