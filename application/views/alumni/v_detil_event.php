@@ -1,20 +1,21 @@
 <?php
-	function nominalisasi($biaya) {
-		$harga = $biaya;
-		
-		$jml = strlen($harga);
-		$rupiah = "";
-		
-		while($jml > 3){
-			$rupiah = "." . substr($harga,-3) . $rupiah;
-			$l = strlen($harga) - 3;
-			$harga = substr($harga,0,$l);
-			$jml = strlen($harga);
-		}
-		$rupiah = $harga . $rupiah . ",-";
-		
-		return $rupiah;
-	}
+
+function nominalisasi($biaya) {
+    $harga = $biaya;
+
+    $jml = strlen($harga);
+    $rupiah = "";
+
+    while ($jml > 3) {
+        $rupiah = "." . substr($harga, -3) . $rupiah;
+        $l = strlen($harga) - 3;
+        $harga = substr($harga, 0, $l);
+        $jml = strlen($harga);
+    }
+    $rupiah = $harga . $rupiah . ",-";
+
+    return $rupiah;
+}
 ?>
 
 <div id="main">	
@@ -40,25 +41,36 @@
                 <div class="post-content"><strong>Lokasi : </strong><?php echo $event->tempat_event; ?></div>
                 <?php if ($event->biaya == 0) { ?>
                     <div class="post-content"><strong>Biaya : GRATIS!</strong></div>
-                <?php } else { ?>
+                    <?php } else { ?>
                     <div class="post-content"><strong>Biaya : </strong><?php
-						$biaya = nominalisasi($event->biaya);
-						echo "Rp. ".$biaya;
-						?></div>
-                <?php } ?>                
+                        $biaya = nominalisasi($event->biaya);
+                        echo "Rp. " . $biaya;
+                        ?></div>
+<?php } ?>                
                 <div class="post-content"><strong>Keterangan : </strong><?php echo $event->keterangan; ?></div>
                 <div class="post-content">
-                    <h4>Prosedur Pendaftaran</h4>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-
+                    <h4>Prosedur Pendaftaran</h4><br>
+<?php if ($event->biaya > 0) { ?>
+                        <lu>
+                            <li>Klik tombol daftar yang ada dibawah</li>
+                            <li>Lengkapi isian yang disediakan</li>
+                            <li>Lakukan pembayaran ke rekening BCA 0987654321 a/n Fadhilah</li>
+                            <li>Pastikan jumlah yang ditransfer sama dengan biaya event</li>
+                            <li>lakukan konfirmasi pada halaman <a href="<?php echo base_url(); ?>alumni/history">history</a></li>
+                            <li>Tunggu verifikasi dari admin</li>
+                            <li>Selesai</li>
+                        </lu>
+                    <?php } else { ?>
+                    Silahkan langsung datang ke lokasi acara.
+                <?php } ?>
                 </div>
-                <?php if ($event->biaya > 0) { ?>
+<?php if ($event->biaya > 0) { ?>
                     <div class="page-navigation clearfix">
                         <div class="nav-previous">
                             <a href="<?php echo base_url(); ?>alumni/daftar_event/<?php echo $event->id_event; ?>">Daftar</a> 
                         </div>
                     </div>
-                <?php } ?>
+<?php } ?>
                 <br>
                 <div class="meta">
                     <div class="user"><a href="#">By admin</a></div>
@@ -70,7 +82,7 @@
         <!-- ENDS posts list -->
 
         <!-- sidebar -->
-        <aside id="sidebar" style="background: url(<?php echo base_url();?>assets/img/daftar_kuning_1.png) top left repeat-y; background-size: 100% 100%;">
+        <aside id="sidebar" style="background: url(<?php echo base_url(); ?>assets/img/daftar_kuning_1.png) top left repeat-y; background-size: 100% 100%;">
 
             <ul>
                 <?php
