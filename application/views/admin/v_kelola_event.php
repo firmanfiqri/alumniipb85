@@ -65,7 +65,7 @@
         <h2 class="page-heading"><span>DATA EVENT</span></h2>	
 
         <!-- project content -->
-        <div id="project-content" class="clearfix" style="overflow-x: scroll;">
+        <div id="project-content" class="clearfix" style="overflow-x: scroll; margin-top:50px;">
             <table id="myTable" class="display" cellspacing="0" width="100%">
                 <thead>
                     <tr>

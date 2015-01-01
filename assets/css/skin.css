@@ -31,7 +31,7 @@ body {-webkit-tap-highlight-color: #ea4c88;}
 
 /* HEADER ------------------------------------------------------------*/
 
-header{ background: #444 url(../img/header.png) bottom left repeat-x; }
+header{ background: steelblue url(../img/coba.png) bottom left repeat-x; background-size: 100% 100%; }
 
 
 /* WIDGETS------------------------------------------------*/
@@ -164,7 +164,7 @@ article .meta{
 
 /* SLIDER ------------------------------------------------------------*/
 
-#slider-holder #headline{ background: #e2e0d7; }
+#slider-holder #headline{ background: url(../img/daftar_kuning.png) top left repeat-y; background-size: 100% 100%; }
 
 
 
@@ -172,7 +172,7 @@ article .meta{
 
 
 footer .wrapper{
-	background: url(../img/footer.png) repeat-x top center;
+	background: url(../img/footer_edit.png) repeat-x top center;
 }
 
 .footer-bottom{

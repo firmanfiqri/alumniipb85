@@ -48,7 +48,7 @@
         <!-- ENDS posts list -->
 
         <!-- sidebar -->
-        <aside id="sidebar">
+        <aside id="sidebar" style="background: url(<?php echo base_url();?>assets/img/daftar_kuning_1.png) top left repeat-y; background-size: 100% 100%;">
 
             <ul>
                 <?php

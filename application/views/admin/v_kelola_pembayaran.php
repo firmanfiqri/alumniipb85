@@ -1,5 +1,5 @@
 <script>
-    function buka_konfirmasi(id_peserta_event,no_registrasi,bank_kami,atas_nama,jumlah_transfer,tanggal_transfer,bukti_foto,tanggal_daftar,jumlah_dewasa,jumlah_anak,tanggal_tiba){
+    function buka_konfirmasi(id_peserta_event,no_registrasi,bank_kami,atas_nama,jumlah_transfer,tanggal_transfer,bukti_foto,tanggal_daftar,jumlah_dewasa,jumlah_anak,tanggal_tiba,status_pembayaran){
 		$('#modal').show();
 		document.getElementById("id_peserta_event").value = id_peserta_event;
 		document.getElementById("no_registrasi").innerHTML = no_registrasi;
@@ -7,13 +7,21 @@
 		document.getElementById("atas_nama").innerHTML = atas_nama;
 		document.getElementById("jumlah_transfer").innerHTML = jumlah_transfer;
 		document.getElementById("tanggal_transfer").innerHTML = tanggal_transfer;
-		document.getElementById("bukti_foto").src = "<?php echo base_url(); ?>"+bukti_foto;
+		if(bukti_foto == ""){
+			document.getElementById("bukti_foto").src = "<?php echo base_url(); ?>assets/img/dummy_event.png";
+		}else{
+			document.getElementById("bukti_foto").src = "<?php echo base_url(); ?>"+bukti_foto;
+		}
 		document.getElementById("tanggal_daftar").innerHTML = tanggal_daftar;
 		document.getElementById("jumlah_dewasa").innerHTML = jumlah_dewasa;
 		document.getElementById("jumlah_anak").innerHTML = jumlah_anak;
 		document.getElementById("tanggal_tiba").innerHTML = tanggal_tiba;
 		
-		//alert(id_peserta_event);
+		if(status_pembayaran == 2){
+			$('#submit_konfirmasi').hide();
+		}else{
+			$('#submit_konfirmasi').show();
+		}
 		
 	}
 	$(document).ready(function() {
@@ -85,7 +93,7 @@
 						}
 						?></td>
 			            <td>
-						<a href="#modal"><button onclick="buka_konfirmasi('<?php echo $row->id_peserta_event;?>','<?php echo $row->no_registrasi;?>','<?php echo $row->bank_kami;?>','<?php echo $row->atas_nama;?>','<?php echo $row->jumlah_transfer;?>','<?php echo $row->tanggal_transfer;?>','<?php echo $row->bukti_foto;?>','<?php echo $row->tanggal_daftar;?>','<?php echo $row->jumlah_dewasa;?>','<?php echo $row->jumlah_anak;?>','<?php echo $row->tanggal_tiba;?>')" style="height:30px; width:56px;">Detail</button></a>
+						<a href="#modal"><button onclick="buka_konfirmasi('<?php echo $row->id_peserta_event;?>','<?php echo $row->no_registrasi;?>','<?php echo $row->bank_kami;?>','<?php echo $row->atas_nama;?>','<?php echo $row->jumlah_transfer;?>','<?php echo $row->tanggal_transfer;?>','<?php echo $row->bukti_foto;?>','<?php echo $row->tanggal_daftar;?>','<?php echo $row->jumlah_dewasa;?>','<?php echo $row->jumlah_anak;?>','<?php echo $row->tanggal_tiba;?>','<?php echo $row->status_pembayaran;?>')" style="height:30px; width:56px;">Detail</button></a>
 						</td>
                     </tr>
                     <?php 
@@ -158,8 +166,8 @@
 			<form id="contactForm" action="<?php echo base_url(); ?>admin/konfirmasi_status" method="post" enctype="multipart/form-data">
 				<fieldset>
 					<input name="id_peserta_event" id="id_peserta_event" type="hidden" class="form-poshytip" />
-					<input type="submit" value="Konfirmasi" name="submit" id="submit" style="margin-top:0px; width:82px; height:40px;" />
-					<a href="#"><input type="button" value="Keluar" name="submit" id="submit" style="width:70px; height:40px;" /></a>
+					<input type="submit" value="Konfirmasi" name="submit" id="submit_konfirmasi" style="margin-top:0px; width:82px; height:40px;" />
+					<a href="#"><input type="button" value="Keluar" name="submit" style="width:70px; height:40px;" /></a>
 				</fieldset>
 			</form>
 		</div>

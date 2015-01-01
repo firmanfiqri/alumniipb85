@@ -22,6 +22,8 @@
                 <h2  class="post-heading"><?php echo $event->nama_event; ?></h2>
                 <div class="post-content"><?php echo $event->deskripsi; ?></div>
                 <div class="meta">
+				<div class="address"> At <a><?php echo $event->tempat_event; ?></a></div>
+				<div class="categories"> On <a><?php echo $event->tanggal_event; ?></a></div>
                 </div>
 
             </article>

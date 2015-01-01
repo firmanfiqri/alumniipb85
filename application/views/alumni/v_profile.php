@@ -165,6 +165,8 @@
                             <input type="password" id="konfirm_pwd" name="konfirm_pwd" value="" style="width:200px; height:15px;">
                         </p>
 						
+						<input class="form_sandi" type="submit" name="edit" value="Simpan" style="height:40px; width:80px;">
+						
 						<p>
                             <strong class="hilang">Nama Lengkap</strong><br/>
                             <span class="data_alumni"><?php echo $data_profile->nama_alumni; ?></span>
@@ -277,22 +279,19 @@
                             <span class="data_alumni"><?php echo $data_profile->bidang_keahlian; ?></span>
                             <textarea name="bidang_keahlian" class="form_alumni" style="width:200px; height:100px;" required><?php echo $data_profile->bidang_keahlian; ?></textarea>
                         </p>
+						<input class="form_alumni" type="submit" name="edit" value="Simpan" style="height:40px; width:80px;">
 						
                     </div>
                 </div>
 
             <div class="page-navigation clearfix">
 
-                    <input class="form_alumni" type="submit" name="edit" value="Simpan">
-                    <input class="form_sandi" type="submit" name="edit" value="Simpan">
-                    <a class="data_alumni" onclick="edit_data()" style="width:95px; margin-left:200px;">Ubah Data Profil</a> 
-					<br />
-                    <a class="data_alumni" onclick="edit_sandi()" style="width:100px; margin-left:200px;">Ubah Kata Sandi</a> 
+                    <a class="data_alumni" onclick="edit_data()" style="width:100px; margin-left:200px;">Ubah Data Profil</a> 
+                    <a class="data_alumni" onclick="edit_sandi()" style="width:100px; margin-left:375px; margin-top:-47px;">Ubah Kata Sandi</a> 
                 <!--ENDS page-navigation -->
 
             </div>
                 <div class="clearfix"></div>
-
             </div>	        	
             <!--  ENDS project content-->
 

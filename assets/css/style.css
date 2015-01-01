@@ -145,18 +145,18 @@ aside{
 
 #top-open{
 	position: absolute;
-	bottom: -42px;
-	right: 0px;
+	bottom: -90px;
+	right: 50px;
 	display: block;
-	width: 42px;
-	height: 42px;
-	background: url(../img/top-open.png) no-repeat 0px 0px ;
+	width: 70px;
+	height: 90px;
+	background: url(../img/login.png) no-repeat 0px 0px ;
+	background-size: 70px 90px;
 	
 	text-indent: -9000px;
 }
 
 #top-open.tab-closed{
-	background-position: -44px 0px;	
 }
 
 /* WIDGET COLS ------------------------------------------------------------*/
@@ -817,13 +817,18 @@ article .meta .user{
 	background: url(../img/icon-user.png) no-repeat;
 }
 
+article .meta .address{
+	background: url(../img/icon-address.png) no-repeat;
+}
+
 article .meta .categories{
 	background: url(../img/icon-tags.png) no-repeat;
 }
 
 article .meta .categories,
 article .meta .comments,
-article .meta .user{
+article .meta .user,
+article .meta .address{
 	background-position: 5px 12px;	
 }
 

@@ -13,7 +13,7 @@
             <h4>Lengkapi data diri untuk mengakses bagian ini.</h4>
         <?php } else { ?>
             <!-- project content -->
-            <div id="project-content" class="clearfix" style="overflow-x:scroll;overflow-y: hidden; height: 500px">
+            <div id="project-content" class="clearfix" style="overflow-x:scroll;overflow-y: hidden; height: 500px; margin-top:50px;">
                 <table id="myTable" class="display" cellspacing="0" width="100%">
                     <thead>
                         <tr>
