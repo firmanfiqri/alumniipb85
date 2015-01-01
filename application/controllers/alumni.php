@@ -8,7 +8,7 @@ class Alumni extends CI_Controller {
     function __construct() {
         parent::__construct();
         $this->load->model("m_alumni");
-
+                
         if (!$this->session->userdata('is_logged_in')) {
             redirect(base_url());
         } else if ($this->session->userdata('is_logged_in')) {
