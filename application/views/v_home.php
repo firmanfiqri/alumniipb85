@@ -64,6 +64,11 @@
 			document.getElementById("c_pass").value = "";
         }
     }
+	
+	function daftar_dulu() {
+       alert('Mohon Login terlebih dahulu!');
+    }
+	
 </script>
 
 <!-- MAIN -->
@@ -77,12 +82,25 @@
                     <div class="flexslider home-slider" style="border-radius:5px;">
                         <ul class="slides">
 							<?php
-							foreach($queryevent as $row){
+							if($queryevent){
+							
+								foreach($queryevent as $row){
+								?>
+								<li>
+								<a href="" onclick="daftar_dulu()">
+									<img src="<?php echo base_url();?><?php echo $row->foto_event; ?>" alt="alt text" style="width:620px; height:400px; border-radius:5px;" />
+									<p class="flex-caption" style="margin-bottom:0px; opacity:0.6; border-radius:2px;"><?php echo $row->nama_event; ?></p>
+								</a>
+								</li>
+								<?php
+								}
+							}else{
 							?>
-                            <li>
-                                <img src="<?php echo base_url();?><?php echo $row->foto_event; ?>" alt="alt text" style="width:620px; height:400px; border-radius:5px;" />
-								<p class="flex-caption" style="margin-bottom:0px; opacity:0.6; border-radius:2px;"><?php echo $row->nama_event; ?></p>
-                            </li>
+								<li>
+								<a href="" onclick="daftar_dulu()">
+									<img src="<?php echo base_url();?>assets/img/tidak_ada_event.png" alt="alt text" style="width:620px; height:400px; border-radius:5px;" />
+								</a>
+								</li>
 							<?php
 							}
 							?>
@@ -109,18 +127,18 @@
 									<input type="radio" name="jenis_kelamin" value="Perempuan"/> Perempuan &nbsp; &nbsp;
 								</div>
 								<div style="margin-top:10px;">
-									<select name="fakultas" class="form-poshytip" id="fakultas" onchange="fakultas_change()" title="Pilih fakultas" style="height:30px; width:123px;">
+									<select name="fakultas" class="form-poshytip" id="fakultas" onchange="fakultas_change()" title="Pilih fakultas" style="height:30px; width:250px;">
 										<?php foreach ($queryfakultas as $row) { ?>
 										<option value="<?php echo $row->id_fakultas; ?>"><?php echo $row->nama_fakultas; ?></option>
 										<?php } ?>        
 									</select>
+								</div>
+								<div style="margin-top:5px;">
 									<select name="jurusan" class="form-poshytip" id="jurusan" onchange="jurusan_change()" title="Pilih jurusan" style="height:30px; width:123px;">">
 										<?php foreach ($queryjurusan as $row) { ?>
 										<option value="<?php echo $row->id_jurusan; ?>"><?php echo $row->nama_jurusan; ?></option>
 										<?php } ?>        
 									</select>
-								</div>
-								<div style="margin-top:5px;">
 									<select name="prodi" class="form-poshytip" id="prodi" onchange="prodi_change()" title="Pilih prodi" style="height:30px; width:123px;">
 										<?php foreach ($queryprodi as $row) { ?>
 										<option value="<?php echo $row->id_prodi; ?>"><?php echo $row->nama_prodi; ?></option>

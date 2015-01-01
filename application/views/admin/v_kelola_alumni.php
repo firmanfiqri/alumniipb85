@@ -47,10 +47,13 @@
                         <th>No</th>
                         <th>NRP</th>
                         <th>Nama Lengkap</th>
+						<!--
                         <th>Kelompok</th>
+						-->
                         <th>Fakultas</th>
                         <th>Jurusan</th>
                         <th>Program Studi</th>
+                        <th>Status</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>               
@@ -65,10 +68,23 @@
 						<td><?php echo $no,'.';?></td>
 						<td><?php echo $row->nrp;?></td>
 						<td><?php echo $row->nama_alumni;?></td>
+						<!--
 						<td><?php echo $row->kelompok;?></td>
+						-->
 						<td><?php echo $row->nama_fakultas;?></td>
 						<td><?php echo $row->nama_jurusan;?></td>
 						<td><?php echo $row->nama_prodi;?></td>
+						<td>
+						<?php
+						if($row->status == 0){
+							echo "Data profil belum lengkap";
+						}else if($row->status == 1){
+							echo "OK";
+						}else{
+							echo "Belum aktivasi akun";
+						}
+						?>
+						</td>
 						<td>
 							<a href="<?php echo base_url();?>admin/detail_profile/<?php echo $row->id_alumni;?>"><button style="height:30px; width:56px;">Detail</button></a>
 							<a href="#modal1"><button onclick="buka_hapus('<?php echo $row->id_alumni;?>')" style="height:30px; width:56px;">Hapus</button></a>

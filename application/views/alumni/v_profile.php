@@ -459,7 +459,7 @@
                         <p>
                             <strong class="hilang">Email</strong><br/>
                             <span class="data_alumni"><?php echo $data_profile->email; ?></span>
-                            <input type="email" class="form_alumni" name="email" value="<?php echo $data_profile->email; ?>" style="width:200px; height:15px;" required>
+                            <input type="email" class="form_alumni" name="email" value="<?php echo $data_profile->email; ?>" style="width:200px; height:15px;" required readonly>
                         </p>
                         <p>
                             <strong class="hilang">Profesi</strong><br/>

@@ -31,16 +31,19 @@
             <h2 class="page-heading"><span>KONFIRMASI PEMBAYARAN</span></h2>	
 
             <article class="format-standard">
-                <h3 class="post-heading">Event : "<?php echo $peserta->nama_event; ?>"</h3>
+                <h3 class="post-heading">EVENT : "<?php echo $peserta->nama_event; ?>"</h3>
                 <form id="contactForm" class="isian" action="<?php echo base_url(); ?>alumni/submit_konfirmasi" method="post" enctype="multipart/form-data">
                     <input type="hidden" name="id_peserta_event" value="<?php echo $peserta->id_peserta_event; ?>">
                     <table>
                         <tr>
                             <td>No. Registrasi</td>
+							<td style="width:20px;"><td>
                             <td><input type="text" class="clearfix" name="noreg" value="<?php echo $peserta->no_registrasi;?>" style="width:225px; height:15px;" required readonly></td>
                         </tr>
+						<tr style="height:0px;"></tr>
                         <tr>
                             <td>Rekening Bank Kami</td>
+							<td style="width:20px;"><td>
                             <td>
                                 <select name="bank_kami" id="fakultas" style="width:225px; height:35px;">
                                     <option value="BCA" selected>BCA</option>                         
@@ -49,25 +52,32 @@
                                 </select>
                             </td>
                         </tr>
+						<tr style="height:10px;"></tr>
                         <tr>
                             <td>Atas Nama</td>
+							<td style="width:20px;"><td>
                             <td><input type="text" class="clearfix" name="atas_nama" placeholder="Atas Nama" style="width:225px; height:15px;" required></td>
                         </tr>
                         <tr>
                             <td>Jumlah Transfer</td>
+							<td style="width:20px;"><td>
                             <td><input type="number" class="clearfix" name="jumlah_transfer" placeholder="Jumlah Transfer" style="width:225px; height:15px;" required></td>
                         </tr>
+						<tr style="height:10px;"></tr>
                         <tr>
                             <td>Tanggal Transfer</td>
+							<td style="width:20px;"><td>
                             <td><input type="date" class="clearfix" name="tgl_transfer" style="width:225px; height:15px;" required></td>
                         </tr>
-                        
+                        <tr style="height:10px;"></tr>
                         <tr>
                             <td>Bukti Pembayaran</td>
+							<td style="width:20px;"><td>
                             <td><input type="file" id="foto" onchange="foto_change()" name="foto" accept="image/*" ><br>Maks 100KB (Optional)</td>
                         </tr>
                         <tr>
-                            <td></td>                            
+                            <td></td>
+							<td style="width:20px;"><td>							
                             <td align="right"><input type="submit" class="clearfix" name="konfirmasi" style="width:60px; height:30px;" ></td>
                         </tr>
                     </table>

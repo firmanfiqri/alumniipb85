@@ -31,9 +31,6 @@
     <!-- ENDS top-widget -->
 
     <div class="wrapper clearfix" style="padding-bottom:10px;">
-
-        <a href="<?php echo base_url(); ?>" id="logo"><img  src="<?php echo base_url(); ?>assets/img/logo.png" alt="Zeni"></a>
-
-
+        <a href="<?php echo base_url(); ?>" id="logo"><img src="<?php echo base_url(); ?>assets/img/logo.png" alt="Alumni IPB '85" style="width:80%;"></a>
     </div>
 </header>

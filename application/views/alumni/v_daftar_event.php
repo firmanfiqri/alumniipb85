@@ -7,25 +7,34 @@
             <h2 class="page-heading"><span>PENDAFTARAN EVENT</span></h2>	
 
             <article class="format-standard">
-                <h3 class="post-heading">Event : "<?php echo $event->nama_event; ?>"</h3>
+                <h3 class="post-heading">EVENT : "<?php echo $event->nama_event; ?>"</h3>
                 <form id="contactForm" class="isian" action="<?php echo base_url(); ?>alumni/daftar" method="post" enctype="multipart/form-data">
                     Jumlah anggota keluarga yang ikut serta:<br>
                     <input type="hidden" name="id_event" value="<?php echo $event->id_event; ?>">
                     <table>
+						<tr style="height:10px;"></tr>
+                        <tr>
                         <tr>
                             <td>Dewasa</td>
+							<td style="width:20px;"><td>
                             <td><input type="number" class="clearfix" name="dewasa_ikut" placeholder="Dewasa" style="width:225px; height:15px;" required></td>
                         </tr>
+						<tr style="height:10px;"></tr>
                         <tr>
                             <td>Anak</td>
+							<td style="width:20px;"><td>
                             <td><input type="number" class="clearfix" name="anak_ikut" placeholder="Anak" style="width:225px; height:15px;" required></td>
                         </tr>
+						<tr style="height:10px;"></tr>
+                        <tr>
                         <tr>
                             <td>Tanggal Tiba</td>
+							<td style="width:20px;"><td>
                             <td><input type="date" class="clearfix" name="tgl_tiba" style="width:225px; height:15px;" required></td>
                         </tr>
                         <tr>
                             <td></td>
+							<td style="width:5px;"><td>
                             <td align="right"><input type="submit" class="clearfix" name="daftar" style="width:60px; height:30px;" required></td>
                         </tr>
                     </table>

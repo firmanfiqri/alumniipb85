@@ -60,7 +60,7 @@ class m_alumni extends CI_Model {
     }
     
     public function getListEvent() {
-        $query = $this->db->query("select * from event where tanggal_event > NOW() order by tanggal_event desc");
+        $query = $this->db->query("select * from event where tanggal_event > NOW() order by tanggal_event asc");
         return $query->result();
     }
     

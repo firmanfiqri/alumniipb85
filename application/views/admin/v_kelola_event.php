@@ -155,7 +155,7 @@
 					</div>
 					<div style="margin-top:-10px;">
 						<label class="clearfix">Foto Event</label>
-						<input type="file" name="foto" onchange="foto_change()" style="width:205px;" />
+						<input type="file" name="foto" onchange="foto_change()" style="width:205px;" accept="image/*" /><br>Maks 1000KB
 					</div>
 					<div style="margin-top:5px;">
 						<label class="clearfix">Biaya</label>

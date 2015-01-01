@@ -17,7 +17,7 @@
         document.getElementById("jumlah_anak").innerHTML = jumlah_anak;
         document.getElementById("tanggal_tiba").innerHTML = tanggal_tiba;
 
-        if (status_pembayaran == 2) {
+        if ((status_pembayaran == 2) || (status_pembayaran == 0)) {
             $('#submit_konfirmasi').hide();
         } else {
             $('#submit_konfirmasi').show();
@@ -110,10 +110,12 @@ function nominalisasi($biaya) {
                                 ?></td>
                             <td><?php
                                 if ($row->status_pembayaran == 2) {
+                                    echo "OK";
+                                } else if( $row->status_pembayaran == 1){
                                     echo "Sudah konfirmasi";
                                 } else {
                                     echo "Belum konfirmasi";
-                                }
+								}
                                 ?></td>
                             <td>
                                 <a href="#modal"><button onclick="buka_konfirmasi('<?php echo $row->id_peserta_event; ?>', '<?php echo $row->no_registrasi; ?>', '<?php echo $row->bank_kami; ?>', '<?php echo $row->atas_nama; ?>', '<?php echo $biaya; ?>', '<?php echo $row->tanggal_transfer; ?>', '<?php echo $row->bukti_foto; ?>', '<?php echo $row->tanggal_daftar; ?>', '<?php echo $row->jumlah_dewasa; ?>', '<?php echo $row->jumlah_anak; ?>', '<?php echo $row->tanggal_tiba; ?>', '<?php echo $row->status_pembayaran; ?>')" style="height:30px; width:56px;">Detail</button></a>

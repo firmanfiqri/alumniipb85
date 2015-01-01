@@ -28,7 +28,7 @@ class m_daftar extends CI_Model {
     }
 	
 	public function getAllEvent() {
-        $query = $this->db->query("select * from event order by tanggal_event desc limit 4;");
+        $query = $this->db->query("select * from event where tanggal_event >= NOW() order by tanggal_event asc limit 4;");
         return $query;
     }
 

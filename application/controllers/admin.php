@@ -83,7 +83,7 @@ class Admin extends CI_Controller {
         $tempat_event = $this->input->post('tempat_event');
         $biaya = $this->input->post('biaya');
         $keterangan = $this->input->post('keterangan_event');
-
+		$file_target = "";
         //Ubah Foto
         if ($_FILES['foto']['name'] != "") {
             $foto = $_FILES['foto'];

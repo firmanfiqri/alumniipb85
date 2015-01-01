@@ -61,7 +61,7 @@
 							<img src="<?php echo base_url().$editevent->foto_event; ?>" alt="Alt text" style="width:60%; height:40%;"/>
 						<?php } ?>
 						<br />
-						<input type="file" name="foto" onchange="foto_change()" style="width:205px;" />
+						<input type="file" name="foto" onchange="foto_change()" style="width:205px;" accept="image/*" /><br/>Maks 1000KB
 					</div>
 					<div style="margin-top:5px;">
 						<label class="clearfix">Biaya</label>
