@@ -30,7 +30,7 @@
 <?php } ?>
 
         $(".isian").submit(function(e) {
-            var pass = "<?php echo$data_profile->password;?>";
+            var pass = "<?php echo$data_profile->password; ?>";
             var pass_ketik = $("#pwd_lama").val();
             var pass_baru = $("#pwd_baru").val();
             var konfirm_pass_baru = $("#konfirm_pwd").val();
@@ -71,13 +71,13 @@
         $('.data_alumni').hide();
         $('.form_alumni').show();
     }
-	
-	function edit_sandi() {
+
+    function edit_sandi() {
         $('.data_alumni').hide();
         $('.hilang').hide();
         $('.form_sandi').show();
     }
-	
+
     function fakultas_change() {
         var id = $("#fakultas").val();
 
@@ -130,24 +130,24 @@
 <div id="main">	
 
     <div class="wrapper clearfix">
-            <h2 class="page-heading"><span>PROFIL</span></h2>	
-            <form id="contactForm" class="isian" action="<?php echo base_url(); ?>alumni/profile" method="post" enctype="multipart/form-data">
+        <h2 class="page-heading"><span>PROFIL</span></h2>	
+        <form id="contactForm" class="isian" action="<?php echo base_url(); ?>alumni/profile" method="post" enctype="multipart/form-data">
 
             <!-- project content -->
             <div id="project-content" class="clearfix" style="width:1000px;">
 
                 <div class="home-block" style="margin-left:50px;">
-				
+
                     <div class="one-fourth-thumbs">
-						<figure>
-						<?php if($data_profile->foto==null){?>
-							<img src="<?php echo base_url(); ?>assets/img/dummy_profile.jpg" alt="Alt text"/>
-						<?php }else{ ?>
-							<img src="<?php echo base_url().$data_profile->foto; ?>" alt="Alt text"/>
-						<?php } ?>
-						<input type="file" id="foto" onchange="foto_change()" name="foto" accept="image/*" class="form_alumni">
-						<span class="form_alumni">batas maks 100 KB</span>
-						</figure>
+                        <figure>
+                            <?php if ($data_profile->foto == null) { ?>
+                                <img src="<?php echo base_url(); ?>assets/img/dummy_profile.jpg" alt="Alt text"/>
+                            <?php } else { ?>
+                                <img src="<?php echo base_url() . $data_profile->foto; ?>" alt="Alt text"/>
+                            <?php } ?>
+                            <input type="file" id="foto" onchange="foto_change()" name="foto" accept="image/*" class="form_alumni">
+                            <span class="form_alumni">batas maks 100 KB</span>
+                        </figure>
                     </div>
 
                     <div class="project-info" style="margin-left:70px;">
@@ -164,10 +164,10 @@
                             <strong>Konfimasi Password Baru</strong><br/>
                             <input type="password" id="konfirm_pwd" name="konfirm_pwd" value="" style="width:200px; height:15px;">
                         </p>
-						
-						<input class="form_sandi" type="submit" name="edit" value="Simpan" style="height:40px; width:80px;">
-						
-						<p>
+
+                        <input class="form_sandi" type="submit" name="edit" value="Simpan" style="height:40px; width:80px;">
+
+                        <p>
                             <strong class="hilang">Nama Lengkap</strong><br/>
                             <span class="data_alumni"><?php echo $data_profile->nama_alumni; ?></span>
                             <input type="text" class="form_alumni" name="nama_lengkap" value="<?php echo $data_profile->nama_alumni; ?>" style="width:225px; height:15px;" required>
@@ -180,17 +180,17 @@
                         <p>
                             <strong class="hilang">Jenis Kelamin</strong><br/>
                             <span class="data_alumni"><?php echo $data_profile->jenis_kelamin; ?></span>
-							<input type="radio" name="jenis_kelamin" class="form_alumni" value="Laki-laki"
-								<?php
-                                if ($data_profile->jenis_kelamin == "Laki-laki") {
-                                    echo "checked";
-                                }
-                                ?>/> <font class="form_alumni">Laki-laki &nbsp; &nbsp;</font>
-							<input type="radio" name="jenis_kelamin" class="form_alumni" value="Perempuan" <?php
-                                if ($data_profile->jenis_kelamin == "Perempuan") {
-                                    echo "checked";
-                                }
-                                ?>/> <font class="form_alumni">Perempuan &nbsp; &nbsp;</font>
+                            <input type="radio" name="jenis_kelamin" class="form_alumni" value="Laki-laki"
+                            <?php
+                            if ($data_profile->jenis_kelamin == "Laki-laki") {
+                                echo "checked";
+                            }
+                            ?>/> <font class="form_alumni">Laki-laki &nbsp; &nbsp;</font>
+                            <input type="radio" name="jenis_kelamin" class="form_alumni" value="Perempuan" <?php
+                            if ($data_profile->jenis_kelamin == "Perempuan") {
+                                echo "checked";
+                            }
+                            ?>/> <font class="form_alumni">Perempuan &nbsp; &nbsp;</font>
                         </p>
                         <p>
                             <strong class="hilang">NRP</strong><br/>
@@ -216,7 +216,7 @@
 
                             </select>
                         </p>
-						<p>
+                        <p>
                             <strong class="hilang">Jurusan</strong><br/>
                             <span class="data_alumni"><?php echo $data_profile->nama_jurusan; ?></span>
                             <select name="jurusan" id="jurusan" onchange="jurusan_change()" class="form_alumni" style="width:225px; height:35px;">
@@ -253,7 +253,7 @@
                             <span class="data_alumni"><?php echo $data_profile->alamat_rumah; ?></span>
                             <textarea name="alamat_rumah" class="form_alumni" style="width:200px; height:100px;" required><?php echo $data_profile->alamat_rumah; ?></textarea>
                         </p>
-						<p>
+                        <p>
                             <strong class="hilang">Alamat Kantor</strong><br/>
                             <span class="data_alumni"><?php echo $data_profile->alamat_kantor; ?></span>
                             <textarea name="alamat_kantor" class="form_alumni" style="width:200px; height:100px;" required><?php echo $data_profile->alamat_kantor; ?></textarea>
@@ -279,18 +279,18 @@
                             <span class="data_alumni"><?php echo $data_profile->bidang_keahlian; ?></span>
                             <textarea name="bidang_keahlian" class="form_alumni" style="width:200px; height:100px;" required><?php echo $data_profile->bidang_keahlian; ?></textarea>
                         </p>
-						<input class="form_alumni" type="submit" name="edit" value="Simpan" style="height:40px; width:80px;">
-						
+                        <input class="form_alumni" type="submit" name="edit" value="Simpan" style="height:40px; width:80px;">
+
                     </div>
                 </div>
 
-            <div class="page-navigation clearfix">
+                <div class="page-navigation clearfix">
 
                     <a class="data_alumni" onclick="edit_data()" style="width:100px; margin-left:200px;">Ubah Data Profil</a> 
                     <a class="data_alumni" onclick="edit_sandi()" style="width:100px; margin-left:375px; margin-top:-47px;">Ubah Kata Sandi</a> 
-                <!--ENDS page-navigation -->
+                    <!--ENDS page-navigation -->
 
-            </div>
+                </div>
                 <div class="clearfix"></div>
             </div>	        	
             <!--  ENDS project content-->
