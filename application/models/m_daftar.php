@@ -26,6 +26,11 @@ class m_daftar extends CI_Model {
         $query = $this->db->query("select * from alumni where email='$email';");
         return $query;
     }
+	
+	public function getAllEvent() {
+        $query = $this->db->query("select * from event order by tanggal_event desc limit 4;");
+        return $query;
+    }
 
     //INSERT & UPDATE
     public function insertAlumni($nama_lengkap, $nrp, $jenis_kelamin, $prodi, $email, $password) {

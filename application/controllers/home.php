@@ -22,6 +22,7 @@ class Home extends CI_Controller {
         $data['queryfakultas'] = $this->m_daftar->getAllFakultas()->result();
         $data['queryjurusan'] = $this->m_daftar->getAllJurusan()->result();
         $data['queryprodi'] = $this->m_daftar->getAllProdi()->result();
+        $data['queryevent'] = $this->m_daftar->getAllEvent()->result();
 
         $this->load->view('layout/header');
         $this->load->view('layout/navbar_login');

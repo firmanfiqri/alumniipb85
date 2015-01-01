@@ -76,18 +76,16 @@
                     <!-- slider -->
                     <div class="flexslider home-slider" style="border-radius:5px;">
                         <ul class="slides">
+							<?php
+							foreach($queryevent as $row){
+							?>
                             <li>
-                                <img src="<?php echo base_url();?>assets/img/slides/01.jpg" alt="alt text" style="width:620px; height:400px; border-radius:5px;" />
-								<p class="flex-caption" style="margin-bottom:0px; opacity:0.6; border-radius:2px;">Pellentesque habitant morbi  feugiat vitae.</p>
+                                <img src="<?php echo base_url();?><?php echo $row->foto_event; ?>" alt="alt text" style="width:620px; height:400px; border-radius:5px;" />
+								<p class="flex-caption" style="margin-bottom:0px; opacity:0.6; border-radius:2px;"><?php echo $row->nama_event; ?></p>
                             </li>
-                            <li>
-                                <img src="<?php echo base_url();?>assets/img/slides/02.jpg" alt="alt text" style="width:620px; height:400px; border-radius:5px;" />
-                                <p class="flex-caption" style="margin-bottom:0px; opacity:0.6; border-radius:2px;">Pellentesque habitant morbi  feugiat vitae.</p>
-                            </li>
-                            <li>
-                                <img src="<?php echo base_url();?>assets/img/slides/03.jpg" alt="alt text" style="width:620px; height:400px; border-radius:5px;" />
-								<p class="flex-caption" style="margin-bottom:0px; opacity:0.6; border-radius:2px;">Pellentesque habitant morbi  feugiat vitae.</p>
-                            </li>
+							<?php
+							}
+							?>
                         </ul>
                     </div>
                     <!-- ENDS slider -->
