@@ -59,7 +59,7 @@ class Alumni extends CI_Controller {
             $alamat_kantor = $this->input->post('alamat_kantor');
             $bidang_keahlian = $this->input->post('bidang_keahlian');
             $password_baru = $this->input->post('pwd_baru');
-            
+            $password_baru = md5($password_baru);
             if ($this->m_alumni->cetNRPAlumni($nrp, $id_alumni) == 1) {
                 $data['sukses_edit'] = false;
             } else {
