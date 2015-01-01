@@ -73,6 +73,7 @@
                         <th>Nama Event</th>
                         <th>Tanggal</th>
                         <th>Tempat</th>
+                        <th>Biaya</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>               
@@ -87,6 +88,7 @@
 						<td><?php echo $row->nama_event;?></td>
 						<td><?php echo $row->tanggal_event;?></td>
 						<td><?php echo $row->tempat_event;?></td>
+						<td><?php echo $row->biaya;?></td>
 						<td>
 							<a href="<?php echo base_url();?>admin/detail_event/<?php echo $row->id_event;?>"><button style="height:30px; width:56px;">Detail</button></a>
 							<a href="<?php echo base_url();?>admin/lihat_edit_event/<?php echo $row->id_event;?>"><button style="height:30px; width:42px;">Edit</button></a>
