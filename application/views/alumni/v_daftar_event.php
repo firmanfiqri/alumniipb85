@@ -7,7 +7,7 @@
             <h2 class="page-heading"><span>PENDAFTARAN EVENT</span></h2>	
 
             <article class="format-standard">
-                <h2  class="post-heading">Form Pendaftaran <?php echo $event->nama_event; ?></h2>
+                <h3 class="post-heading">Event : "<?php echo $event->nama_event; ?>"</h3>
                 <form id="contactForm" class="isian" action="<?php echo base_url(); ?>alumni/daftar" method="post" enctype="multipart/form-data">
                     Jumlah anggota keluarga yang ikut serta:<br>
                     <input type="hidden" name="id_event" value="<?php echo $event->id_event; ?>">

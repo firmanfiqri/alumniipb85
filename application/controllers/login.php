@@ -13,7 +13,7 @@ class Login extends CI_Controller {
 
     public function validasi() {
         $email = $this->input->post('email');
-        $password = $this->input->post('password');
+        $password = md5($this->input->post('password'));
 
         $query = $this->m_login->validasi_login($email, $password);
 

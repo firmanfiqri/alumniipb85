@@ -203,6 +203,15 @@ class Admin extends CI_Controller {
         $id_peserta_event = $this->input->post('id_peserta_event');
 
         $this->m_admin->updateStatusBayar($id_peserta_event);
+		
+		$ambilquery = $this->m_admin->getPembayaran($id_peserta_event)->row();
+
+		$email = $ambilquery->email;
+		$nama_lengkap = $ambilquery->nama_alumni;
+		$noreg = $ambilquery->no_registrasi;
+		$nama_event = $ambilquery->nama_event;
+		
+		$this->sendMail($email, $nama_lengkap, $noreg, $nama_event);
 
         echo "<script type='text/javascript'>alert('Pembayaran telah dikonfirmasi!');
 		window.location.href='" . base_url() . "admin/konfirmasi_pembayaran';
@@ -215,7 +224,7 @@ class Admin extends CI_Controller {
         $this->load->view('layout/footer');
     }
     
-    private function sendMail($email, $nama_lengkap,$noreg, $event) {
+    private function sendMail($email, $nama_lengkap, $noreg, $event) {
 
         $config = Array(
             'protocol' => 'smtp',
@@ -231,7 +240,7 @@ class Admin extends CI_Controller {
         $this->email->from('fadhilah.ilmi@yahoo.com', 'Fadhilah');
         $this->email->to($email);
 
-        $this->email->subject('Konfirmasi Pemabayarn');
+        $this->email->subject('Konfirmasi Pembayaran');
         $this->email->message("Hi $nama_lengkap,<br><br>Pembayaran untuk event $event dengan no registrasi $noreg telah kami konfirmasi.<br>Kami tunggu kehadiran anda.<br><br>Apabila ada pertanyaan silahkan hubungi admin@admin.com");
 
         $this->email->send();

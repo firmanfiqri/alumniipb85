@@ -32,6 +32,11 @@ class m_admin extends CI_Model {
         return $query;
     }
 	
+	public function getPembayaran($id_peserta_event) {
+        $query = $this->db->query("select a.email, a.nama_alumni, pe.no_registrasi, e.nama_event from peserta_event pe, event e, alumni a where pe.id_peserta_event='$id_peserta_event' and pe.id_event=e.id_event and pe.id_alumni=a.id_alumni;");
+        return $query;
+    }
+	
 	//INSERT & UPDATE	
 	public function updatePassword($id_alumni, $email) {
         $query = $this->db->query("update alumni set password='$email'where id_alumni='$id_alumni';");

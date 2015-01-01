@@ -31,7 +31,7 @@
             <h2 class="page-heading"><span>KONFIRMASI PEMBAYARAN</span></h2>	
 
             <article class="format-standard">
-                <h2  class="post-heading">Event : <?php echo $peserta->nama_event; ?></h2>
+                <h3 class="post-heading">Event : "<?php echo $peserta->nama_event; ?>"</h3>
                 <form id="contactForm" class="isian" action="<?php echo base_url(); ?>alumni/submit_konfirmasi" method="post" enctype="multipart/form-data">
                     <input type="hidden" name="id_peserta_event" value="<?php echo $peserta->id_peserta_event; ?>">
                     <table>

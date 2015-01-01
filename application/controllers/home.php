@@ -37,22 +37,22 @@ class Home extends CI_Controller {
             $jenis_kelamin = $this->input->post('jenis_kelamin');
             $prodi = $this->input->post('prodi');
             $email = $this->input->post('email');
-            $password = $this->input->post('password');
+            $password = md5($this->input->post('password'));
 
             if ($this->m_daftar->cekEmail($email) == 1) {
                 echo "<script type='text/javascript'>alert('Maaf email $email telah terdaftar!');
-		window.location.href='" . base_url() . "';
-		</script>";
-            }else if ($this->m_daftar->cekNRP($nrp) == 1) {
-                echo "<script type='text/javascript'>alert('Maaf no NRP $nrp telah terdaftar!');
-		window.location.href='" . base_url() . "';
-		</script>";
+				window.location.href='" . base_url() . "';
+				</script>";
+					}else if ($this->m_daftar->cekNRP($nrp) == 1) {
+						echo "<script type='text/javascript'>alert('Maaf no NRP $nrp telah terdaftar!');
+				window.location.href='" . base_url() . "';
+				</script>";
             } else {
                 $this->m_daftar->insertAlumni($nama_lengkap, $nrp, $jenis_kelamin, $prodi, $email, $password);
                 $this->sendMail($email,$nama_lengkap);
                 echo "<script type='text/javascript'>alert('Selamat anda berhasil mendaftar! Silahkan aktivasi akun melalui email anda.');
-		window.location.href='" . base_url() . "';
-		</script>";
+				window.location.href='" . base_url() . "';
+				</script>";
             }
         }else{
             redirect(base_url());
