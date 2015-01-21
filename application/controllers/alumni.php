@@ -51,19 +51,23 @@ class Alumni extends CI_Controller {
             $jenis_kelamin = $this->input->post('jenis_kelamin');
             $nrp = $this->input->post('nrp');
             $kelompok = $this->input->post('kelompok');
-            $prodi = $this->input->post('prodi');
             $hp = $this->input->post('hp');
-            $email = $this->input->post('email');
+            $jurusan = $this->input->post('jurusan');
             $profesi = $this->input->post('profesi');
+            $instansi = $this->input->post('instansi');
+            $bidang_usaha = $this->input->post('bidang_usaha');
+            $email = $this->input->post('email');
             $alamat_rumah = $this->input->post('alamat_rumah');
             $alamat_kantor = $this->input->post('alamat_kantor');
             $bidang_keahlian = $this->input->post('bidang_keahlian');
             $password_baru = $this->input->post('pwd_baru');
             $password_baru = md5($password_baru);
+                   
+            
             if ($this->m_alumni->cetNRPAlumni($nrp, $id_alumni) == 1) {
                 $data['sukses_edit'] = false;
             } else {
-                $this->m_alumni->updateDataAlumni($id_alumni, $nama_lengkap, $nama_panggilan, $jenis_kelamin, $nrp, $kelompok, $prodi, $hp, $email, $profesi, $alamat_rumah, $alamat_kantor, $bidang_keahlian);
+                $this->m_alumni->updateDataAlumni($id_alumni, $nama_lengkap, $nama_panggilan, $jenis_kelamin, $nrp, $kelompok, $jurusan, $hp, $email, $profesi, $alamat_rumah, $alamat_kantor, $bidang_keahlian,$instansi,$bidang_usaha);
                 //Ubah Foto
                 if ($_FILES['foto']['name'] != "") {
                     $foto = $_FILES['foto'];
@@ -97,7 +101,6 @@ class Alumni extends CI_Controller {
         $data['data_profile'] = $this->m_alumni->getProfileAlumni($id_alumni);
         $data['fakultas'] = $this->m_alumni->getFakultas();
         $data['jurusan'] = $this->m_alumni->getJurusan();
-        $data['prodi'] = $this->m_alumni->getProdi();
 
         $this->header(2);
         $this->load->view('alumni/v_profile', $data);

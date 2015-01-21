@@ -16,13 +16,8 @@ class m_alumni extends CI_Model {
         return $query->result();
     }
 
-    public function getProdi() {
-        $query = $this->db->query("select * from prodi order by nama_prodi");
-        return $query->result();
-    }
-
     public function getProfileAlumni($id) {
-        $query = $this->db->query("select * from alumni a, prodi p, jurusan j, fakultas f where a.id_alumni = $id and a.id_prodi = p.id_prodi and p.id_jurusan = j.id_jurusan and j.id_fakultas = f.id_fakultas ");
+        $query = $this->db->query("select * from alumni a, jurusan j, fakultas f where a.id_alumni = $id and a.id_jurusan = j.id_jurusan and j.id_fakultas = f.id_fakultas ");
         return $query->row();
     }
     
@@ -31,8 +26,8 @@ class m_alumni extends CI_Model {
         return $query->num_rows();
     }
 
-    public function updateDataAlumni($id, $nl, $np, $jk, $nrp, $kel, $prodi, $hp, $email, $profesi, $rumah, $kantor, $bidang) {
-        $query = $this->db->query("update alumni a set a.nama_alumni = '$nl', a.nama_panggilan = '$np', a.jenis_kelamin='$jk', a.nrp='$nrp', a.kelompok='$kel', a.id_prodi='$prodi', a.alamat_rumah='$rumah', a.alamat_kantor = '$kantor', a.no_hp='$hp', a.email='$email', a.profesi = '$profesi', a.bidang_keahlian = '$bidang', a.status = 1 where a.id_alumni = '$id'");
+    public function updateDataAlumni($id, $nl, $np, $jk, $nrp, $kel, $jurusan, $hp, $email, $profesi, $rumah, $kantor, $bidang,$instansi,$bidang_usaha) {
+        $query = $this->db->query("update alumni a set a.nama_alumni = '$nl', a.nama_panggilan = '$np', a.jenis_kelamin='$jk', a.nrp='$nrp', a.kelompok='$kel', a.id_jurusan='$jurusan', a.alamat_rumah='$rumah', a.alamat_kantor = '$kantor', a.no_hp='$hp', a.email='$email', a.profesi = '$profesi', a.bidang_keahlian = '$bidang', a.instansi = '$instansi', a.bidang_usaha = '$bidang_usaha', a.status = 1 where a.id_alumni = '$id'");
     }
 
     public function hapusFoto($id) {

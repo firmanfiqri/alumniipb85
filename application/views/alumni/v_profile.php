@@ -19,13 +19,6 @@
             data['nama_jurusan'] = "<?php echo $a->nama_jurusan ?>";
             jurusan.push(data);
 <?php } ?>
-<?php foreach ($prodi as $a) { ?>
-            data = new Array();
-            data['id_prodi'] = "<?php echo $a->id_prodi ?>";
-            data['id_jurusan'] = "<?php echo $a->id_jurusan ?>";
-            data['nama_prodi'] = "<?php echo $a->nama_prodi ?>";
-            prodi.push(data);
-<?php } ?>
 
         $(".isian").submit(function(e) {
             var pass = "<?php echo$data_profile->password; ?>";
@@ -82,19 +75,9 @@
                 select.options[select.options.length] = new Option(jurusan[i]['nama_jurusan'], jurusan[i]['id_jurusan']);
             }
         }
-
-        jurusan_change();
+        
     }
-    function jurusan_change() {
-        var id = $("#jurusan").val();
-        document.getElementById("prodi").options.length = 0;
-        for (var i = 0; i < prodi.length; i++) {
-            if (prodi[i]['id_jurusan'] == id) {
-                var select = document.getElementById("prodi");
-                select.options[select.options.length] = new Option(prodi[i]['nama_prodi'], prodi[i]['id_prodi']);
-            }
-        }
-    }
+    
 
     function foto_change() {
         //check whether browser fully supports all File API
@@ -114,6 +97,46 @@
             }
         } else {
             alert("Please upgrade your browser, because your current browser lacks some new features we need!");
+        }
+    }
+
+    
+    function isNumber(evt) {
+        evt = (evt) ? evt : window.event;
+        var charCode = (evt.which) ? evt.which : evt.keyCode;
+        if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+            return false;
+        }
+        return true;
+    }
+
+
+    function capitalizeEachWord(str) {
+        return str.replace(/\w\S*/g, function(txt) {
+            return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+        });
+    }
+
+    function Kapital() {
+        var x = document.getElementById("nama_lengkap");
+        x.value = capitalizeEachWord(x.value.toUpperCase());
+        
+        var x = document.getElementById("nama_panggilan");
+        x.value = capitalizeEachWord(x.value.toUpperCase());
+    }
+
+    function profesi_change() {
+        var x = document.getElementById("profesi");
+        if(x.value == "IRT"){
+            $('.irt_hide').hide();
+            $("#instansi").val("-");
+            $("#bidang_usaha").val("-");
+            $("#alamat_kantor").val("-");
+        }else{            
+            $('.irt_hide').show();
+            $("#instansi").val("");
+            $("#bidang_usaha").val("");
+            $("#alamat_kantor").val("");
         }
     }
 
@@ -364,12 +387,12 @@
                         <p>
                             <strong class="hilang">Nama Lengkap</strong><br/>
                             <span class="data_alumni"><?php echo $data_profile->nama_alumni; ?></span>
-                            <input type="text" class="form_alumni" name="nama_lengkap" value="<?php echo $data_profile->nama_alumni; ?>" style="width:225px; height:15px;" required>
+                            <input type="text" class="form_alumni" name="nama_lengkap" id="nama_lengkap" onblur="Kapital()" value="<?php echo $data_profile->nama_alumni; ?>" style="width:225px; height:15px;" required>
                         </p>
                         <p>
                             <strong class="hilang">Nama Panggilan</strong><br/>
                             <span class="data_alumni"><?php echo $data_profile->nama_panggilan; ?></span>
-                            <input type="text" class="form_alumni" name="nama_panggilan" value = "<?php echo $data_profile->nama_panggilan; ?>" style="width:225px; height:15px;" required>
+                            <input type="text" class="form_alumni" name="nama_panggilan" id="nama_panggilan" onblur="Kapital()" value = "<?php echo $data_profile->nama_panggilan; ?>" style="width:225px; height:15px;" required>
                         </p>
                         <p>
                             <strong class="hilang">Jenis Kelamin</strong><br/>
@@ -389,7 +412,7 @@
                         <p>
                             <strong class="hilang">NRP</strong><br/>
                             <span class="data_alumni"><?php echo $data_profile->nrp; ?></span>
-                            <input type="text" class="form_alumni" name="nrp" value="<?php echo $data_profile->nrp; ?>" style="width:225px; height:15px;" required>
+                            <input type="text" class="form_alumni" name="nrp" onkeypress="return isNumber(event)" value="<?php echo $data_profile->nrp; ?>" style="width:225px; height:15px;" required>
                         </p>
                         <p>
                             <strong class="hilang">Kelompok</strong><br/>
@@ -426,33 +449,6 @@
 
                         </p>
                         <p>
-                            <strong class="hilang">Program Studi</strong><br/>
-                            <span class="data_alumni"><?php echo $data_profile->nama_prodi; ?></span>
-                            <select name="prodi" id="prodi" onchange="prodi_change()" class="form_alumni" style="width:225px; height:35px;">
-                                <?php foreach ($prodi as $row) { ?>
-                                    <option value="<?php echo $row->id_prodi; ?>" <?php
-                                    if ($data_profile->nama_prodi == $row->nama_prodi) {
-                                        echo "selected";
-                                    }
-                                    ?>><?php echo $row->nama_prodi; ?></option>
-                                        <?php } ?>                             
-
-                            </select>
-                        </p>
-                    </div>
-
-                    <div class="project-info" style="margin-left:100px;">
-                        <p>
-                            <strong class="hilang">Alamat Rumah</strong><br/>
-                            <span class="data_alumni"><?php echo $data_profile->alamat_rumah; ?></span>
-                            <textarea name="alamat_rumah" class="form_alumni" style="width:200px; height:100px;" required><?php echo $data_profile->alamat_rumah; ?></textarea>
-                        </p>
-                        <p>
-                            <strong class="hilang">Alamat Kantor</strong><br/>
-                            <span class="data_alumni"><?php echo $data_profile->alamat_kantor; ?></span>
-                            <textarea name="alamat_kantor" class="form_alumni" style="width:200px; height:100px;" required><?php echo $data_profile->alamat_kantor; ?></textarea>
-                        </p>
-                        <p>
                             <strong class="hilang">Nomor HP</strong><br/>
                             <span class="data_alumni"><?php echo $data_profile->no_hp; ?></span>
                             <input type="text" class="form_alumni" name="hp" value="<?php echo $data_profile->no_hp; ?>" style="width:200px; height:15px;" required>
@@ -463,16 +459,64 @@
                             <span class="data_alumni"><?php echo $data_profile->email; ?></span>
                             <input type="email" class="form_alumni" name="email" value="<?php echo $data_profile->email; ?>" style="width:200px; height:15px;" required readonly>
                         </p>
+                        
+                    </div>
+
+                    <div class="project-info" style="margin-left:100px;">
+                        <p>
+                            <strong class="hilang">Alamat Rumah</strong><br/>
+                            <span class="data_alumni"><?php echo $data_profile->alamat_rumah; ?></span>
+                            <textarea name="alamat_rumah" class="form_alumni" style="width:200px; height:100px;" required><?php echo $data_profile->alamat_rumah; ?></textarea>
+                        </p>
+                        
+                        
                         <p>
                             <strong class="hilang">Profesi</strong><br/>
                             <span class="data_alumni"><?php echo $data_profile->profesi; ?></span>
-                            <input type="text" class="form_alumni" name="profesi" value="<?php echo $data_profile->profesi; ?>" style="width:200px; height:15px;" required>
+                            <select name="profesi" id="profesi" onchange="profesi_change()" class="form_alumni" style="width:225px; height:35px;" required>
+                                
+                                <option value="PNS" <?php if($data_profile->profesi == "PNS"){ echo "selected"; }?> >PNS</option>
+                                <option value="Pegawai Swasta" <?php if($data_profile->profesi == "Pegawai Swasta"){ echo "selected"; }?> >Pegawai Swasta</option>
+                                <option value="Wiraswasta" <?php if($data_profile->profesi == "Wiraswasta"){ echo "selected"; }?> >Wiraswasta</option>
+                                <option value="Lembaga Non Pemeritah (LSM)" <?php if($data_profile->profesi == "Lembaga Non Pemeritah (LSM)"){ echo "selected"; }?> >Lembaga Non Pemeritah (LSM)</option>
+                                <option value="Badan Dunia dan Afiliasi" <?php if($data_profile->profesi == "Badan Dunia dan Afiliasi"){ echo "selected"; }?> >Badan Dunia dan Afiliasi</option>
+                                <option value="IRT" <?php if($data_profile->profesi == "IRT"){ echo "selected"; }?> >IRT</option>
+                                <option value="BUMN" <?php if($data_profile->profesi == "BUMN"){ echo "selected"; }?> >BUMN</option>
+                                <option value="BUMD" <?php if($data_profile->profesi == "BUMD"){ echo "selected"; }?> >BUMD</option>
+                                                                   
+
+                            </select>
                         </p>
+                        
+                        
+                        <p class="irt_hide">
+                            <strong class="hilang">Instansi/Perusahaan/Lembaga</strong><br/>
+                            <span class="data_alumni"><?php echo $data_profile->instansi; ?></span>
+                            <input type="text" class="form_alumni" name="instansi" id="instansi" value="<?php echo $data_profile->instansi; ?>" style="width:200px; height:15px;" required>
+                        </p>
+                        
+                        <p class="irt_hide">
+                            <strong class="hilang">Bidang Usaha/Kegiatan</strong><br/>
+                            <span class="data_alumni"><?php echo $data_profile->bidang_usaha; ?></span>
+                            <input type="text" class="form_alumni" name="bidang_usaha" id="bidang_usaha" value="<?php echo $data_profile->bidang_usaha; ?>" style="width:200px; height:15px;" required>
+                        </p>
+                        
+                        <p class="irt_hide">
+                            <strong class="hilang">Alamat Kantor</strong><br/>
+                            <span class="data_alumni"><?php echo $data_profile->alamat_kantor; ?></span>
+                            <textarea name="alamat_kantor" id="alamat_kantor" class="form_alumni" style="width:200px; height:100px;" required><?php echo $data_profile->alamat_kantor; ?></textarea>
+                        </p>
+                        
+                        
+                        
+                        
                         <p>
                             <strong class="hilang">Bidang Keahlian</strong><br/>
                             <span class="data_alumni"><?php echo $data_profile->bidang_keahlian; ?></span>
                             <textarea name="bidang_keahlian" class="form_alumni" style="width:200px; height:100px;" required><?php echo $data_profile->bidang_keahlian; ?></textarea>
                         </p>
+                        
+                        
                         <input class="form_alumni" type="submit" name="edit" value="Simpan" style="height:40px; width:80px;">
 
                     </div>
