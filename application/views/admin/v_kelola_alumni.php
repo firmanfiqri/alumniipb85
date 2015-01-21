@@ -78,11 +78,13 @@
 						<td>
 						<?php
 						if($row->status == 0){
-							echo "Data profil belum lengkap";
+							echo "Aktif (data belum lengkap)";
 						}else if($row->status == 1){
-							echo "OK";
+							echo "Aktif (belum terdaftar Reuni Akbar)";
+						}else if($row->status == 2){
+							echo "Aktif (sudah terdaftar Reuni Akbar)";
 						}else{
-							echo "Belum aktivasi akun";
+							echo "Belum aktivasi";
 						}
 						?>
 						</td>

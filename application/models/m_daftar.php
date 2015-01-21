@@ -17,11 +17,6 @@ class m_daftar extends CI_Model {
         return $query;
     }
 
-    public function getAllProdi() {
-        $query = $this->db->query("select * from prodi;");
-        return $query;
-    }
-
     public function getAlumniById($email) {
         $query = $this->db->query("select * from alumni where email='$email';");
         return $query;
