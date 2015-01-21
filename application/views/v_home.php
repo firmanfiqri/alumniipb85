@@ -156,7 +156,7 @@
                                 </select>
                             </div>
                             <div style="margin-top:5px;">
-                                <input name="no_hp"  id="no_hp" type="text" class="form-poshytip" title="Masukan no. HP" placeholder="Nomor HP" style="width:220px; height:10px;" required />
+                                <input name="no_hp"  id="no_hp" type="text" class="form-poshytip" title="Masukan no. HP" placeholder="Nomor HP" style="width:220px; height:10px;" onkeypress="return isNumber(event)" required />
                             </div >
                             <div style="margin-top:-15px;">
                                 <input name="email"  id="email" type="email" class="form-poshytip" title="Masukan email" placeholder="Email" style="width:220px; height:10px;" required />
@@ -184,3 +184,33 @@
     </div>
 </div>
 <!-- ENDS MAIN -->
+
+
+
+<div id="modal" style="width:21%; height:50%; margin-left:-180px;">
+    <header>
+        <h2 class="page-heading"><span>Lupa Password</span></h2>	
+    </header>
+    <form id="contactForm" class="isian" action="<?php echo base_url(); ?>login/lupa_password" method="post">
+
+        <section style="margin-top:20px;">
+            <div class="project-info" style="margin-left:40px;">
+                	
+                <p>
+                    <strong>Email</strong><br/>
+                    <input name="email" type="email" class="form-poshytip" title="Masukan email" placeholder="Email" style="height:8px;width:140px;" required />
+                </p>
+                <p>
+                    <strong>No Hp</strong><br/>
+                    <input name="hp" type="text" class="form-poshytip" title="Masukan No HP" placeholder="No HP" style="height:8px;width:140px;" onkeypress="return isNumber(event)" required />
+                </p>
+                <p>                    
+                    <a href="#"><input type="button" value="Batal" name="submit" style="width:84px; height:30px;" /></a>
+                    <input name="submit" type="submit" id="submit" value="OK" style="height:30px; width:84px;" />
+                </p>
+                
+            </div>
+            
+        </section>
+    </form>
+</div>
