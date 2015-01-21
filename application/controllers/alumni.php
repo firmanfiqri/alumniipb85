@@ -34,7 +34,8 @@ class Alumni extends CI_Controller {
 
     public function about() {
         $this->header(1);
-        $this->load->view('alumni/v_home_alumni');
+        $data['event'] = $this->m_alumni->getEventAlumni();
+        $this->load->view('alumni/v_home_alumni', $data);
         $this->footer();
     }
 

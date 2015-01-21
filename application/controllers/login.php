@@ -24,7 +24,7 @@ class Login extends CI_Controller {
             $data['nama_alumni'] = $ambilquery->nama_alumni;
             $data['password'] = $ambilquery->password;
             $data['status'] = $ambilquery->status;
-            if ($ambilquery->status > 1) {
+            if ($ambilquery->status > 2) {
                 echo "<script type='text/javascript'>alert('Mohon maaf email yang anda masukkan belum melakukan aktivasi.');
 			window.location.href='" . base_url() . "';
 			</script>";
