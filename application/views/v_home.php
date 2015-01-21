@@ -19,13 +19,7 @@
             data['nama_jurusan'] = "<?php echo $a->nama_jurusan ?>";
             jurusan.push(data);
 <?php } ?>
-<?php foreach ($queryprodi as $a) { ?>
-            data = new Array();
-            data['id_prodi'] = "<?php echo $a->id_prodi ?>";
-            data['id_jurusan'] = "<?php echo $a->id_jurusan ?>";
-            data['nama_prodi'] = "<?php echo $a->nama_prodi ?>";
-            prodi.push(data);
-<?php } ?>
+
 
         fakultas_change();
 
@@ -45,17 +39,6 @@
         //jurusan_change();
     }
 
-    function jurusan_change() {
-        var id = $("#jurusan").val();
-
-        document.getElementById("prodi").options.length = 0;
-        for (var i = 0; i < prodi.length; i++) {
-            if (prodi[i]['id_jurusan'] == id) {
-                var select = document.getElementById("prodi");
-                select.options[select.options.length] = new Option(prodi[i]['nama_prodi'], prodi[i]['id_prodi']);
-            }
-        }
-    }
 
     function confirmPass() {
         var pass = document.getElementById("pass").value
@@ -70,26 +53,30 @@
         alert('Mohon Login terlebih dahulu!');
     }
 
+    function isNumber(evt) {
+        evt = (evt) ? evt : window.event;
+        var charCode = (evt.which) ? evt.which : evt.keyCode;
+        if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+            return false;
+        }
+        return true;
+    }
 
-    function capitalize(str) {
-        str = str.toLowerCase();
-        return str.replace(/([^ -])([^ -]*)/gi, function(v, v1, v2) {
-            return v1.toUpperCase() + v2;
+
+    function capitalizeEachWord(str) {
+        return str.replace(/\w\S*/g, function(txt) {
+            return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
         });
     }
 
-    $("#nama_lengkap").keyup(function(evt) {
+    function Kapital() {
+        var x = document.getElementById("nama_lengkap");
+        x.value = capitalizeEachWord(x.value.toUpperCase());
 
-        // force: true to lower case all letter except first
-        var cp_value = capitalize($(this).val());
-
-        // to capitalize all words  
-        //var cp_value= ucwords($(this).val(),true) ;
+    }
 
 
-        $(this).val(cp_value);
 
-    });
 </script>
 
 <div id="background">
@@ -134,16 +121,16 @@
                 <div class="home-slider-clearfix"></div>
 
                 <!-- Headline -->
-                <div id="headline" style="height:425px;">
+                <div id="headline" style="height:450px;">
                     <h1 style="margin-top:-20px;">Mendaftar</h1>
                     <!-- form -->
                     <form id="contactForm" action="<?php echo base_url(); ?>home/ambil_daftar/" method="post" style="width:0px">
                         <fieldset>
                             <div style="margin-top:-10px; width:10%;">
-                                <input name="nama_lengkap"  id="name" type="text" class="form-poshytip" title="Masukan nama lengkap" placeholder="Nama lengkap" style="width:220px; height:10px;" required />
+                                <input name="nama_lengkap"  id="nama_lengkap" type="text" class="form-poshytip" title="Masukan nama lengkap" placeholder="Nama lengkap" style="width:220px; height:10px;" onblur="Kapital()" required />
                             </div>
                             <div style="margin-top:-15px;">
-                                <input name="nrp"  id="name" type="text" class="form-poshytip" title="Masukan NRP" placeholder="NRP" style="width:220px; height:10px;" required />
+                                <input name="nrp"  id="name" type="text" class="form-poshytip" title="Masukan NRP" placeholder="NRP" style="width:220px; height:10px;" onkeypress="return isNumber(event)" required />
                             </div>
                             <div style="margin-top:-10px;">
                                 <input type="radio" name="jenis_kelamin" value="Laki-laki" checked="checked" /> Laki-laki &nbsp; &nbsp;
