@@ -34,7 +34,8 @@ class Alumni extends CI_Controller {
 
     public function about() {
         $this->header(1);
-        $this->load->view('alumni/v_home_alumni');
+        $data['event'] = $this->m_alumni->getEventAlumni();
+        $this->load->view('alumni/v_home_alumni', $data);
         $this->footer();
     }
 
@@ -115,7 +116,7 @@ class Alumni extends CI_Controller {
     }
 
     public function detail_event($id) {
-        if ($this->session->userdata('status') == 1) {
+        if ($this->session->userdata('status') == 1|| $this->session->userdata('status') == 2) {
             if ($id != "") {
                 $data['semua_event'] = $this->m_alumni->getAllEvent();
                 $data['event'] = $this->m_alumni->getEvent($id);
@@ -135,7 +136,7 @@ class Alumni extends CI_Controller {
     }
 
     public function daftar_event($id) {
-        if ($this->session->userdata('status') == 1) {
+        if ($this->session->userdata('status') == 1 || $this->session->userdata('status') == 2) {
             if ($id != "") {
                 $data['semua_event'] = $this->m_alumni->getAllEvent();
                 $data['event'] = $this->m_alumni->getEvent($id);
@@ -153,9 +154,44 @@ class Alumni extends CI_Controller {
             redirect(base_url() . 'alumni/event');
         }
     }
+    
+    
+    public function daftar_gratis($id) {
+        if ($this->session->userdata('status') == 1 || $this->session->userdata('status') == 2) {
+            if ($id != "") {
+                $id_alumni = $this->session->userdata('id_alumni');
+                $id_event = $id;
+                $noreg = "";
+
+                $event = $this->m_alumni->getEvent($id_event);
+                $pieces = explode(" ", $event->nama_event);
+                $max = sizeof($pieces);
+                for ($i = 0; $i < $max; $i++) {
+                    $noreg = $noreg . $pieces[$i][0];
+                }
+                
+                $jumlah_peserta = $this->m_alumni->getJumlahPesertaEvent($id_event);
+                $jumlah_peserta++;
+                $jumlah_peserta+=10000;
+
+                $noreg = $noreg . $jumlah_peserta;
+                $noreg = strtoupper($noreg);
+                
+                $this->m_alumni->tambahPesertaEventGratis($id_alumni, $id_event,$noreg);
+
+                echo "<script type='text/javascript'>alert('Selamat anda berhasil mendaftar! Cek history untuk memastikan.');
+		window.location.href='" . base_url() . "alumni/history';
+		</script>";
+            } else {
+                redirect(base_url() . "alumni");
+            }
+        } else {
+            redirect(base_url() . 'alumni');
+        }
+    }
 
     public function daftar() {
-        if ($this->session->userdata('status') == 1) {
+        if ($this->session->userdata('status') == 1 || $this->session->userdata('status') == 2) {
             if ($this->input->post('daftar')) {
                 $id_alumni = $this->session->userdata('id_alumni');
                 $email = $this->session->userdata('email');
@@ -228,7 +264,7 @@ class Alumni extends CI_Controller {
     }
 
     public function konfirmasi($noreg) {
-        if ($this->session->userdata('status') == 1) {
+        if ($this->session->userdata('status') == 1|| $this->session->userdata('status') == 2) {
             if ($noreg != "") {
                 if ($this->m_alumni->cekNoreg($noreg) == 1) {
                     $this->header(4);
@@ -248,7 +284,7 @@ class Alumni extends CI_Controller {
     }
 
     public function submit_konfirmasi() {
-        if ($this->session->userdata('status') == 1) {
+        if ($this->session->userdata('status') == 1|| $this->session->userdata('status') == 2) {
             if ($this->input->post('konfirmasi')) {
                 $id_peserta_event = $this->input->post('id_peserta_event');
                 $noreg = $this->input->post('noreg');

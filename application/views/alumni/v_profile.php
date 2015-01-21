@@ -58,6 +58,8 @@
     function edit_data() {
         $('.data_alumni').hide();
         $('.form_alumni').show();
+        
+        profesi_change();
     }
 
     function edit_sandi() {
@@ -451,7 +453,7 @@
                         <p>
                             <strong class="hilang">Nomor HP</strong><br/>
                             <span class="data_alumni"><?php echo $data_profile->no_hp; ?></span>
-                            <input type="text" class="form_alumni" name="hp" value="<?php echo $data_profile->no_hp; ?>" style="width:200px; height:15px;" required>
+                            <input type="text" class="form_alumni" onkeypress="return isNumber(event)" name="hp" value="<?php echo $data_profile->no_hp; ?>" style="width:200px; height:15px;" required>
 
                         </p>
                         <p>

@@ -1,3 +1,9 @@
+<script>
+    function lupa_password(){
+        $('#modal').show();
+    }
+</script>
+
 <header class="clearfix">
 
     <!-- top widget -->
@@ -15,7 +21,7 @@
                                         &nbsp;&nbsp;
                                         <input name="password" type="password" class="form-poshytip" title="Masukan kata sandi" placeholder="Kata Sandi" style="height:8px;" required />
                                         &nbsp;&nbsp;
-                                        <input name="submit" type="submit" id="submit" value="Login" style="height:30px; width:60px;" />
+                                        <input name="submit" type="submit" id="submit" value="Login" style="height:30px; width:60px;" /> || <a href="#modal" onclick="lupa_password()">Lupa Password?</a>
                                     </div>
                                 </fieldset>
 

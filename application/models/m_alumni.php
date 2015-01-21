@@ -50,7 +50,7 @@ class m_alumni extends CI_Model {
     }
     
     public function getAllEvent() {
-        $query = $this->db->query("select * from event order by tanggal_event desc");
+        $query = $this->db->query("select * from event where kategori <> 'Reuni' order by tanggal_event desc");
         return $query->result();
     }
     
@@ -71,6 +71,12 @@ class m_alumni extends CI_Model {
     
     public function tambahPesertaEvent($id_alumni,$id_event,$noreg,$dewasa,$anak,$tgl_tiba) {
         $query = $this->db->query("insert into peserta_event(id_alumni,id_event,no_registrasi,jumlah_dewasa,jumlah_anak,tanggal_tiba)values('$id_alumni','$id_event','$noreg','$dewasa','$anak','$tgl_tiba')");
+        $query = $this->db->query("update alumni set status = 2 where id_alumni='$id_alumni'");
+    }
+    
+    public function tambahPesertaEventGratis($id_alumni,$id_event,$noreg) {
+        $query = $this->db->query("insert into peserta_event(id_alumni,id_event,no_registrasi,status_pembayaran)values('$id_alumni','$id_event','$noreg','2')");
+        $query = $this->db->query("update alumni set status = 2 where id_alumni='$id_alumni'");
     }
     
     public function getHistoryEvent($id_alumni){
@@ -94,6 +100,11 @@ class m_alumni extends CI_Model {
     
     public function setBuktiPembayaran($id_peserta_event,$file_target){
         $query = $this->db->query("update peserta_event p set p.bukti_foto='$file_target',p.status_pembayaran='1' where p.id_peserta_event='$id_peserta_event'");
+    }
+    
+    public function getEventAlumni(){
+        $query = $this->db->query("select * from event where kategori = 'Reuni'");
+        return $query->row();
     }
     
 
