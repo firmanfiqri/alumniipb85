@@ -17,7 +17,6 @@
         <!-- JS -->
         
         <script src="<?php echo base_url(); ?>assets/js/jquery-1.11.1.min.js"></script>
-        
         <script src="<?php echo base_url(); ?>assets/js/css3-mediaqueries.js"></script>       
         
         <script src="<?php echo base_url(); ?>assets/js/tabs.js"></script>
