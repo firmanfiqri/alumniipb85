@@ -71,6 +71,7 @@
 	
 </script>
 
+<div id="background">
 <!-- MAIN -->
         <div id="main">	
             <div class="wrapper">
@@ -114,9 +115,9 @@
                     <div id="headline" style="height:425px;">
                         <h1 style="margin-top:-20px;">Mendaftar</h1>
                         <!-- form -->
-						<form id="contactForm" action="<?php echo base_url(); ?>home/ambil_daftar/" method="post">
+						<form id="contactForm" action="<?php echo base_url(); ?>home/ambil_daftar/" method="post" style="width:0px">
 							<fieldset>
-								<div style="margin-top:-10px;">
+								<div style="margin-top:-10px; width:10%;">
 									<input name="nama_lengkap"  id="name" type="text" class="form-poshytip" title="Masukan nama lengkap" placeholder="Nama lengkap" style="width:220px; height:10px;" required />
 								</div>
 								<div style="margin-top:-15px;">

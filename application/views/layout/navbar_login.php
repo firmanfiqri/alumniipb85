@@ -6,7 +6,7 @@
             <div id="top-widget">
                 <div class="padding" style="height:20px;">
                     <ul  class="widget-cols clearfix">
-                        <li class="first-col" style="float:right; margin-top:-20px; margin-right:45px;">
+                        <li class="first-col" style="float:right; margin-top:-20px; margin-right:20%;">
                             <!-- form -->
                             <form id="contactForm" action="<?php echo base_url(); ?>login/validasi/" method="post">
                                 <fieldset>

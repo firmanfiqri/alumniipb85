@@ -318,6 +318,8 @@
     }
 
 </script>
+
+<div id="background">
 <!-- MAIN -->
 <div id="main">	
 

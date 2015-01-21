@@ -1,3 +1,4 @@
+<div id="background">
 <div id="main">	
     <div class="wrapper clearfix">
 
