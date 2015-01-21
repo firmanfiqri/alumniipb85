@@ -62,7 +62,10 @@ function nominalisasi($biaya) {
                             <li>Selesai</li>
                         </lu>
                     <?php } else { ?>
-                    Silahkan langsung datang ke lokasi acara.
+                    <lu>
+                            <li>Klik tombol daftar yang ada dibawah</li>
+                            <li>Selesai</li>
+                        </lu>
                 <?php } ?>
                 </div>
 <?php if ($event->biaya > 0) { ?>
@@ -71,6 +74,12 @@ function nominalisasi($biaya) {
                             <a href="<?php echo base_url(); ?>alumni/daftar_event/<?php echo $event->id_event; ?>">Daftar</a> 
                         </div>
                     </div>
+<?php }else{ ?>
+          <div class="page-navigation clearfix">
+                        <div class="nav-previous">
+                            <a href="<?php echo base_url(); ?>alumni/daftar_gratis/<?php echo $event->id_event; ?>">Daftar</a> 
+                        </div>
+                    </div>      
 <?php } ?>
                 <br>
                 <div class="meta">

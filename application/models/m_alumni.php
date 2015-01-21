@@ -74,6 +74,11 @@ class m_alumni extends CI_Model {
         $query = $this->db->query("update alumni set status = 2 where id_alumni='$id_alumni'");
     }
     
+    public function tambahPesertaEventGratis($id_alumni,$id_event,$noreg) {
+        $query = $this->db->query("insert into peserta_event(id_alumni,id_event,no_registrasi,status_pembayaran)values('$id_alumni','$id_event','$noreg','2')");
+        $query = $this->db->query("update alumni set status = 2 where id_alumni='$id_alumni'");
+    }
+    
     public function getHistoryEvent($id_alumni){
         $query = $this->db->query("select * from peserta_event p, event e where p.id_event=e.id_event and p.id_alumni = $id_alumni");
         return $query->result();
