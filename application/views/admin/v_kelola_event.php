@@ -92,7 +92,7 @@
                         <th>Nama Event</th>
                         <th>Tanggal</th>
                         <th>Tempat</th>
-                        <th>Biaya</th>
+                        <th>Kategori</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>               
@@ -107,10 +107,12 @@
 						<td><?php echo $row->nama_event;?></td>
 						<td><?php echo $row->tanggal_event;?></td>
 						<td><?php echo $row->tempat_event;?></td>
-						<td><?php
+						<!--<td><?php
 						$biaya = nominalisasi($row->biaya);
 						echo "Rp. ".$biaya;
 						?></td>
+						-->
+						<td><?php echo $row->kategori;?></td>
 						<td>
 							<a href="<?php echo base_url();?>admin/detail_event/<?php echo $row->id_event;?>"><button style="height:30px; width:56px;">Detail</button></a>
 							<a href="<?php echo base_url();?>admin/lihat_edit_event/<?php echo $row->id_event;?>"><button style="height:30px; width:42px;">Edit</button></a>
@@ -139,6 +141,13 @@
 				<h2 class="heading">Tambah Event</h2>
 				<fieldset>
 					<div>
+						<label class="clearfix">Kategori Event</label>
+						<select name="kategori" id="kategori" class="form-poshytip" title="Masukan nama event" style="width:150px;" required>
+							<option value="Seminar">Seminar</option>
+							<option value="Trip">Trip</option>
+						</select>
+					</div>
+					<div style="margin-top:10px;">
 						<label class="clearfix">Nama Event</label>
 						<input name="nama_event"  id="name" type="text" class="form-poshytip" title="Masukan nama event" style="width:250px;" required />
 					</div>

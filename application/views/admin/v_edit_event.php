@@ -38,7 +38,25 @@
 			<form id="contactForm" action="<?php echo base_url(); ?>admin/edit_event" method="post" enctype="multipart/form-data">
 				<fieldset>
 					<input name="id_event" type="hidden" value = "<?php echo $editevent->id_event; ?>" />
-					<div>
+					<div style="margin-top:10px;">
+						<label class="clearfix">Kategori Event</label>
+						<select name="kategori" id="kategori" class="form-poshytip" title="Masukan nama event" style="width:150px;" required>
+							<?php
+							if($editevent->kategori == "Seminar"){
+							?>
+								<option value="Seminar">Seminar</option>
+								<option value="Trip">Trip</option>
+							<?php
+							}else{
+							?>
+								<option value="Trip">Trip</option>
+								<option value="Seminar">Seminar</option>
+							<?php
+							}
+							?>
+						</select>
+					</div>
+					<div style="margin-top:10px;">
 						<label class="clearfix">Nama Event</label>
 						<input name="nama_event"  id="name" type="text" class="form-poshytip" title="Masukan nama event" value = "<?php echo $editevent->nama_event; ?>" style="width:250px;" required />
 					</div>

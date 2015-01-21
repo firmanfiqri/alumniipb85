@@ -211,7 +211,7 @@ class Alumni extends CI_Controller {
         $this->email->to($email);
 
         $this->email->subject('Pendaftaran Event');
-        $this->email->message("Hi $nama_lengkap,<br><br>Terima Kasih telah mendaftarkan diri pada event $nama_event. <br>Segera lakukan pembayaran ke rekening BCA 0987654321 a/n Fadhilah kemudian konfirmasi pembayaran melalui tautan dibawah ini<br><br><a href='" . base_url() . "alumni/history/'>Konfirmasi</a><br><br>Apabila ada pertanyaan silahkan hubungi admin@admin.com");
+        $this->email->message("Hi $nama_lengkap,<br><br>Terima Kasih telah mendaftarkan diri pada event $nama_event. <br>Segera lakukan pembayaran ke rekening BCA 0987654321 a/n Fadhilah kemudian konfirmasi pembayaran melalui tautan dibawah ini<br><br><a href='" . base_url() . "alumni/history/'><input type='button' value='Konfirmasi' name='submit' id='submit' style='width:100px; height:30px;' /></a><br><br>Apabila ada pertanyaan silahkan hubungi admin@admin.com");
 
         $this->email->send();
 

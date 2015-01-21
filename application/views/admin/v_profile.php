@@ -48,9 +48,13 @@
                             <strong class="hilang">Jurusan</strong><br/>
                             <span class="data_alumni"><?php echo $data_profile->nama_jurusan; ?></span>
                         </p>
+						<p>
+                            <strong class="hilang">Nomor HP</strong><br/>
+                            <span class="data_alumni"><?php echo $data_profile->no_hp; ?></span>
+                        </p>
                         <p>
-                            <strong class="hilang">Program Studi</strong><br/>
-                            <span class="data_alumni"><?php echo $data_profile->nama_prodi; ?></span>
+                            <strong class="hilang">Email</strong><br/>
+                            <span class="data_alumni"><?php echo $data_profile->email; ?></span>
                         </p>
                     </div>
 
@@ -60,21 +64,26 @@
                             <span class="data_alumni"><?php echo $data_profile->alamat_rumah; ?></span>
                         </p>
 						<p>
-                            <strong class="hilang">Alamat Kantor</strong><br/>
-                            <span class="data_alumni"><?php echo $data_profile->alamat_kantor; ?></span>
-                        </p>
-                        <p>
-                            <strong class="hilang">Nomor HP</strong><br/>
-                            <span class="data_alumni"><?php echo $data_profile->no_hp; ?></span>
-                        </p>
-                        <p>
-                            <strong class="hilang">Email</strong><br/>
-                            <span class="data_alumni"><?php echo $data_profile->email; ?></span>
-                        </p>
-                        <p>
                             <strong class="hilang">Profesi</strong><br/>
                             <span class="data_alumni"><?php echo $data_profile->profesi; ?></span>
                         </p>
+                        
+                        
+                        <p class="irt_hide">
+                            <strong class="hilang">Instansi/Perusahaan/Lembaga</strong><br/>
+                            <span class="data_alumni"><?php echo $data_profile->instansi; ?></span>
+                        </p>
+                        
+                        <p class="irt_hide">
+                            <strong class="hilang">Bidang Usaha/Kegiatan</strong><br/>
+                            <span class="data_alumni"><?php echo $data_profile->bidang_usaha; ?></span>
+                        </p>
+                        
+                        <p class="irt_hide">
+                            <strong class="hilang">Alamat Kantor</strong><br/>
+                            <span class="data_alumni"><?php echo $data_profile->alamat_kantor; ?></span>
+                        </p>
+                        
                         <p>
                             <strong class="hilang">Bidang Keahlian</strong><br/>
                             <span class="data_alumni"><?php echo $data_profile->bidang_keahlian; ?></span>

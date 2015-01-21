@@ -22,14 +22,19 @@ class m_daftar extends CI_Model {
         return $query;
     }
 	
+	public function getFakultasById($id_jurusan) {
+        $query = $this->db->query("select nama_fakultas from jurusan j, fakultas f where j.id_jurusan='$id_jurusan' and j.id_fakultas=f.id_fakultas;");
+        return $query;
+    }
+	
 	public function getAllEvent() {
         $query = $this->db->query("select * from event where tanggal_event >= NOW() order by tanggal_event asc limit 4;");
         return $query;
     }
 
     //INSERT & UPDATE
-    public function insertAlumni($nama_lengkap, $nrp, $jenis_kelamin, $kelompok, $no_hp, $email, $password) {
-        $query = $this->db->query("insert into alumni (nama_alumni,nrp,jenis_kelamin,kelompok,no_hp,email,password) values('$nama_lengkap', '$nrp', '$jenis_kelamin', '$kelompok', '$no_hp', '$email', '$password');");
+    public function insertAlumni($nama_lengkap, $nrp, $jenis_kelamin, $id_jurusan, $kelompok, $no_hp, $email, $password) {
+        $query = $this->db->query("insert into alumni (nama_alumni,nrp,jenis_kelamin,id_jurusan,kelompok,no_hp,email,password) values('$nama_lengkap', '$nrp', '$jenis_kelamin', '$id_jurusan', '$kelompok', '$no_hp', '$email', '$password');");
         return $query;
     }
     

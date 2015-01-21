@@ -13,12 +13,12 @@ class m_admin extends CI_Model {
     }
 	
 	public function getEmailById($id_alumni) {
-        $query = $this->db->query("select email from alumni where id_alumni='$id_alumni';");
+        $query = $this->db->query("select email, nama_alumni from alumni where id_alumni='$id_alumni';");
         return $query;
     }
 	
 	public function getAllEvent() {
-        $query = $this->db->query("select * from event;");
+        $query = $this->db->query("select * from event where kategori != 'Reuni';");
         return $query;
     }
 	
@@ -67,13 +67,13 @@ class m_admin extends CI_Model {
         $query = $this->db->query("update event e set e.foto_event = '$foto' where e.id_event = '$id'");
     }
 	
-	public function insertEvent($nama_event, $deskripsi, $tanggal_event, $tempat_event, $file_target, $biaya, $keterangan) {
-        $query = $this->db->query("insert into event (nama_event,deskripsi,tanggal_event,tempat_event,foto_event,biaya,keterangan) values ('$nama_event', '$deskripsi', '$tanggal_event', '$tempat_event', '$file_target', '$biaya', '$keterangan');");
+	public function insertEvent($nama_event, $deskripsi, $tanggal_event, $tempat_event, $file_target, $biaya, $keterangan, $kategori) {
+        $query = $this->db->query("insert into event (nama_event,deskripsi,tanggal_event,tempat_event,foto_event,biaya,keterangan,kategori) values ('$nama_event', '$deskripsi', '$tanggal_event', '$tempat_event', '$file_target', '$biaya', '$keterangan', '$kategori');");
         return $query;
     }
 	
-	public function updateEvent($id_event, $nama_event, $deskripsi, $tanggal_event, $tempat_event, $biaya, $keterangan) {
-        $query = $this->db->query("update event set nama_event='$nama_event', deskripsi='$deskripsi', tanggal_event='$tanggal_event', tempat_event='$tempat_event', biaya='$biaya', keterangan='$keterangan' where id_event='$id_event';");
+	public function updateEvent($id_event, $nama_event, $deskripsi, $tanggal_event, $tempat_event, $biaya, $keterangan, $kategori) {
+        $query = $this->db->query("update event set nama_event='$nama_event', deskripsi='$deskripsi', tanggal_event='$tanggal_event', tempat_event='$tempat_event', biaya='$biaya', keterangan='$keterangan', kategori='$kategori' where id_event='$id_event';");
         return $query;
     }
 	

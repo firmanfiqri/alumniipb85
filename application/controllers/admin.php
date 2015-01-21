@@ -83,6 +83,7 @@ class Admin extends CI_Controller {
         $tempat_event = $this->input->post('tempat_event');
         $biaya = $this->input->post('biaya');
         $keterangan = $this->input->post('keterangan_event');
+        $kategori = $this->input->post('kategori');
 		$file_target = "";
         //Ubah Foto
         if ($_FILES['foto']['name'] != "") {
@@ -102,7 +103,7 @@ class Admin extends CI_Controller {
             $file_target = substr($file_target, 1);
         }
 
-        $this->m_admin->insertEvent($nama_event, $deskripsi, $tanggal_event, $tempat_event, $file_target, $biaya, $keterangan);
+		$this->m_admin->insertEvent($nama_event, $deskripsi, $tanggal_event, $tempat_event, $file_target, $biaya, $keterangan, $kategori);
 
         echo "<script type='text/javascript'>alert('Anda berhasil menambahkan event!');
 		window.location.href='" . base_url() . "admin/event';
@@ -125,6 +126,7 @@ class Admin extends CI_Controller {
         $tempat_event = $this->input->post('tempat_event');
         $biaya = $this->input->post('biaya');
         $keterangan = $this->input->post('keterangan_event');
+        $kategori = $this->input->post('kategori');
 
         //Ubah Foto
         if ($_FILES['foto']['name'] != "") {
@@ -146,7 +148,7 @@ class Admin extends CI_Controller {
             $this->m_admin->updateFoto($id_event, $file_target);
         }
 
-        $this->m_admin->updateEvent($id_event, $nama_event, $deskripsi, $tanggal_event, $tempat_event, $biaya, $keterangan);
+        $this->m_admin->updateEvent($id_event, $nama_event, $deskripsi, $tanggal_event, $tempat_event, $biaya, $keterangan, $kategori);
 
         echo "<script type='text/javascript'>alert('Anda berhasil mengubah event!');
 		window.location.href='" . base_url() . "admin/event';
@@ -242,6 +244,51 @@ class Admin extends CI_Controller {
 
         $this->email->subject('Konfirmasi Pembayaran');
         $this->email->message("Hi $nama_lengkap,<br><br>Pembayaran untuk event $event dengan no registrasi $noreg telah kami konfirmasi.<br>Kami tunggu kehadiran anda.<br><br>Apabila ada pertanyaan silahkan hubungi admin@admin.com");
+
+        $this->email->send();
+
+        //echo $this->email->print_debugger();
+    }
+	
+	public function kirim_notifikasi() {
+		$id_alumni = $this->input->post('id_alumni_notifikasi');
+		$status_notifikasi = $this->input->post('status_notifikasi');
+		
+        $ambilquery = $this->m_admin->getEmailById($id_alumni)->row();
+		$email = $ambilquery->email;
+		$nama_lengkap = $ambilquery->nama_alumni;
+		$kode_verifikasi = $ambilquery->status;
+		
+		if($status_notifikasi == 1){
+			$pesan="Sebagai informasi, akun yang anda miliki belum melakukan pendaftaran <b>Acara Reuni Akbar IPB 1988</b>. Mohon segera lakukan pendaftaran.";
+		}else if($status_notifikasi == 0){
+			$pesan="Sebagai informasi, akun yang anda miliki belum melengkapi data profil yang dibutuhkan. Mohon segera melengkapi data profil.";
+		}else{
+			$pesan="Sebagai informasi, akun yang anda miliki belum melakukan aktivasi. Mohon segera lakukan aktivasi dengan mengakses tautan di bawah ini.<br><br><a href='" . base_url() . "aktivasi/akun/".$id_alumni."/".$kode_verifikasi."'><input type='button' value='Aktivasi' name='submit' id='submit' style='width:100px; height:30px;' /></a>";
+		}
+		
+		$this->sendMail_notifikasi($email, $nama_lengkap, $pesan);
+		
+		redirect();
+    }
+	
+	private function sendMail_notifikasi($email, $nama_lengkap, $pesan) {
+        $config = Array(
+            'protocol' => 'smtp',
+            'smtp_host' => 'ssl://smtp.mail.yahoo.com',
+            'smtp_port' => 465,
+            'smtp_user' => 'fadhilah.ilmi@yahoo.com',
+            'smtp_pass' => 'Rahmanda10',
+            'mailtype' => 'html',
+            'charset' => 'iso-8859-1'
+        );
+        $this->load->library('email', $config);
+        $this->email->set_newline("\r\n");
+        $this->email->from('fadhilah.ilmi@yahoo.com', 'Fadhilah');
+        $this->email->to($email);
+
+        $this->email->subject('Pesan Notifikasi');
+        $this->email->message("Hi $nama_lengkap,<br><br>$pesan<br><br>Apabila ada pertanyaan silahkan hubungi admin@admin.com");
 
         $this->email->send();
 
