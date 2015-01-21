@@ -35,7 +35,8 @@ class Home extends CI_Controller {
             $nama_lengkap = $this->input->post('nama_lengkap');
             $nrp = $this->input->post('nrp');
             $jenis_kelamin = $this->input->post('jenis_kelamin');
-            $prodi = $this->input->post('prodi');
+            $kelompok = $this->input->post('kelompok');
+            $no_hp = $this->input->post('no_hp');
             $email = $this->input->post('email');
             $password = md5($this->input->post('password'));
 
@@ -48,7 +49,7 @@ class Home extends CI_Controller {
 				window.location.href='" . base_url() . "';
 				</script>";
             } else {
-                $this->m_daftar->insertAlumni($nama_lengkap, $nrp, $jenis_kelamin, $prodi, $email, $password);
+                $this->m_daftar->insertAlumni($nama_lengkap, $nrp, $jenis_kelamin, $kelompok, $no_hp, $email, $password);
                 $this->sendMail($email,$nama_lengkap);
                 echo "<script type='text/javascript'>alert('Selamat anda berhasil mendaftar! Silahkan aktivasi akun melalui email anda.');
 				window.location.href='" . base_url() . "';

@@ -33,8 +33,8 @@ class m_daftar extends CI_Model {
     }
 
     //INSERT & UPDATE
-    public function insertAlumni($nama_lengkap, $nrp, $jenis_kelamin, $prodi, $email, $password) {
-        $query = $this->db->query("insert into alumni (nama_alumni,nrp,jenis_kelamin,id_prodi,email,password) values('$nama_lengkap', '$nrp', '$jenis_kelamin', '$prodi', '$email', '$password');");
+    public function insertAlumni($nama_lengkap, $nrp, $jenis_kelamin, $kelompok, $no_hp, $email, $password) {
+        $query = $this->db->query("insert into alumni (nama_alumni,nrp,jenis_kelamin,kelompok,no_hp,email,password) values('$nama_lengkap', '$nrp', '$jenis_kelamin', '$kelompok', '$no_hp', '$email', '$password');");
         return $query;
     }
     

@@ -53,7 +53,7 @@
 						-->
                         <th>Fakultas</th>
                         <th>Jurusan</th>
-                        <th>Program Studi</th>
+                        <th>Kelompok</th>
                         <th>Status</th>
                         <th>Aksi</th>
                     </tr>
@@ -74,7 +74,7 @@
 						-->
 						<td><?php echo $row->nama_fakultas;?></td>
 						<td><?php echo $row->nama_jurusan;?></td>
-						<td><?php echo $row->nama_prodi;?></td>
+						<td><?php echo $row->kelompok;?></td>
 						<td>
 						<?php
 						if($row->status == 0){

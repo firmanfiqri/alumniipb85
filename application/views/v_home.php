@@ -42,8 +42,9 @@
             }
         }
 
-        jurusan_change();
+        //jurusan_change();
     }
+
     function jurusan_change() {
         var id = $("#jurusan").val();
 
@@ -92,6 +93,7 @@
 </script>
 
 <div id="background">
+
     <!-- MAIN -->
     <div id="main">	
         <div class="wrapper">
@@ -138,10 +140,10 @@
                     <form id="contactForm" action="<?php echo base_url(); ?>home/ambil_daftar/" method="post" style="width:0px">
                         <fieldset>
                             <div style="margin-top:-10px; width:10%;">
-                                <input name="nama_lengkap"  id="nama_lengkap" type="text" class="form-poshytip" title="Masukan nama lengkap" placeholder="Nama lengkap" style="width:220px; height:10px;" required />
+                                <input name="nama_lengkap"  id="name" type="text" class="form-poshytip" title="Masukan nama lengkap" placeholder="Nama lengkap" style="width:220px; height:10px;" required />
                             </div>
                             <div style="margin-top:-15px;">
-                                <input name="nrp"  id="nrp" type="text" class="form-poshytip" title="Masukan NRP" placeholder="NRP" style="width:220px; height:10px;" required />
+                                <input name="nrp"  id="name" type="text" class="form-poshytip" title="Masukan NRP" placeholder="NRP" style="width:220px; height:10px;" required />
                             </div>
                             <div style="margin-top:-10px;">
                                 <input type="radio" name="jenis_kelamin" value="Laki-laki" checked="checked" /> Laki-laki &nbsp; &nbsp;
@@ -155,18 +157,21 @@
                                 </select>
                             </div>
                             <div style="margin-top:5px;">
-                                <select name="jurusan" class="form-poshytip" id="jurusan" onchange="jurusan_change()" title="Pilih jurusan" style="height:30px; width:123px;">">
+                                <select name="jurusan" class="form-poshytip" id="jurusan" title="Pilih jurusan" style="height:30px; width:123px;">
                                     <?php foreach ($queryjurusan as $row) { ?>
                                         <option value="<?php echo $row->id_jurusan; ?>"><?php echo $row->nama_jurusan; ?></option>
                                     <?php } ?>        
                                 </select>
-                                <select name="prodi" class="form-poshytip" id="prodi" onchange="prodi_change()" title="Pilih prodi" style="height:30px; width:123px;">
-                                    <?php foreach ($queryprodi as $row) { ?>
-                                        <option value="<?php echo $row->id_prodi; ?>"><?php echo $row->nama_prodi; ?></option>
-                                    <?php } ?>        
+                                <select name="kelompok" class="form-poshytip" id="prodi" title="Pilih kelompok" style="height:30px; width:123px;">
+                                    <?php for ($i = 3; $i < 11; $i++) { ?>
+                                        <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+                                    <?php } ?>
                                 </select>
                             </div>
                             <div style="margin-top:5px;">
+                                <input name="no_hp"  id="no_hp" type="text" class="form-poshytip" title="Masukan no. HP" placeholder="Nomor HP" style="width:220px; height:10px;" required />
+                            </div >
+                            <div style="margin-top:-15px;">
                                 <input name="email"  id="email" type="email" class="form-poshytip" title="Masukan email" placeholder="Email" style="width:220px; height:10px;" required />
                             </div >
                             <div style="margin-top:5px;">
@@ -184,9 +189,11 @@
 
                     <em id="corner"></em>
                 </div>
-                <!-- ENDS headline -->
+
             </div>
-            <!-- ENDS slider holder -->
+            <!-- ENDS headline -->
         </div>
+        <!-- ENDS slider holder -->
     </div>
-    <!-- ENDS MAIN -->
+</div>
+<!-- ENDS MAIN -->
