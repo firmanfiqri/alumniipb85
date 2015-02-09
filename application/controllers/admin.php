@@ -179,7 +179,7 @@ class Admin extends CI_Controller {
     public function konfirmasi_pembayaran() {
 
         if (!$this->input->post('id_event')) {
-            $id_event = 1;
+            $id_event = 4;
         } else {
             $id_event = $this->input->post('id_event');
         }
@@ -196,7 +196,7 @@ class Admin extends CI_Controller {
         $data['queryevent'] = $this->m_admin->getAllEvent()->result();
         $data['querypembayaran'] = $this->m_admin->getAllPembayaran($id_event)->result();
 
-        $this->header(3);
+        $this->header(4);
         $this->load->view('admin/v_kelola_pembayaran', $data);
         $this->load->view('layout/footer');
     }
@@ -216,8 +216,8 @@ class Admin extends CI_Controller {
 		$this->sendMail($email, $nama_lengkap, $noreg, $nama_event);
 
         echo "<script type='text/javascript'>alert('Pembayaran telah dikonfirmasi!');
-		window.location.href='" . base_url() . "admin/konfirmasi_pembayaran';
-		</script>";
+		window.location.href='" . base_url() . "admin/data_peserta';
+		</script>";	
     }
 
     public function detail_pembayaran() {
@@ -293,6 +293,53 @@ class Admin extends CI_Controller {
         $this->email->send();
 
         //echo $this->email->print_debugger();
+    }
+	
+	public function data_peserta() {
+
+        if (!$this->input->post('id_event')) {
+            $id_event = 4;
+        } else {
+            $id_event = $this->input->post('id_event');
+        }
+
+        $ambilquery = $this->m_admin->getEvent($id_event)->row();
+        if (!$ambilquery) {
+            $data['nama_event'] = "";
+            $data['id_event'] = 0;
+        } else {
+            $data['nama_event'] = $ambilquery->nama_event;
+            $data['id_event'] = $ambilquery->id_event;
+        }
+
+        $data['queryevent'] = $this->m_admin->getAllEvent()->result();
+        $data['querypembayaran'] = $this->m_admin->getAllPembayaran($id_event)->result();
+        
+        $this->header(3);
+        $this->load->view('admin/v_kelola_peserta', $data);
+        $this->load->view('layout/footer');
+    }
+	
+	public function kirim_notifikasi_event() {
+		$id_alumni = $this->input->post('id_alumni_notifikasi');
+		$status_notifikasi = $this->input->post('status_notifikasi');
+		
+        $ambilquery = $this->m_admin->getEmailById($id_alumni)->row();
+		$email = $ambilquery->email;
+		$nama_lengkap = $ambilquery->nama_alumni;
+		//$kode_verifikasi = $ambilquery->status;
+		
+		if($status_notifikasi == 0){
+			$pesan="Sebagai informasi, akun yang anda miliki belum melakukan pembayaran pada <b>Acara Reuni Akbar IPB 1988</b>. Mohon segera lakukan pembayaran, selanjutnya melakukan konfirmasi pembayaran.";
+		}else{
+			$pesan="Sebagai informasi, akun yang anda miliki belum melakukan konfirmasi. Mohon segera lakukan konfirmasi pembayaran secepatnya.<br><br>";
+		}
+		
+		$this->sendMail_notifikasi($email, $nama_lengkap, $pesan);
+		
+		echo "<script type='text/javascript'>
+		window.location.href='" . base_url() . "admin/data_peserta';
+		</script>";	
     }
 
 }

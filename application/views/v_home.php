@@ -79,26 +79,26 @@
 
 </script>
 
-<div id="background">
+<div id="background" style="width:100%; margin-left:0px; height:725px; margin-bottom:50px;">
 
     <!-- MAIN -->
     <div id="main">	
-        <div class="wrapper">
+        <div class="wrapper" style="width:1000px;">
 
             <!-- slider holder -->
             <div id="slider-holder" class="clearfix" >
 
                 <!-- slider -->
-                <div class="flexslider home-slider" style="border-radius:5px;">
+                <div class="flexslider home-slider" style="border-radius:5px; width:66%; height:10%;">
                     <ul class="slides">
                         <?php
-                        if ($queryevent) {
+                        if ($queryeventbesar) {
 
-                            foreach ($queryevent as $row) {
+                            foreach ($queryeventbesar as $row) {
                                 ?>
                                 <li>
                                     <a href="" onclick="daftar_dulu()">
-                                        <img src="<?php echo base_url(); ?><?php echo $row->foto_event; ?>" alt="alt text" style="width:620px; height:400px; border-radius:5px;" />
+                                        <img src="<?php echo base_url(); ?><?php echo $row->foto_event; ?>" alt="alt text" style="width:100%; height:400px; border-radius:5px;" />
                                         <p class="flex-caption" style="margin-bottom:0px; opacity:0.6; border-radius:2px;"><?php echo $row->nama_event; ?></p>
                                     </a>
                                 </li>
@@ -117,6 +117,8 @@
                     </ul>
                 </div>
                 <!-- ENDS slider -->
+				
+				
 
                 <div class="home-slider-clearfix"></div>
 
@@ -179,6 +181,89 @@
 
             </div>
             <!-- ENDS headline -->
+			
+			<!-- slider -->
+			<div class="flexslider home-slider" style="border-radius:5px; width:31%; height:10%; margin-top:-110px;">
+				<ul class="slides">
+					<?php
+					if ($queryeventseminar) {
+
+						foreach ($queryeventseminar as $row) {
+							if($row->foto_event){
+							?>
+							<li>
+								<a href="" onclick="daftar_dulu()">
+									<img src="<?php echo base_url(); ?><?php echo $row->foto_event; ?>" alt="alt text" style="width:620px; height:225px; border-radius:5px;" />
+									<p class="flex-caption" style="margin-bottom:0px; opacity:0.6; border-radius:2px;"><?php echo $row->nama_event; ?></p>
+								</a>
+							</li>
+							<?php
+							}else{
+							?>
+							<li>
+								<a href="" onclick="daftar_dulu()">
+									<img src="<?php echo base_url(); ?>assets/img/dummy_event.png" alt="alt text" style="width:620px; height:225px; border-radius:5px;" />
+									<p class="flex-caption" style="margin-bottom:0px; opacity:0.6; border-radius:2px;"><?php echo $row->nama_event; ?></p>
+								</a>
+							</li>
+						<?php
+							}
+						}
+					} else {
+						?>
+						<li>
+							<a href="" onclick="daftar_dulu()">
+								<img src="<?php echo base_url(); ?>assets/img/tidak_ada_event.png" alt="alt text" style="width:620px; height:400px; border-radius:5px;" />
+							</a>
+						</li>
+						<?php
+					}
+					?>
+				</ul>
+			</div>
+			<!-- ENDS slider -->
+			
+			<!-- slider -->
+			<div class="flexslider home-slider" style="border-radius:5px; width:31%; height:10%; margin-top:-110px; margin-left:4%;">
+				<ul class="slides">
+					<?php
+					if ($queryeventtrip) {
+
+						foreach ($queryeventtrip as $row) {
+							if($row->foto_event){
+							?>
+							<li>
+								<a href="" onclick="daftar_dulu()">
+									<img src="<?php echo base_url(); ?><?php echo $row->foto_event; ?>" alt="alt text" style="width:620px; height:225px; border-radius:5px;" />
+									<p class="flex-caption" style="margin-bottom:0px; opacity:0.6; border-radius:2px;"><?php echo $row->nama_event; ?></p>
+								</a>
+							</li>
+							<?php
+							}else{
+							?>
+							<li>
+								<a href="" onclick="daftar_dulu()">
+									<img src="<?php echo base_url(); ?>assets/img/dummy_event.png" alt="alt text" style="width:620px; height:225px; border-radius:5px;" />
+									<p class="flex-caption" style="margin-bottom:0px; opacity:0.6; border-radius:2px;"><?php echo $row->nama_event; ?></p>
+								</a>
+							</li>
+						<?php
+							}
+						}
+					} else {
+						?>
+						<li>
+							<a href="" onclick="daftar_dulu()">
+								<img src="<?php echo base_url(); ?>assets/img/tidak_ada_event.png" alt="alt text" style="width:620px; height:400px; border-radius:5px;" />
+							</a>
+						</li>
+						<?php
+					}
+					?>
+				</ul>
+			</div>
+			<!-- ENDS slider -->
+			
         </div>
         <!-- ENDS slider holder -->
     </div>

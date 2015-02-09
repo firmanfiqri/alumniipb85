@@ -99,7 +99,7 @@
 							<?php
 							if($row->status != 2){
 							?>
-							<a href="#modal3"><button onclick="buka_notifikasi('<?php echo $row->id_alumni;?>','<?php echo $row->status;?>')" style="height:30px; width:75px;">Notifikasi</button></a>
+							<a href="#modal3"><button onclick="buka_notifikasi('<?php echo $row->id_alumni;?>','<?php echo $row->status;?>')" style="height:30px; width:65px;">Notif.</button></a>
 							<?php
 							}
 							?>

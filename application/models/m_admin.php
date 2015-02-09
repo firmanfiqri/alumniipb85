@@ -18,7 +18,7 @@ class m_admin extends CI_Model {
     }
 	
 	public function getAllEvent() {
-        $query = $this->db->query("select * from event where kategori != 'Reuni';");
+        $query = $this->db->query("select * from event;");
         return $query;
     }
 	
@@ -28,7 +28,7 @@ class m_admin extends CI_Model {
     }
 	
 	public function getAllPembayaran($id_event) {
-        $query = $this->db->query("select * from peserta_event where id_event='$id_event';");
+        $query = $this->db->query("select * from peserta_event pe, alumni a where pe.id_alumni=a.id_alumni and pe.id_event='$id_event';");
         return $query;
     }
 	

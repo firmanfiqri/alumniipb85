@@ -1,6 +1,6 @@
         <footer>
             <div class="wrapper">
-                    <div class="left" style="margin-top:20px;">&copy; 2014 All Rights Reserved</div>
+                    <div class="left" style="margin-top:20px; color:#444444; font-weight:bold; font-size:14px;">&copy; 2014 All Rights Reserved</div>
                     <div class="right" style="margin-top:10px;">
                         <ul id="social-bar">
 							<li><a href="http://www.facebook.com"  title="Become a fan" class="poshytip"><img src="<?php echo base_url(); ?>assets/img/social/facebook.png"  alt="Facebook" /></a></li>

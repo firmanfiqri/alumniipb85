@@ -27,8 +27,13 @@ class m_daftar extends CI_Model {
         return $query;
     }
 	
-	public function getAllEvent() {
-        $query = $this->db->query("select * from event where tanggal_event >= NOW() order by tanggal_event asc limit 4;");
+	public function getEventBesar() {
+        $query = $this->db->query("select * from event where kategori='Reuni' order by tanggal_event asc;");
+        return $query;
+    }
+	
+	public function getEventByKategori($kategori) {
+        $query = $this->db->query("select * from event where tanggal_event >= NOW() and kategori='$kategori' order by tanggal_event asc limit 3;");
         return $query;
     }
 

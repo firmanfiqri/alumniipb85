@@ -2,9 +2,9 @@
 
 body{
 	color: #888;
+	background: url(../img/coba_biru.jpg) bottom left repeat;
 }
 
-body,
 .home-block-heading span,
 .page-heading span{
 	background: white;
@@ -31,7 +31,7 @@ body {-webkit-tap-highlight-color: #ea4c88;}
 
 /* HEADER ------------------------------------------------------------*/
 
-header{ background: #57A5D2 url(../img/coba.png) bottom left repeat; background-size: 100% 100%; box-shadow: 0px 0px 15px #888888;}
+header{ background: #34516F url(../img/coba.png) bottom left repeat; background-size: 100% 100%; box-shadow: 0px 0px 15px #888888;}
 
 
 /* WIDGETS------------------------------------------------*/
@@ -164,7 +164,7 @@ article .meta{
 
 /* SLIDER ------------------------------------------------------------*/
 
-#slider-holder #headline{ background: url(../img/daftar_kuning.png); background-size: 100% 100%; }
+#slider-holder #headline{ background: #B4C8FA; background-size: 100% 100%; }
 
 
 
