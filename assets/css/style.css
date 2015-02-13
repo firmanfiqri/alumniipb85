@@ -1189,3 +1189,54 @@ footer .wrapper,
 #modal3 .btn {
 	float:right;
 }
+
+
+/* CSS MODAL EMAIL */
+#modal_email {
+	background:#fff;
+	left:50%;
+	margin:-150px 0 0 -40%;
+	padding-bottom:20px;
+	position:absolute;
+	top:-50%;
+	width:80%;
+	height:65%;
+	border-radius:3px;
+	box-shadow:0 3px 7px rgba(0,0,0,.25);
+	-moz-box-shadow:0 3px 7px rgba(0,0,0,.25);
+	-webkit-box-shadow:0 3px 7px rgba(0,0,0,.25);
+	box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+}
+	/* Make the modal appear when targeted */
+	#modal_email:target {
+		top:50%;
+		transition: all 0.4s ease-in-out;
+		-moz-transition: all 0.4s ease-in-out;
+		-webkit-transition: all 0.4s ease-in-out;
+	}
+#modal_email header,#modal_email footer {
+	background:#ebebe8;
+	border-bottom: 1px solid #e7e7e7;
+	border-radius: 5px 5px 0 0;
+	-moz-border-radius: 5px 5px 0 0;
+	-webkit-border-radius: 5px 5px 0 0;
+}
+	#modal_email footer {
+		border:none;
+		border-top: 1px solid #e7e7e7;
+		border-radius: 0 0 5px 5px;
+		-moz-border-radius: 0 0 5px 5px;
+		-webkit-border-radius: 0 0 5px 5px;
+	}
+#modal_email section,#modal_email header, #modal_email footer {
+	padding:15px;
+	z-index:200;
+}
+#modal_email h2 {
+	margin:0;
+}
+#modal_email .btn {
+	float:right;
+}

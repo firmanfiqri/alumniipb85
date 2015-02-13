@@ -85,7 +85,7 @@ function nominalisasi($biaya) {
 
         <!-- project content -->
             <h3 style="margin-top:40px;"><span>ACARA PUNCAK : "<?php echo $nama_event; ?>"</span></h3>
-        <div id="project-content" class="clearfix" style="overflow-x: scroll;">
+        <div id="project-content" class="clearfix">
             <br />
             <br />
             <table id="myTable" class="display" cellspacing="0" width="100%">

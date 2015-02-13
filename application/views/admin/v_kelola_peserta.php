@@ -88,7 +88,7 @@ function nominalisasi($biaya) {
         <!-- ENDS form -->
 
         <!-- project content -->
-        <div id="project-content" class="clearfix" style="overflow-x: scroll;">
+        <div id="project-content" class="clearfix">
             <?php
 			if($id_event != 4){
 			?>
@@ -173,12 +173,19 @@ function nominalisasi($biaya) {
 
         </div>	        	
         <!--  ENDS project content-->
-		<div style="margin-top:50px;">
-			<h3 style="margin-top:-20px;">STATUS</h3>
+		<div style="margin-top:0px;">
+			<form id="contactForm" style="margin-top:0px;">
+			<a href="#modal_email" id="email_semua"><input type="button" value="Kirim Pesan ke Semua" name="submit" id="submit" style="height:40px;" /></a>
+			</form>
+		</div>
+		<div class="clearfix"></div>
+		<div style="margin-top:0px;">
+			<h3 style="margin-top:0px;">STATUS</h3>
 			<h5 style="margin-top:10px;"><img src="<?php echo base_url(); ?>assets/img/status_hijau.png" style="border-radius:2px;" />&nbsp;&nbsp;&nbsp; : &nbsp;&nbsp;Sudah dikonfirmasi</h5>
 			<h5 style="margin-top:10px;"><img src="<?php echo base_url(); ?>assets/img/status_kuning.png" style="border-radius:2px;" />&nbsp;&nbsp;&nbsp; : &nbsp;&nbsp;Belum dikonfirmasi</h5>
 			<h5 style="margin-top:10px;"><img src="<?php echo base_url(); ?>assets/img/status_merah.png" style="border-radius:2px;" />&nbsp;&nbsp;&nbsp; : &nbsp;&nbsp;Belum melakukan pembayaran</h5>
 		</div>
+		
     </div>
 </div>
 <!-- ENDS MAIN -->
@@ -271,4 +278,28 @@ function nominalisasi($biaya) {
 			</form>
 		</div>
 	</section>
+</aside>
+<aside id="modal_email">
+    <header>
+        <h2 class="page-heading"><span>KIRIM PESAN KE SEMUA</span></h2>	
+    </header>
+
+    <section style="margin-top:20px;">
+        <div class="project-info" style="margin-left:150px;">
+            <form id="contactForm" action="<?php echo base_url(); ?>admin/email_semua" method="post" enctype="multipart/form-data">
+				<fieldset>
+					<div>
+						<label class="clearfix">Pesan</label>
+						<textarea name="pesan" class="form-poshytip" title="Masukan pesan" style="resize: vertical" required></textarea>
+					</div>
+					<input name="email_semua" type="hidden" class="form-poshytip" value="<?php echo htmlentities(serialize($email_semua)); ?>"  />
+					<input name="nama_semua" type="hidden" class="form-poshytip" value="<?php echo htmlentities(serialize($nama_semua)); ?>"  />
+					<input name="nama_event" type="hidden" class="form-poshytip" value="<?php echo $nama_event; ?>"  />
+					<input type="submit" value="Kirim" name="submit" id="submit" style="margin-top:0px; width:65px; height:40px;" />
+					<a href="#"><input type="button" value="Keluar" style="margin-top:0px; width:65px; height:40px;" /></a>
+				</fieldset>
+			</form>
+			<!-- ENDS form -->
+        </div>
+    </section>
 </aside>

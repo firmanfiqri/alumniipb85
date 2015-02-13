@@ -311,8 +311,18 @@ class Admin extends CI_Controller {
             $data['nama_event'] = $ambilquery->nama_event;
             $data['id_event'] = $ambilquery->id_event;
         }
-
-        $data['queryevent'] = $this->m_admin->getAllEvent()->result();
+		
+        $ambilquery = $this->m_admin->getAllPembayaran($id_event)->result();
+		$nama_semua = array();
+		$email_semua = array();
+		foreach($ambilquery as $row){
+			$nama_semua[] = $row->nama_alumni;
+			$email_semua[] = $row->email;
+		}
+		
+		$data['nama_semua'] = $nama_semua;
+		$data['email_semua'] = $email_semua;
+		$data['queryevent'] = $this->m_admin->getAllEvent()->result();
         $data['querypembayaran'] = $this->m_admin->getAllPembayaran($id_event)->result();
         
         $this->header(3);
@@ -340,6 +350,46 @@ class Admin extends CI_Controller {
 		echo "<script type='text/javascript'>
 		window.location.href='" . base_url() . "admin/data_peserta';
 		</script>";	
+    }
+	
+	public function email_semua() {
+	
+		$nama_event = $this->input->post('nama_event');
+		$pesan = $this->input->post('pesan');
+		$email_semua = unserialize($this->input->post('email_semua'));
+		$nama_semua = unserialize($this->input->post('nama_semua'));
+		
+		$i = 0;
+		for($i=0;$i<sizeof($email_semua);$i++){
+			$this->sendMail_semua($email_semua[$i], $nama_semua[$i], $nama_event, $pesan);
+		}
+		
+		echo "<script type='text/javascript'>
+		window.location.href='" . base_url() . "admin/data_peserta';
+		</script>";	
+    }
+	
+	private function sendMail_semua($email, $nama_lengkap, $nama_event, $pesan) {
+        $config = Array(
+            'protocol' => 'smtp',
+            'smtp_host' => 'ssl://smtp.mail.yahoo.com',
+            'smtp_port' => 465,
+            'smtp_user' => 'fadhilah.ilmi@yahoo.com',
+            'smtp_pass' => 'Rahmanda10',
+            'mailtype' => 'html',
+            'charset' => 'iso-8859-1'
+        );
+        $this->load->library('email', $config);
+        $this->email->set_newline("\r\n");
+        $this->email->from('fadhilah.ilmi@yahoo.com', 'Fadhilah');
+        $this->email->to($email);
+
+        $this->email->subject("Pesan Notifikasi ($nama_event)");
+        $this->email->message("Hi $nama_lengkap,<br><br>$pesan<br><br>Apabila ada pertanyaan silahkan hubungi admin@admin.com");
+
+        $this->email->send();
+
+        //echo $this->email->print_debugger();
     }
 
 }

@@ -8,10 +8,11 @@
 <!-- MAIN -->
 <div id="main">	
     <div class="wrapper clearfix">
-
         <h2 class="page-heading"><span>LOG PENDAFTARAN</span></h2>	
         <?php if ($this->session->userdata('status') == 0) { ?>
+			<div class="portfolio-thumbs clearfix" >
             <h4>Lengkapi data diri untuk mengakses bagian ini.</h4>
+			</div>
         <?php } else { ?>
             <!-- project content -->
             <div id="project-content" class="clearfix" style="overflow-x:scroll;overflow-y: hidden; margin-top:50px;">
