@@ -151,7 +151,7 @@
                                 <input name="nama_lengkap"  id="nama_lengkap" type="text" class="form-poshytip" title="Masukan nama lengkap anda" placeholder="Nama lengkap" style="width:220px; height:10px;" onblur="Kapital()" required />
                             </div>
                             <div style="margin-top:-15px;">
-                                <input id="kode_fak" type="text" value="A" class="form-poshytip" style="width:10px; height:10px;" disabled> . <input type="text" value="22" class="form-poshytip" style="width:13px; height:10px;" disabled> . <input name="nrp"  id="nrp" type="text" class="form-poshytip" title="Masukan 4 digit terakhir NRP anda. Contoh: 1234. Silahkan kosongkan bila anda lupa." maxlength="4" placeholder="NRP" style="width:108px; height:10px;" onkeypress="return isNumber(event)" />
+                                <input id="kode_fak" type="text" value="A" class="form-poshytip" style="width:10px; height:10px;" disabled> . <input type="text" value="22" class="form-poshytip" style="width:13px; height:10px;" disabled> . <input name="nrp"  id="nrp" type="text" class="form-poshytip" title="Masukan 4 digit terakhir NRP anda. Contoh: '0001'. Silahkan kosongkan bila anda lupa." maxlength="4" placeholder="NRP" style="width:108px; height:10px;" onkeypress="return isNumber(event)" />
                             </div>
                             <div style="margin-top:-10px;">
                                 <input type="radio" name="jenis_kelamin" value="Laki-laki" checked="checked" /> Laki-laki &nbsp; &nbsp;
