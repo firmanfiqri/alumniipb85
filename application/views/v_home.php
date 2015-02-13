@@ -175,12 +175,12 @@
                                 </select>
                             </div>
                             <div style="margin-top:5px;">
-                                <select name="jurusan" class="form-poshytip" id="jurusan" title="Pilih jurusan" style="width:123px;">
+                                <select name="jurusan" class="form-poshytip" id="jurusan" title="Pilih jurusan" style="width:180.5px;">
                                     <?php foreach ($queryjurusan as $row) { ?>
                                         <option value="<?php echo $row->id_jurusan; ?>"><?php echo $row->nama_jurusan; ?></option>
                                     <?php } ?>        
                                 </select>
-                                <select name="kelompok" class="form-poshytip" id="prodi" title="Pilih kelompok" style="width:123px;">
+                                <select name="kelompok" class="form-poshytip" id="kelompok" title="Pilih kelompok" style="width:65.5px;">
 
                                     <?php for ($i = 3; $i < 11; $i++) { ?>
                                         <option value="<?php echo $i; ?>"><?php echo $i; ?></option>

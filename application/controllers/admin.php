@@ -414,5 +414,16 @@ class Admin extends CI_Controller {
 
         //echo $this->email->print_debugger();
     }
+	
+	public function hapus_foto_reuni($lokasi_hapus, $id_event) {
+	
+		$lokasi_hapus = str_replace('-','/', $lokasi_hapus);
+		
+		unlink($lokasi_hapus);
+		
+		echo "<script type='text/javascript'>
+		window.location.href='" . base_url() . "admin/lihat_edit_event/" . $id_event . "';
+		</script>";	
+    }
 
 }

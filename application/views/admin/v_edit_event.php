@@ -23,6 +23,8 @@
 			}
 		}
 		
+		$('.hapus_foto').tipsy({gravity: 'n'});
+		
     });
 </script>
 
@@ -106,15 +108,21 @@
 						<input name="keterangan_event"  id="name" type="text" class="form-poshytip" title="Masukan keterangan event" value = "<?php echo $editevent->keterangan; ?>" style="width:250px;" required />
 					</div>
 					
-					
+					<?php
+					if($editevent->kategori == "Reuni"){
+					?>
 					<div class="portfolio-thumbs clearfix" style="margin-top:-10px;">
 					<label class="clearfix">Daftar Foto</label>
 					<?php
 					$lokasi_file = scandir("./assets/foto/reuni");
 					//echo var_dump($lokasi_file);
+					$lokasi_lempar = array();
 					for($i=2;$i<sizeof($lokasi_file);$i++) {
+					$lokasi_lempar[$i] = "./assets/foto/reuni/".$lokasi_file[$i];
+					$lokasi_lempar[$i] = str_replace('/','-', $lokasi_lempar[$i] );
 					?>
-							<img src="<?php echo base_url();?>assets/foto/reuni/<?php echo $lokasi_file[$i]; ?>" alt="Alt text" style="width:240px; height:160px; border-radius:0px; margin-right:1px;" />
+							<img src="<?php echo base_url();?>assets/foto/reuni/<?php echo $lokasi_file[$i]; ?>" alt="Alt text" style="width:240px; height:160px; border-radius:0px;" />
+                            <a href="<?php echo base_url(); ?>admin/hapus_foto_reuni/<?php echo $lokasi_lempar[$i]; ?>/<?php echo $editevent->id_event; ?>" class="opener" style="margin-left:-39px; margin-right:1px;"><img class="hapus_foto" src="<?php echo base_url(); ?>assets/img/delete.png" style="width:35px; height:35px;" title="Hapus foto" /></a>
 
 					<?php }	?>
 					</div>
@@ -123,6 +131,7 @@
 						<label class="clearfix">Upload Foto</label>
 						<input type="file" name="foto_reuni" onchange="foto_change()" style="width:205px;" accept="image/*" /><br>Maks 1000KB
 					</div>
+					<?php }	?>
 					<br />
 					
 					<input name="kategori_awal" type="hidden" class="form-poshytip" value = "<?php echo $editevent->kategori; ?>" />
