@@ -1,3 +1,4 @@
+
 <script>
     var fakultas = new Array();
     var jurusan = new Array();
@@ -22,7 +23,9 @@
 
 
         fakultas_change();
-
+        
+        $('#nama_lengkap').tipsy({gravity: 'w'});
+        $('#nrp').tipsy({gravity: 'w'});
     });
 
     function fakultas_change() {
@@ -35,7 +38,23 @@
                 select.options[select.options.length] = new Option(jurusan[i]['nama_jurusan'], jurusan[i]['id_jurusan']);
             }
         }
-
+        
+        if(id[0]==1){
+            $("#kode_fak").val("A");
+        }else if(id[0]==2){
+            $("#kode_fak").val("B");
+        }else if(id[0]==3){
+            $("#kode_fak").val("C");
+        }else if(id[0]==4){
+            $("#kode_fak").val("D");
+        }else if(id[0]==5){
+            $("#kode_fak").val("E");
+        }else if(id[0]==6){
+            $("#kode_fak").val("F");
+        }else if(id[0]==7){
+            $("#kode_fak").val("G");
+        }
+        
         //jurusan_change();
     }
 
@@ -129,10 +148,10 @@
                     <form id="contactForm" action="<?php echo base_url(); ?>home/ambil_daftar/" method="post" style="width:0px">
                         <fieldset>
                             <div style="margin-top:-10px; width:10%;">
-                                <input name="nama_lengkap"  id="nama_lengkap" type="text" class="form-poshytip" title="Masukan nama lengkap" placeholder="Nama lengkap" style="width:220px; height:10px;" onblur="Kapital()" required />
+                                <input name="nama_lengkap"  id="nama_lengkap" type="text" class="form-poshytip" title="Masukan nama lengkap anda" placeholder="Nama lengkap" style="width:220px; height:10px;" onblur="Kapital()" required />
                             </div>
                             <div style="margin-top:-15px;">
-                                <input name="nrp"  id="name" type="text" class="form-poshytip" title="Masukan NRP" placeholder="NRP" style="width:220px; height:10px;" onkeypress="return isNumber(event)" required />
+                                <input id="kode_fak" type="text" value="A" class="form-poshytip" style="width:10px; height:10px;" disabled> . <input type="text" value="22" class="form-poshytip" style="width:13px; height:10px;" disabled> . <input name="nrp"  id="nrp" type="text" class="form-poshytip" title="Masukan 4 digit terakhir NRP anda. Contoh: 1234. Silahkan kosongkan bila anda lupa." maxlength="4" placeholder="NRP" style="width:108px; height:10px;" onkeypress="return isNumber(event)" />
                             </div>
                             <div style="margin-top:-10px;">
                                 <input type="radio" name="jenis_kelamin" value="Laki-laki" checked="checked" /> Laki-laki &nbsp; &nbsp;
