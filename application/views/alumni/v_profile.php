@@ -54,6 +54,9 @@
                 alert("Gagal ubah data!");
     <?php } ?>
 <?php } ?>
+    
+        $('#nrp').tipsy({gravity: 'w'});
+        $('#bidang_keahlian').tipsy({gravity: 'n'});
     });
     function edit_data() {
         $('.data_alumni').hide();
@@ -78,6 +81,21 @@
             }
         }
         
+        if(id[0]==1){
+            $("#kode_fak").val("A");
+        }else if(id[0]==2){
+            $("#kode_fak").val("B");
+        }else if(id[0]==3){
+            $("#kode_fak").val("C");
+        }else if(id[0]==4){
+            $("#kode_fak").val("D");
+        }else if(id[0]==5){
+            $("#kode_fak").val("E");
+        }else if(id[0]==6){
+            $("#kode_fak").val("F");
+        }else if(id[0]==7){
+            $("#kode_fak").val("G");
+        }
     }
     
 
@@ -360,9 +378,9 @@
                     <div class="one-fourth-thumbs">
                         <figure>
                             <?php if ($data_profile->foto == null) { ?>
-                                <img src="<?php echo base_url(); ?>assets/img/dummy_profile.jpg" alt="Alt text"/>
+                                <img src="<?php echo base_url(); ?>assets/img/dummy_profile.jpg" style="height: 240px" alt="Alt text"/>
                             <?php } else { ?>
-                                <img src="<?php echo base_url() . $data_profile->foto; ?>" alt="Alt text"/>
+                                <img src="<?php echo base_url() . $data_profile->foto; ?>" style="height: 240px" alt="Alt text"/>
                             <?php } ?>
                             <input type="file" id="foto" onchange="foto_change()" name="foto" accept="image/*" class="form_alumni">
                             <span class="form_alumni">batas maks 100 KB</span>
@@ -414,7 +432,7 @@
                         <p>
                             <strong class="hilang">NRP</strong><br/>
                             <span class="data_alumni"><?php echo $data_profile->nrp; ?></span>
-                            <input type="text" class="form_alumni" name="nrp" onkeypress="return isNumber(event)" value="<?php echo $data_profile->nrp; ?>" style="width:225px; height:15px;" required>
+                            <input type="text" name="kode_fak" id="kode_fak" class="form_alumni" style="width:10px; height:15px;" value="A" readonly=""> <span class="form_alumni">.</span> <input type="text" name="angkatan" class="form_alumni" style="width:15px; height:15px;" value="22" readonly=""> <span class="form_alumni">.</span> <input type="text" id="nrp" class="form_alumni" name="nrp" maxlength="4" onkeypress="return isNumber(event)" value="<?php echo substr($data_profile->nrp,5); ?>" style="width:40px; height:15px;" title="Masukan 4 digit terakhir NRP anda. Contoh: '0001'. Silahkan kosongkan bila anda lupa.">
                         </p>
                         <p>
                             <strong class="hilang">Kelompok</strong><br/>
@@ -515,7 +533,7 @@
                         <p>
                             <strong class="hilang">Bidang Keahlian</strong><br/>
                             <span class="data_alumni"><?php echo $data_profile->bidang_keahlian; ?></span>
-                            <textarea name="bidang_keahlian" class="form_alumni" style="width:200px; height:100px;" required><?php echo $data_profile->bidang_keahlian; ?></textarea>
+                            <textarea id="bidang_keahlian" name="bidang_keahlian" class="form_alumni" style="width:200px; height:100px;" title="Deskripsikan bidang keahlian anda." required><?php echo $data_profile->bidang_keahlian; ?></textarea>
                         </p>
                         
                         

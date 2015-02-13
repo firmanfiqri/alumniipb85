@@ -50,7 +50,7 @@ class Alumni extends CI_Controller {
             $nama_lengkap = $this->input->post('nama_lengkap');
             $nama_panggilan = $this->input->post('nama_panggilan');
             $jenis_kelamin = $this->input->post('jenis_kelamin');
-            $nrp = $this->input->post('nrp');
+            $nrp = $this->input->post('kode_fak').".".$this->input->post('angkatan').".".$this->input->post('nrp');
             $kelompok = $this->input->post('kelompok');
             $hp = $this->input->post('hp');
             $jurusan = $this->input->post('jurusan');
@@ -120,6 +120,7 @@ class Alumni extends CI_Controller {
             if ($id != "") {
                 $data['semua_event'] = $this->m_alumni->getAllEvent();
                 $data['event'] = $this->m_alumni->getEvent($id);
+                $data['IsPesertaEvent'] = $this->m_alumni->IsPesertaEvent($this->session->userdata('id_alumni'),$id);
                 if (strtotime($data['event']->tanggal_event) > strtotime(date("y-m-d"))) {
                     $this->header(3);
                     $this->load->view('alumni/v_detil_event', $data);
