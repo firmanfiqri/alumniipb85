@@ -35,7 +35,15 @@ function nominalisasi($biaya) {
                 $tahun = date("Y", strtotime($event->tanggal_event));
                 ?>
                 <div class="entry-date"><div class="number"><?php echo $tanggal; ?></div> <div class="year"><?php echo substr($nama_bulan[$bulan], 0, 3); ?>, <?php echo $tahun; ?></div></div>
-                <a href="<?php echo base_url() . $event->foto_event; ?>" data-rel="prettyPhoto"><img src="<?php echo base_url() . $event->foto_event; ?>" alt="Alt text" style="width:90%; height:60%;" /></a>
+				<?php
+				if($event->foto_event){
+				?>
+                <img src="<?php echo base_url() . $event->foto_event; ?>" alt="Alt text" style="width:500px; height:333px;" />
+				<?php
+				}else{
+				?>
+                <img src="<?php echo base_url();?>assets/img/dummy_event.png" alt="Alt text" style="width:500px; height:333px;" />
+				<?php } ?>
                 <h2  class="post-heading"><?php echo $event->nama_event; ?></h2>
                 <div class="post-content"><?php echo $event->deskripsi; ?></div>
                 <div class="post-content"><strong>Tanggal : </strong><?php echo $event->tanggal_event; ?></div>
@@ -63,7 +71,7 @@ function nominalisasi($biaya) {
                         </lu>
                     <?php } else { ?>
                     <lu>
-                            <li>Klik tombol daftar yang ada dibawah</li>
+                            <li>Klik tombol Konfirmasi yang ada dibawah</li>
                             <li>Selesai</li>
                         </lu>
                 <?php } ?>
@@ -77,7 +85,7 @@ function nominalisasi($biaya) {
 <?php }else{ ?>
           <div class="page-navigation clearfix">
                         <div class="nav-previous">
-                            <a href="<?php echo base_url(); ?>alumni/daftar_gratis/<?php echo $event->id_event; ?>">Daftar</a> 
+                            <a href="<?php echo base_url(); ?>alumni/daftar_gratis/<?php echo $event->id_event; ?>">Konfirmasi</a> 
                         </div>
                     </div>      
 <?php } ?>

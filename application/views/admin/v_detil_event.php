@@ -4,8 +4,13 @@
 
         <!-- posts list -->
         <div id="posts-list" class="single-post">
-
+			<?php
+			if($event->kategori != "Reuni"){
+			?>
             <h2 class="page-heading"><span>DETAIL EVENT</span></h2>	
+			<?php }else{ ?>
+            <h2 class="page-heading"><span>DETAIL ACARA PUNCAK</span></h2>	
+			<?php } ?>
 
             <article class="format-standard">
                 <?php 
@@ -19,7 +24,11 @@
 					$tahun = date("Y", strtotime($event->tanggal_event));
                 ?>
                 <div class="entry-date"><div class="number"><?php echo $tanggal; ?></div> <div class="year"><?php echo substr($nama_bulan[$bulan], 0, 3); ?>, <?php echo $tahun; ?></div></div>
+				<?php
+				if($event->kategori != "Reuni"){
+				?>
                 <a href="<?php echo base_url().$event->foto_event;?>" data-rel="prettyPhoto"><img src="<?php echo base_url().$event->foto_event;?>" alt="Alt text" style="width:90%; height:60%;" /></a>
+				<?php } ?>
                 <h2  class="post-heading"><?php echo $event->nama_event; ?></h2>
                 <div class="post-content"><?php echo $event->deskripsi; ?></div>
                 <div class="meta">

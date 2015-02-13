@@ -12,9 +12,9 @@
                     <div class="one-fourth-thumbs">
 						<figure>
 						<?php if($data_profile->foto==null){?>
-							<img src="<?php echo base_url(); ?>assets/img/dummy_profile.jpg" alt="Alt text"/>
+							<img src="<?php echo base_url(); ?>assets/img/dummy_profile.jpg" alt="Alt text" style="height:240px;"/>
 						<?php }else{ ?>
-							<img src="<?php echo base_url().$data_profile->foto; ?>" alt="Alt text"/>
+							<img src="<?php echo base_url().$data_profile->foto; ?>" alt="Alt text" style="height:240px;"/>
 						<?php } ?>
 						</figure>
                     </div>

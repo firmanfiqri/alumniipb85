@@ -126,29 +126,52 @@ class Admin extends CI_Controller {
         $tempat_event = $this->input->post('tempat_event');
         $biaya = $this->input->post('biaya');
         $keterangan = $this->input->post('keterangan_event');
+        $kategori_awal = $this->input->post('kategori_awal');
         $kategori = $this->input->post('kategori');
+		
+		if($kategori_awal != "Reuni"){
+			//Ubah Foto
+			if ($_FILES['foto']['name'] != "") {
+				$foto = $_FILES['foto'];
 
-        //Ubah Foto
-        if ($_FILES['foto']['name'] != "") {
-            $foto = $_FILES['foto'];
+				$dir = './assets/foto/event/';
+				if (!file_exists($dir)) {
+					mkdir($dir);
+				}
 
-            $dir = './assets/foto/event/';
-            if (!file_exists($dir)) {
-                mkdir($dir);
-            }
+				$start = strpos($_FILES['foto']['type'], "/");
+				$type = substr($_FILES['foto']['type'], ($start + 1));
+				$file_target = $dir . time() . "." . $type;
 
-            $start = strpos($_FILES['foto']['type'], "/");
-            $type = substr($_FILES['foto']['type'], ($start + 1));
-            $file_target = $dir . time() . "." . $type;
+				$this->m_admin->hapusFoto($id_event);
+				move_uploaded_file($_FILES['foto']['tmp_name'], $file_target);
 
-            $this->m_admin->hapusFoto($id_event);
-            move_uploaded_file($_FILES['foto']['tmp_name'], $file_target);
+				$file_target = substr($file_target, 1);
+				$this->m_admin->updateFoto($id_event, $file_target);
+			}
+		}else{
+			//Tambah Foto
+			if ($_FILES['foto_reuni']['name'] != "") {
+				$foto = $_FILES['foto_reuni'];
 
-            $file_target = substr($file_target, 1);
-            $this->m_admin->updateFoto($id_event, $file_target);
-        }
+				$dir = './assets/foto/reuni/';
+				if (!file_exists($dir)) {
+					mkdir($dir);
+				}
+
+				$start = strpos($_FILES['foto_reuni']['type'], "/");
+				$type = substr($_FILES['foto_reuni']['type'], ($start + 1));
+				$file_target = $dir . time() . "." . $type;
+
+				$this->m_admin->hapusFoto($id_event);
+				move_uploaded_file($_FILES['foto_reuni']['tmp_name'], $file_target);
+			}
+			
+			$kategori = $kategori_awal;
+		}
 
         $this->m_admin->updateEvent($id_event, $nama_event, $deskripsi, $tanggal_event, $tempat_event, $biaya, $keterangan, $kategori);
+		
 
         echo "<script type='text/javascript'>alert('Anda berhasil mengubah event!');
 		window.location.href='" . base_url() . "admin/event';
