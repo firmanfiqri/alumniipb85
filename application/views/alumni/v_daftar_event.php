@@ -1,3 +1,11 @@
+<script>
+    $(document).ready(function() {    
+        $('#dewasa_ikut').tipsy({gravity: 'w'});
+        $('#anak_ikut').tipsy({gravity: 'w'});
+        $('#tanggal_tiba').tipsy({gravity: 'w'});
+    });
+</script>
+
 <div id="background">
 <div id="main">	
     <div class="wrapper clearfix">
@@ -18,20 +26,20 @@
                         <tr>
                             <td>Dewasa</td>
 							<td style="width:20px;"><td>
-                            <td><input type="number" class="clearfix" name="dewasa_ikut" placeholder="Dewasa" style="width:225px; height:15px;" required></td>
+                            <td><input id="dewasa_ikut" type="number" class="clearfix" name="dewasa_ikut" placeholder="Dewasa" style="width:225px; height:15px;" title="Diluar diri anda" required></td>
                         </tr>
 						<tr style="height:10px;"></tr>
                         <tr>
                             <td>Anak</td>
 							<td style="width:20px;"><td>
-                            <td><input type="number" class="clearfix" name="anak_ikut" placeholder="Anak" style="width:225px; height:15px;" required></td>
+                            <td><input id="anak_ikut" type="number" class="clearfix" name="anak_ikut" placeholder="Anak" style="width:225px; height:15px;" title="Usia dibawah 10 tahun" required></td>
                         </tr>
 						<tr style="height:10px;"></tr>
                         <tr>
                         <tr>
                             <td>Tanggal Tiba</td>
 							<td style="width:20px;"><td>
-                            <td><input type="date" class="clearfix" name="tgl_tiba" style="width:225px; height:15px;" required></td>
+                            <td><input id="tanggal_tiba" type="date" class="clearfix" name="tgl_tiba" style="width:225px; height:15px;" title="Tanggal tiba di Bogor" required></td>
                         </tr>
                         <tr>
                             <td></td>
