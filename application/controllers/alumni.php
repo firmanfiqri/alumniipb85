@@ -120,6 +120,7 @@ class Alumni extends CI_Controller {
             if ($id != "") {
                 $data['semua_event'] = $this->m_alumni->getAllEvent();
                 $data['event'] = $this->m_alumni->getEvent($id);
+                $data['IsPesertaEvent'] = $this->m_alumni->IsPesertaEvent($this->session->userdata('id_alumni'),$id);
                 if (strtotime($data['event']->tanggal_event) > strtotime(date("y-m-d"))) {
                     $this->header(3);
                     $this->load->view('alumni/v_detil_event', $data);

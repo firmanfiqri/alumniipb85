@@ -50,7 +50,9 @@ function nominalisasi($biaya) {
 <?php } ?>                
                 <div class="post-content"><strong>Keterangan : </strong><?php echo $event->keterangan; ?></div>
                 <div class="post-content">
+                    <?php if($IsPesertaEvent == 0){?>
                     <h4>Prosedur Pendaftaran</h4><br>
+                    <?php } ?>
 <?php if ($event->biaya > 0) { ?>
                         <lu>
                             <li>Klik tombol daftar yang ada dibawah</li>
@@ -62,10 +64,12 @@ function nominalisasi($biaya) {
                             <li>Selesai</li>
                         </lu>
                     <?php } else { ?>
+                    <?php if($IsPesertaEvent == 0){?>
                     <lu>
                             <li>Klik tombol daftar yang ada dibawah</li>
                             <li>Selesai</li>
                         </lu>
+                    <?php }?>
                 <?php } ?>
                 </div>
 <?php if ($event->biaya > 0) { ?>
@@ -75,11 +79,13 @@ function nominalisasi($biaya) {
                         </div>
                     </div>
 <?php }else{ ?>
+                <?php if($IsPesertaEvent == 0){?>
           <div class="page-navigation clearfix">
                         <div class="nav-previous">
                             <a href="<?php echo base_url(); ?>alumni/daftar_gratis/<?php echo $event->id_event; ?>">Daftar</a> 
                         </div>
-                    </div>      
+                    </div>    
+                <?php } ?>
 <?php } ?>
                 <br>
                 <div class="meta">

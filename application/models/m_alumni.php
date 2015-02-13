@@ -107,6 +107,10 @@ class m_alumni extends CI_Model {
         return $query->row();
     }
     
+    public function IsPesertaEvent($id_alumni, $id_event) {
+        $query = $this->db->query("select * from peserta_event p where p.id_alumni=$id_alumni and p.id_event=$id_event");
+        return $query->num_rows();
+    }
 
 }
 
