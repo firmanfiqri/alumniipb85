@@ -50,7 +50,7 @@ class Alumni extends CI_Controller {
             $nama_lengkap = $this->input->post('nama_lengkap');
             $nama_panggilan = $this->input->post('nama_panggilan');
             $jenis_kelamin = $this->input->post('jenis_kelamin');
-            $nrp = $this->input->post('nrp');
+            $nrp = $this->input->post('kode_fak').".".$this->input->post('angkatan').".".$this->input->post('nrp');
             $kelompok = $this->input->post('kelompok');
             $hp = $this->input->post('hp');
             $jurusan = $this->input->post('jurusan');
