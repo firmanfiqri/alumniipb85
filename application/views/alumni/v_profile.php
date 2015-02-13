@@ -414,7 +414,7 @@
                         <p>
                             <strong class="hilang">NRP</strong><br/>
                             <span class="data_alumni"><?php echo $data_profile->nrp; ?></span>
-                            <input type="text" class="form_alumni" name="nrp" onkeypress="return isNumber(event)" value="<?php echo $data_profile->nrp; ?>" style="width:225px; height:15px;" required>
+                            <input type="text" name="kode_fak" id="kode_fak" class="form_alumni" style="width:10px; height:15px;" value="A" readonly=""> . <input type="text" name="angkatan" class="form_alumni" style="width:15px; height:15px;" value="22" readonly=""> . <input type="text" class="form_alumni" name="nrp" maxlength="4" onkeypress="return isNumber(event)" value="<?php echo $data_profile->nrp; ?>" style="width:40px; height:15px;" required>
                         </p>
                         <p>
                             <strong class="hilang">Kelompok</strong><br/>

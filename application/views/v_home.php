@@ -26,6 +26,13 @@
         
         $('#nama_lengkap').tipsy({gravity: 'w'});
         $('#nrp').tipsy({gravity: 'w'});
+        $('#fakultas').tipsy({gravity: 'w'});
+        $('#jurusan').tipsy({gravity: 'w'});
+        $('#kelompok').tipsy({gravity: 'w'});
+        $('#email_pribadi').tipsy({gravity: 'w'});
+        $('#no_hp').tipsy({gravity: 'w'});
+        $('#pass').tipsy({gravity: 'w'});
+        $('#c_pass').tipsy({gravity: 'w'});
     });
 
     function fakultas_change() {
@@ -65,6 +72,7 @@
         if (pass != confPass) {
             alert('Ulang kata sandi salah!');
             document.getElementById("c_pass").value = "";
+            document.getElementById("pass").value = "";
         }
     }
 
@@ -170,7 +178,7 @@
                                         <option value="<?php echo $row->id_jurusan; ?>"><?php echo $row->nama_jurusan; ?></option>
                                     <?php } ?>        
                                 </select>
-                                <select name="kelompok" class="form-poshytip" id="prodi" title="Pilih kelompok" style="height:30px; width:123px;">
+                                <select name="kelompok" class="form-poshytip" id="kelompok" title="Pilih kelompok" style="height:30px; width:123px;">
                                     <?php for ($i = 3; $i < 11; $i++) { ?>
                                         <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
                                     <?php } ?>
@@ -180,7 +188,7 @@
                                 <input name="no_hp"  id="no_hp" type="text" class="form-poshytip" title="Masukan no. HP" placeholder="Nomor HP" style="width:220px; height:10px;" onkeypress="return isNumber(event)" required />
                             </div >
                             <div style="margin-top:-15px;">
-                                <input name="email"  id="email" type="email" class="form-poshytip" title="Masukan email" placeholder="Email" style="width:220px; height:10px;" required />
+                                <input name="email"  id="email_pribadi" type="email" class="form-poshytip" title="Gunakan email pribadi anda." placeholder="Email" style="width:220px; height:10px;" required />
                             </div >
                             <div style="margin-top:5px;">
                                 <input name="password"  id="pass" type="password" class="form-poshytip" title="Masukan kata sandi" placeholder="Kata Sandi" style="width:220px; height:10px;" required />
